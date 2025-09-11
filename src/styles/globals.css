@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #171717;
+  --foreground: #ffffff;
+
+  /* === Couleurs personnalisées === */
+  --color-primary-blue: #0c498e;
+  --color-white: #ffffff;
+  --color-orange: #f18e06;
+  --color-light-blue: #9bb9c6;
+  --color-red: #d32329;
+  --color-black: #000000;
+
+  /* === Polices personnalisées === */
+  --font-tt-bluescreens-42: "TT Bluescreens", sans-serif;
+  --font-tt-bluescreens-32: "TT Bluescreens", sans-serif;
+  --font-tt-bluescreens-24: "TT Bluescreens", sans-serif;
+  --font-calibri-16: "Calibri", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Mapping des polices custom pour Tailwind */
+  --font-title-xl: var(--font-tt-bluescreens-42);
+  --font-title-lg: var(--font-tt-bluescreens-32);
+  --font-title-md: var(--font-tt-bluescreens-24);
+  --font-body: var(--font-calibri-16);
+
+  /* Mapping des couleurs custom pour Tailwind */
+  --color-primary: var(--color-primary-blue);
+  --color-secondary: var(--color-orange);
+  --color-accent: var(--color-light-blue);
+  --color-danger: var(--color-red);
+  --color-dark: var(--color-black);
+  --color-light: var(--color-white);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
