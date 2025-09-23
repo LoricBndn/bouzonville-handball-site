@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import "@/components/Header";
-import Header from "@/components/Header";
-import NavBar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Header from "@/components/layout/Header";
+import NavBar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Bouzonville Handball Club",
@@ -16,11 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="fr">
+      <body className="flex flex-col min-h-screen">
         <Header></Header>
         <NavBar></NavBar>
-        {children}
+        <main className="flex-grow">{children}</main>
         <Footer></Footer>
       </body>
     </html>
