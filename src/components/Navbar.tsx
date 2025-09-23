@@ -1,20 +1,30 @@
 "use client";
 
-import { useState } from 'react';
-import { Home, Users, Trophy, GraduationCap, Activity, Handshake, Info, Store } from 'lucide-react';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  Home,
+  Users,
+  Trophy,
+  GraduationCap,
+  Activity,
+  Handshake,
+  Info,
+  Store,
+} from "lucide-react";
 
 export default function NavBar() {
-  const [activeItem, setActiveItem] = useState('home');
+  const pathname = usePathname();
 
   const navItems = [
-    { id: 'home', label: 'Accueil', icon: Home },
-    { id: 'club', label: 'Le club', icon: Users },
-    { id: 'results', label: 'Résultats / Équipes', icon: Trophy },
-    { id: 'arbitrage', label: "École d'arbitrage", icon: GraduationCap },
-    { id: 'handfit', label: 'Handfit', icon: Activity },
-    { id: 'partners', label: 'Partenaires', icon: Handshake },
-    { id: 'infos', label: 'Informations', icon: Info },
-    { id: 'store', label: 'Boutique', icon: Store }
+    { href: "/", label: "Accueil", icon: Home },
+    { href: "/club", label: "Le club", icon: Users },
+    { href: "/equipes", label: "Équipes", icon: Trophy },
+    { href: "/arbitrage", label: "École d'arbitrage", icon: GraduationCap },
+    { href: "/handfit", label: "Handfit", icon: Activity },
+    { href: "/partenaires", label: "Partenaires", icon: Handshake },
+    { href: "/infos", label: "Informations", icon: Info },
+    { href: "/boutique", label: "Boutique", icon: Store },
   ];
 
   return (
@@ -24,21 +34,23 @@ export default function NavBar() {
           <div className="flex space-x-1">
             {navItems.map((item) => {
               const IconComponent = item.icon;
-              const isActive = activeItem === item.id;
-              
+              const isActive =
+                pathname === item.href ||
+                (item.href !== "/" && pathname.startsWith(item.href));
+
               return (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveItem(item.id)}
+                <Link
+                  key={item.href}
+                  href={item.href}
                   className={`flex items-center space-x-2 px-4 py-4 text-sm font-body transition-all duration-200 border-b-2 ${
                     isActive
-                      ? 'text-light border-secondary bg-primary/90'
-                      : 'text-accent border-transparent hover:text-light hover:bg-primary/80 hover:border-secondary'
+                      ? "text-light border-secondary bg-primary/90"
+                      : "text-accent border-transparent hover:text-light hover:bg-primary/80 hover:border-secondary"
                   }`}
                 >
                   <IconComponent className="w-4 h-4" />
                   <span className="hidden md:inline">{item.label}</span>
-                </button>
+                </Link>
               );
             })}
           </div>
@@ -46,4 +58,4 @@ export default function NavBar() {
       </div>
     </nav>
   );
-};
+}
