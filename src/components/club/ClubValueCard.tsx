@@ -1,7 +1,8 @@
 import React from "react";
+import { LucideIcon } from "lucide-react";
 
 export default function ClubValueCard({ icon: IconComponent, title, description }: {
-  icon: React.ComponentType<any>;
+  icon: LucideIcon,
   title: string;
   description: string;
 }) {

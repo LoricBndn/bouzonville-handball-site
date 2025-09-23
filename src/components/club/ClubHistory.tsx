@@ -1,19 +1,22 @@
 import React from "react";
+import Image from "next/image";
 
 export default function ClubHistory() {
   return (
     <div className="grid lg:grid-cols-2 gap-16 mb-16">
       <div>
-        <h2 className="text-2xl font-bold text-orange-500 mb-6">Notre Histoire</h2>
+        <h2 className="text-2xl font-bold text-orange-500 mb-6">
+          Notre Histoire
+        </h2>
         <p className="text-gray-600 mb-4">
-          Depuis sa création, le Bouzonville Handball s’est toujours
-          positionné comme club formateur. Il bénéficie aujourd’hui d’une
-          certaine notoriété aussi bien sur la scène départementale,
-          régionale et à l’échelle de la grande région.
+          Depuis sa création, le Bouzonville Handball s&rsquo;est toujours
+          positionné comme club formateur. Il bénéficie aujourd&rsquo;hui
+          d&rsquo;une certaine notoriété aussi bien sur la scène départementale,
+          régionale et à l&rsquo;échelle de la grande région.
         </p>
         <p className="text-gray-600 mb-4">
-          Localement, le club s’inscrit dans une culture de partage et
-          transmet des valeurs saines : le respect, l’entraide et le
+          Localement, le club s&rsquo;inscrit dans une culture de partage et
+          transmet des valeurs saines : le respect, l&rsquo;entraide et le
           dépassement de soi. Le Club mène des actions dans les écoles
           bouzonvilloises mais aussi des communes aux alentours.
         </p>
@@ -27,9 +30,11 @@ export default function ClubHistory() {
         </p>
       </div>
       <div className="flex justify-center items-center">
-        <img
+        <Image
           src="/divers/club.jpg"
           alt="Histoire du Bouzonville Handball"
+          width={600}
+          height={400}
           className="w-full lg:w-[600px] h-auto object-cover rounded-lg shadow-lg"
         />
       </div>
