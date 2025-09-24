@@ -77,7 +77,7 @@ export default function HomePage() {
         {/* Statistiques */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <div className="bg-light rounded-lg shadow-md p-6 text-center">
-            <div className="text-3xl font-bold text-primary mb-2">98</div>
+            <div className="text-3xl font-bold text-primary mb-2">94</div>
             <div className="text-accent">Licenciés</div>
           </div>
           <div className="bg-light rounded-lg shadow-md p-6 text-center">
