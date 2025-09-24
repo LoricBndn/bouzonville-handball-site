@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -12,10 +13,13 @@ import {
   Handshake,
   Info,
   Store,
+  Menu,
+  X,
 } from "lucide-react";
 
 export default function NavBar() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { href: "/", label: "Accueil", icon: Home },
@@ -31,9 +35,27 @@ export default function NavBar() {
 
   return (
     <nav className="bg-primary shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center">
-          <div className="flex space-x-1">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+        {/* Toggle menu */}
+        <div className="flex items-center justify-between py-2 xl:hidden">
+          <span className="text-light font-bold text-lg">Menu</span>
+
+          {/* Hamburger menu button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-light hover:text-secondary focus:outline-none"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Menu items */}
+        <div
+          className={`transition-all duration-300 ${
+            isOpen ? "block" : "hidden"
+          } xl:flex xl:justify-center`}
+        >
+          <div className="flex flex-col xl:flex-row xl:space-x-1">
             {navItems.map((item) => {
               const IconComponent = item.icon;
               const isActive =
@@ -49,9 +71,10 @@ export default function NavBar() {
                       ? "text-light border-secondary bg-primary/90"
                       : "text-accent border-transparent hover:text-light hover:bg-primary/80 hover:border-secondary"
                   }`}
+                  onClick={() => setIsOpen(false)}
                 >
                   <IconComponent className="w-4 h-4" />
-                  <span className="hidden md:inline">{item.label}</span>
+                  <span className="inline">{item.label}</span>
                 </Link>
               );
             })}

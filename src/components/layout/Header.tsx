@@ -14,8 +14,9 @@ export default function Header() {
               alt="Logo Bouzonville Handball"
               width={48}
               height={48}
+              className="object-contain"
             />
-            <div>
+            <div className="hidden sm:block text-left">
               <h1 className="text-xl font-bluescreens font-bold text-light uppercase tracking-wide">
                 Bouzonville
               </h1>
@@ -27,7 +28,6 @@ export default function Header() {
 
           {/* Right side - Social icons and contact */}
           <div className="flex items-center space-x-4">
-            <Search className="w-6 h-6 text-light hover:text-secondary cursor-pointer transition-colors" />
             <div className="flex items-center space-x-3">
               <Facebook className="w-6 h-6 text-light hover:text-secondary cursor-pointer transition-colors" />
               <Instagram className="w-6 h-6 text-light hover:text-secondary cursor-pointer transition-colors" />
