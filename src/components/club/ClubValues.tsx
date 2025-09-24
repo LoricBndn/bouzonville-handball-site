@@ -1,6 +1,6 @@
 import React from "react";
 import { Users, Heart, Target, Award } from "lucide-react";
-import ClubValueCard from "./ClubValueCard";
+import ClubValueCard from "@/components/club/ClubValueCard";
 
 export default function ClubValues() {
   const values = [
@@ -12,7 +12,9 @@ export default function ClubValues() {
 
   return (
     <div className="mb-16">
-      <h2 className="text-2xl font-bold text-orange-500 mb-8 text-center">Nos Valeurs</h2>
+      <h2 className="text-2xl font-bold text-secondary mb-8 text-center font-title-lg">
+        Nos Valeurs
+      </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {values.map((value, index) => (
           <ClubValueCard

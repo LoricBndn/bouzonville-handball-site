@@ -27,7 +27,6 @@ export default function Organigramme() {
             name={staff[0].name}
             role={staff[0].role}
             photo={staff[0].photo}
-            bgColor="bg-blue-600 text-white"
             className="min-w-[250px] max-w-[300px]"
           />
         </div>
@@ -40,7 +39,6 @@ export default function Organigramme() {
               name={member.name}
               role={member.role}
               photo={member.photo}
-              bgColor="bg-blue-400 text-white"
               className="min-w-[200px] max-w-[220px]"
             />
           ))}

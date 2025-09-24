@@ -6,7 +6,7 @@ import ClubValues from "@/components/club/ClubValues";
 
 export default function ClubPage() {
   return (
-    <div className="py-12 bg-white">
+    <div className="py-12 bg-background text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ClubHeader />
         <ClubHistory />

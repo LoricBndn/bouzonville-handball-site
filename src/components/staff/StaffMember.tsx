@@ -5,28 +5,34 @@ interface StaffMemberProps {
   name: string;
   role: string;
   photo?: string;
-  bgColor?: string;
   className?: string;
 }
 
-export default function StaffMember({ name, role, photo, bgColor, className }: StaffMemberProps) {
+export default function StaffMember({
+  name,
+  role,
+  photo,
+  className,
+}: StaffMemberProps) {
   return (
     <div
-      className={`p-4 rounded-lg shadow-md text-center ${bgColor || "bg-blue-200"} ${className || ""}`}
+      className={`p-6 rounded-xl shadow hover:shadow-lg transition-all border border-accent text-center ${className || ""}`}
     >
       {photo ? (
         <img
           src={photo}
           alt={name}
-          className="w-20 h-20 mx-auto rounded-full object-cover mb-3"
+          className="w-24 h-24 mx-auto rounded-full object-cover mb-4 border-4 border-secondary shadow-md"
         />
       ) : (
-        <div className="w-20 h-20 mx-auto rounded-full bg-gray-200 flex items-center justify-center mb-3">
-          <User className="w-10 h-10 text-gray-400" />
+        <div className="w-24 h-24 mx-auto rounded-full bg-accent flex items-center justify-center mb-4 border-2 border-primary">
+          <User className="w-10 h-10 text-primary" />
         </div>
       )}
-      <h3 className="text-md font-semibold text-gray-800">{name}</h3>
-      <p className="text-sm text-gray-700">{role}</p>
+      <h3 className="text-lg font-bold text-primary">
+        {name}
+      </h3>
+      <p className="text-sm text-secondary font-medium">{role}</p>
     </div>
   );
 }
