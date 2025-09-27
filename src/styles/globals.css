@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #171717;
-  --foreground: #ffffff;
+  --background: #f9fafb; /* Fond clair légèrement bleuté */
+  --foreground: #1f2937; /* Texte principal sombre */
 
   /* === Couleurs personnalisées === */
   --color-primary-blue: #0c498e;
@@ -12,11 +12,53 @@
   --color-red: #d32329;
   --color-black: #000000;
 
-  /* === Polices personnalisées === */
-  --font-tt-bluescreens-42: "TT Bluescreens", sans-serif;
-  --font-tt-bluescreens-32: "TT Bluescreens", sans-serif;
-  --font-tt-bluescreens-24: "TT Bluescreens", sans-serif;
-  --font-calibri-16: "Calibri", sans-serif;
+  /* Nuances */
+  --color-primary-50: #e6f0fa;
+  --color-primary-100: #cce0f5;
+  --color-primary-200: #99c2eb;
+  --color-primary-300: #66a3e0;
+  --color-primary-400: #3385d6;
+  --color-primary-500: #0c498e;
+  --color-primary-600: #0a3a70;
+  --color-primary-700: #08305a;
+  --color-primary-800: #061d40;
+  --color-primary-900: #04122c;
+
+  --color-orange-50: #fff5e6;
+  --color-orange-100: #ffe6cc;
+  --color-orange-200: #ffd699;
+  --color-orange-300: #ffc766;
+  --color-orange-400: #ffb733;
+  --color-orange-500: #f18e06;
+  --color-orange-600: #cc7405;
+  --color-orange-700: #995503;
+  --color-orange-800: #663702;
+  --color-orange-900: #331b01;
+
+  --color-light-blue-50:  #f4f8fa;
+  --color-light-blue-100: #e1eef4;
+  --color-light-blue-200: #c3dde9;
+  --color-light-blue-300: #a5cce0;
+  --color-light-blue-400: #86bad6;
+  --color-light-blue-500: #9bb9c6; 
+  --color-light-blue-600: #7b9fac;
+  --color-light-blue-700: #5b8592;
+  --color-light-blue-800: #3b6b78;
+  --color-light-blue-900: #1c505e;
+
+  --color-red-50: #ffe6e6;
+  --color-red-100: #ffcccc;
+  --color-red-200: #ff9999;
+  --color-red-300: #ff6666;
+  --color-red-400: #ff3333;
+  --color-red-500: #d32329;
+  --color-red-600: #b21d20;
+  --color-red-700: #891619;
+  --color-red-800: #5f0f11;
+  --color-red-900: #360a09;
+
+  --color-black: #000000;
+  --color-white: #ffffff;
 }
 
 @theme inline {
@@ -33,18 +75,18 @@
   --font-body: var(--font-calibri-16);
 
   /* Mapping des couleurs custom pour Tailwind */
-  --color-primary: var(--color-primary-blue);
-  --color-secondary: var(--color-orange);
-  --color-accent: var(--color-light-blue);
-  --color-danger: var(--color-red);
+  --color-primary: var(--color-primary-500);
+  --color-secondary: var(--color-orange-500);
+  --color-accent: var(--color-light-blue-500);
+  --color-danger: var(--color-red-500);
   --color-dark: var(--color-black);
   --color-light: var(--color-white);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #ffffff;
-    --foreground: #000000;
+    --background: #1f2937; /* Fond sombre en mode sombre */
+    --foreground: #f9fafb; /* Texte clair */
   }
 }
 
