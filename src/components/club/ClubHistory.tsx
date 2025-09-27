@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ClubHistory() {
   return (
-    <div className="grid lg:grid-cols-2 gap-16 mb-16">
+    <div className="grid lg:grid-cols-2 gap-16 mb-12">
       <div>
         <h2 className="text-2xl font-bold text-secondary mb-6">
           Notre Histoire

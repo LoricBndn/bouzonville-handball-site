@@ -15,9 +15,9 @@ const staff = [
 
 export default function Organigramme() {
   return (
-    <div className="py-12 bg-white">
+    <div className="">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl font-bold text-orange-500 mb-12">
+        <h2 className="text-3xl font-bold text-secondary mb-12">
           Organigramme - Équipe Dirigeante
         </h2>
 

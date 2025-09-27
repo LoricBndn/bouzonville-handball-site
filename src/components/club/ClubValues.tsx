@@ -11,7 +11,7 @@ export default function ClubValues() {
   ];
 
   return (
-    <div className="mb-16">
+    <div className="mb-12">
       <h2 className="text-2xl font-bold text-secondary mb-8 text-center font-title-lg">
         Nos Valeurs
       </h2>
