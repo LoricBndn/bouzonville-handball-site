@@ -10,7 +10,11 @@ export default function About() {
         Venez Vivre le Handball d&apos;une Manière Nouvelle !
       </p>
       <p className="text-dark max-w-3xl mx-auto mb-8">
-        Le Bouzonville Handball est un club dynamique et familial...
+        Le Bouzonville Handball est un club dynamique et familial, ancré
+        dans la région depuis{" "}
+        <span className="text-secondary font-bold">1964</span>. Il met
+        l&apos;accent sur la formation des jeunes, la compétition et la
+        transmission des valeurs du sport.
       </p>
       <Link
         href="/inscription"

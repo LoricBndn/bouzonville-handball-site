@@ -22,7 +22,10 @@ export default function Hero() {
               Passion, sport et convivialité depuis plus de 60 ans
             </h2>
             <p className="text-sm sm:text-base md:text-lg mb-8 text-white/90 leading-relaxed">
-              Rejoignez notre club de handball et découvrez une communauté de plus de 90 licenciés. De l'école de handball aux équipes seniors, nous accueillons tous les âges et tous les niveaux dans une ambiance familiale et sportive.
+              Rejoignez notre club de handball et découvrez une communauté
+              de plus de 90 licenciés. De l&apos;école de handball aux
+              équipes seniors, nous accueillons tous les âges et tous les
+              niveaux dans une ambiance familiale et sportive.
             </p>
             <div className="flex space-x-4">
               <Link
