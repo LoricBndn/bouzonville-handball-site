@@ -27,7 +27,7 @@ export const partenairesFederaux: Partner[] = [
   {
     name: "Fédération Française de Handball",
     logo: "/partenaires/federaux/ffhb.png",
-    url: "https://www.ffhb.fr/",
+    url: "https://www.ffhandball.fr/",
   },
   {
     name: "Ligue Grand Est",
