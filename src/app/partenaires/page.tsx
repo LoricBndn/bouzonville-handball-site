@@ -12,7 +12,7 @@ export default function PartenairesPage() {
     <section className="py-12 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-primary mb-4">
+          <h2 className="text-4xl font-bold text-primary mb-4">
             Merci à nos partenaires !
           </h2>
           <div className="w-24 h-1 bg-secondary mx-auto rounded"></div>
@@ -47,7 +47,7 @@ export default function PartenairesPage() {
         <PartenaireSection title="Sponsors" partenaires={sponsors} />
 
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-primary mb-4">
+          <h2 className="text-4xl font-bold text-primary mb-4">
             Nous soutenir
           </h2>
           <div className="w-24 h-1 bg-secondary mx-auto rounded"></div>

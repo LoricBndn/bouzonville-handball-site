@@ -41,4 +41,10 @@ export const partenairesFederaux: Partner[] = [
   },
 ];
 
-export const sponsors: Partner[] = [];
+export const sponsors: Partner[] = [
+  {
+    name: "Crédit Mutuel",
+    logo: "/partenaires/sponsors/credit_mutuel.png",
+    url: "https://www.creditmutuel.fr/",
+  },
+];
