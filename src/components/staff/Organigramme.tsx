@@ -1,22 +1,11 @@
 import React from "react";
-import StaffMember from "./StaffMember";
-
-const staff = [
-  { name: "Michèle ROUSSEL", role: "Présidente", photo: "/staff/michele_roussel.jpg" },
-  { name: "Bruno SALMON", role: "Vice-Président & Secrétaire", photo: "/staff/bruno_salmon.jpg" },
-  { name: "Nicolas GRANDEMANGE", role: "Vice-Président - Événementiel", photo: "/staff/nicolas_grandemange.jpg" },
-  { name: "Anne SALMON", role: "Trésorière", photo: "/staff/anne_salmon.jpg" },
-  { name: "Arnaud HARDT", role: "Assesseur" },
-  { name: "David LOFFREDO", role: "Assesseur" },
-  { name: "David THEOBALD", role: "Assesseur" },
-  { name: "Michael REICHLING", role: "Assesseur" },
-  { name: "Olivia ROGER", role: "Assesseure" },
-];
+import StaffMember from "@/components/staff/StaffMember";
+import { staff } from "@/data/staff";
 
 export default function Organigramme() {
   return (
     <div className="">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl font-bold text-secondary mb-12">
           Organigramme - Équipe Dirigeante
         </h2>
@@ -27,7 +16,6 @@ export default function Organigramme() {
             name={staff[0].name}
             role={staff[0].role}
             photo={staff[0].photo}
-            className="min-w-[250px] max-w-[300px]"
           />
         </div>
 
@@ -39,7 +27,6 @@ export default function Organigramme() {
               name={member.name}
               role={member.role}
               photo={member.photo}
-              className="min-w-[200px] max-w-[220px]"
             />
           ))}
         </div>
@@ -52,7 +39,6 @@ export default function Organigramme() {
               name={member.name}
               role={member.role}
               photo={member.photo}
-              className="min-w-[160px] max-w-[180px]"
             />
           ))}
         </div>
