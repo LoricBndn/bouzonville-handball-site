@@ -8,11 +8,17 @@ interface TabsNavigationProps {
   setActiveTab: (tab: TabId) => void;
 }
 
+interface Tab {
+  id: TabId;
+  label: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
+
 export default function TabsNavigation({
   activeTab,
   setActiveTab,
 }: TabsNavigationProps) {
-  const tabs: { id: TabId; label: string; icon: React.FC<any> }[] = [
+  const tabs: Tab[] = [
     { id: "planning", label: "Planning Entraînements", icon: Clock },
     { id: "licences", label: "Licences & Tarifs", icon: Euro },
     { id: "docs", label: "Documents", icon: FileText },
