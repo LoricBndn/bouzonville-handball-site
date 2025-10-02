@@ -4,7 +4,7 @@ export default function PeriodeInscription() {
   return (
     <div className="mt-8 bg-green-50 p-6 rounded-lg">
       <h3 className="text-xl font-bold text-green-600 mb-4">
-        Période d'inscription
+        Période d&apos;inscription
       </h3>
       <div className="grid md:grid-cols-2 gap-6">
         <div>
@@ -18,7 +18,7 @@ export default function PeriodeInscription() {
             Inscriptions tardives
           </h4>
           <p className="text-gray-600">
-            Possibles jusqu'au 31 octobre
+            Possibles jusqu&apos;au 31 octobre
           </p>
         </div>
       </div>

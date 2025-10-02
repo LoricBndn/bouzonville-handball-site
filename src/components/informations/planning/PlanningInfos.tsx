@@ -15,7 +15,7 @@ export default function PlanningInfos() {
               • Les horaires peuvent être modifiés en fonction des
               disponibilités des gymnases
             </li>
-            <li>• Arrivée 15 minutes avant le début de l'entraînement</li>
+            <li>• Arrivée 15 minutes avant le début de l&apos;entraînement</li>
             <li>
               • Équipement obligatoire : chaussures de sport en salle, tenue de
               sport

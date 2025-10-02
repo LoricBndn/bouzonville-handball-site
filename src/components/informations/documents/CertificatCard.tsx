@@ -7,8 +7,8 @@ export default function CertificatCard() {
       <h3 className="text-xl font-bold text-primary mb-4">Certificat Médical</h3>
       <p className="text-gray-700 mb-4">
         Le certificat médical est obligatoire pour tous les licenciés.
-        Il doit dater de moins d'un an et mentionner 
-        "l'absence de contre-indication à la pratique du handball".
+        Il doit dater de moins d&apos;un an et mentionner 
+        &quot;l&apos;absence de contre-indication à la pratique du handball&quot;.
       </p>
       <a
         href="/documents/Certificat_medical.pdf"

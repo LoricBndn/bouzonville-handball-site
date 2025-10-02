@@ -17,7 +17,7 @@ export default function DocumentsSection() {
       {/* Liste des documents */}
       <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6 mb-8">
         <h3 className="text-xl font-bold text-gray-800 mb-6">
-          Pour l'inscription :
+          Pour l&apos;inscription :
         </h3>
         <div className="space-y-3">
           {documentsNecessaires.map((document, index) => (

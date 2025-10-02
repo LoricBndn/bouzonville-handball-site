@@ -5,15 +5,7 @@ interface Creneau {
   entraineur: string;
 }
 
-interface PlanningCreneauProps {
-  creneau: Creneau;
-}
-
 interface Jour {
   jour: string;
   creneaux: Creneau[];
-}
-
-interface PlanningDayCard {
-  jour: Jour;
 }

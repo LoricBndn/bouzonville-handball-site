@@ -8,7 +8,7 @@ export default function AutorisationParentaleCard() {
         Autorisation Parentale
       </h3>
       <p className="text-gray-700 mb-4">
-        Document obligatoire pour l'inscription des mineurs. Il doit être
+        Document obligatoire pour l&apos;inscription des mineurs. Il doit être
         complété et signé par le représentant légal. Ce document autorise le
         licencié mineur à participer aux activités du club.
       </p>
