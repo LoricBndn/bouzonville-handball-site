@@ -25,7 +25,7 @@ export const contactsUtiles = [
     nom: "Nicolas GRANDEMANGE",
     fonction: "Vice-Président / Evénementiel",
     telephone: "06 69 47 41 67",
-    email: "",
+    email: "n.grandemange@bouzonvillehb.fr",
   },
   {
     nom: "Anne SALMON",
