@@ -32,7 +32,7 @@ export default function PageSkeleton() {
         href="/"
         className="mt-10 px-6 py-3 bg-primary text-white font-medium rounded-lg shadow hover:bg-blue-700 transition"
       >
-        Retour à l'accueil
+        Retour à l&apos;accueil
       </Link>
     </div>
   );
