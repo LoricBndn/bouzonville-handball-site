@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import PageSkeleton from "@/components/PageSkeleton";
+import BoutiqueSection from "@/components/boutique/BoutiqueSection";
 
 export default function ShopPage() {
   return (
-    <PageSkeleton/>
+    <BoutiqueSection/>
   );
 }
