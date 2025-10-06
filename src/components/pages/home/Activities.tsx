@@ -3,7 +3,7 @@ import ActivityCard from "./ActivityCard";
 export default function Activities() {
   const activities = [
     {
-      image: "/divers/ecole_hand.jpg",
+      image: "/images/divers/ecole_hand.jpg",
       alt: "École de handball",
       title: "École de Handball",
       description:
@@ -14,7 +14,7 @@ export default function Activities() {
       linkLabel: "En savoir plus",
     },
     {
-      image: "/divers/handfit.jpg",
+      image: "/images/divers/handfit.jpg",
       alt: "Handfit",
       title: "Handfit",
       description:
@@ -25,7 +25,7 @@ export default function Activities() {
       linkLabel: "Découvrir",
     },
     {
-      image: "/divers/ecole_arbitrage.jpg",
+      image: "/images/divers/ecole_arbitrage.jpg",
       alt: "École d'arbitrage",
       title: "École d'Arbitrage",
       description:

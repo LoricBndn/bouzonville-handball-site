@@ -41,7 +41,7 @@ export default function SupportSection() {
       </div>
       <div className="flex justify-center items-center">
         <Image
-          src="/divers/nous_soutenir.jpg"
+          src="/images/divers/nous_soutenir.jpg"
           alt="Histoire du Bouzonville Handball"
           width={600}
           height={400}

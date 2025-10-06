@@ -8,7 +8,6 @@ export const categories = [
   { id: "accessoire", label: "Accessoires", icon: ShoppingCart },
 ];
 
-// --- produits (tu pourras les extraire plus tard dans un fichier data/boutique.ts) ---
 export const products: Product[] = [
   // Packs
   {
@@ -19,7 +18,7 @@ export const products: Product[] = [
     price: 100,
     category: "pack",
     ageGroup: "adulte",
-    image: "/boutique/pack_licencie.png",
+    image: "/images/boutique/pack_licencie.png",
     colors: ["Orange (Homme)", "Violet (Femme)"],
   },
   {
@@ -30,7 +29,7 @@ export const products: Product[] = [
     price: 90,
     category: "pack",
     ageGroup: "junior",
-    image: "/boutique/pack_licencie.png",
+    image: "/images/boutique/pack_licencie.png",
     colors: ["Orange (Homme)", "Violet (Femme)"],
   },
   // Vêtements Adulte
@@ -41,7 +40,7 @@ export const products: Product[] = [
     price: 43,
     category: "vetement",
     ageGroup: "adulte",
-    image: "/boutique/veste.png",
+    image: "/images/boutique/veste.png",
   },
   {
     id: 4,
@@ -50,7 +49,7 @@ export const products: Product[] = [
     price: 28,
     category: "vetement",
     ageGroup: "adulte",
-    image: "/boutique/pantalon.png",
+    image: "/images/boutique/pantalon.png",
   },
   {
     id: 5,
@@ -60,7 +59,7 @@ export const products: Product[] = [
     price: 23,
     category: "vetement",
     ageGroup: "adulte",
-    image: "/boutique/maillot_entrainement.png",
+    image: "/images/boutique/maillot_entrainement.png",
     colors: ["Orange (Homme)", "Violet (Femme)"],
   },
   {
@@ -70,7 +69,7 @@ export const products: Product[] = [
     price: 13,
     category: "vetement",
     ageGroup: "adulte",
-    image: "/boutique/short_entrainement.png",
+    image: "/images/boutique/short_entrainement.png",
   },
   // Vêtements Junior
   {
@@ -80,7 +79,7 @@ export const products: Product[] = [
     price: 40,
     category: "vetement",
     ageGroup: "junior",
-    image: "/boutique/veste.png",
+    image: "/images/boutique/veste.png",
   },
   {
     id: 8,
@@ -89,7 +88,7 @@ export const products: Product[] = [
     price: 23,
     category: "vetement",
     ageGroup: "junior",
-    image: "/boutique/pantalon.png",
+    image: "/images/boutique/pantalon.png",
   },
   {
     id: 9,
@@ -99,7 +98,7 @@ export const products: Product[] = [
     price: 21,
     category: "vetement",
     ageGroup: "junior",
-    image: "/boutique/maillot_entrainement.png",
+    image: "/images/boutique/maillot_entrainement.png",
     colors: ["Orange (Homme)", "Violet (Femme)"],
   },
   {
@@ -110,7 +109,7 @@ export const products: Product[] = [
     price: 12,
     category: "vetement",
     ageGroup: "junior",
-    image: "/boutique/short_entrainement.png",
+    image: "/images/boutique/short_entrainement.png",
   },
   // Accessoires
   {
@@ -120,7 +119,7 @@ export const products: Product[] = [
     price: 6,
     category: "accessoire",
     ageGroup: "tous",
-    image: "/boutique/chaussettes.png",
+    image: "/images/boutique/chaussettes.png",
   },
   {
     id: 12,
@@ -129,7 +128,7 @@ export const products: Product[] = [
     price: 39,
     category: "accessoire",
     ageGroup: "tous",
-    image: "/boutique/sac.png",
+    image: "/images/boutique/sac.png",
   },
   {
     id: 13,
@@ -138,7 +137,7 @@ export const products: Product[] = [
     price: 18,
     category: "accessoire",
     ageGroup: "tous",
-    image: "/boutique/claquettes.png",
+    image: "/images/boutique/claquettes.png",
   },
   {
     id: 14,
@@ -147,7 +146,7 @@ export const products: Product[] = [
     price: 8,
     category: "accessoire",
     ageGroup: "tous",
-    image: "/boutique/gourde.png",
+    image: "/images/boutique/gourde.png",
   },
   {
     id: 15,
@@ -156,6 +155,6 @@ export const products: Product[] = [
     price: 6,
     category: "accessoire",
     ageGroup: "tous",
-    image: "/boutique/gourde.png",
+    image: "/images/boutique/gourde.png",
   },
 ];

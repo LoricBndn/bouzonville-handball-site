@@ -31,7 +31,7 @@ export default function ClubHistory() {
       </div>
       <div className="flex justify-center items-center">
         <Image
-          src="/divers/club.jpg"
+          src="/images/divers/club.jpg"
           alt="Histoire du Bouzonville Handball"
           width={600}
           height={400}

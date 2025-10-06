@@ -6,7 +6,7 @@ export default function Hero() {
     <div className="bg-white rounded-lg shadow-md overflow-hidden mb-12">
       <div className="relative h-[500px]">
         <Image
-          src="/salle/gymnase_norbert_noel.jpg"
+          src="/images/salle/gymnase_norbert_noel.jpg"
           alt="Centre sportif moderne"
           fill
           className="object-cover"
