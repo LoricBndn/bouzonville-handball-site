@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Page principale -->
+    <url>
+        <loc>https://www.bouzonvillehb.fr/</loc>
+        <lastmod>2025-10-06</lastmod>
+        <priority>1.00</priority>
+    </url>
+
+    <!-- Pages principales -->
+    <url>
+        <loc>https://www.bouzonvillehb.fr/arbitrage</loc>
+        <lastmod>2025-10-06</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://www.bouzonvillehb.fr/boutique</loc>
+        <lastmod>2025-10-06</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://www.bouzonvillehb.fr/calendrier</loc>
+        <lastmod>2025-10-06</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://www.bouzonvillehb.fr/club</loc>
+        <lastmod>2025-10-06</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://www.bouzonvillehb.fr/equipes</loc>
+        <lastmod>2025-10-06</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://www.bouzonvillehb.fr/handfit</loc>
+        <lastmod>2025-10-06</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://www.bouzonvillehb.fr/inscription</loc>
+        <lastmod>2025-10-06</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+</urlset>

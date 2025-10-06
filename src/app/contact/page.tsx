@@ -65,7 +65,7 @@ export default function ContactSection() {
           </h1>
           <div className="w-24 h-1 bg-secondary mx-auto rounded mb-6"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Une question ? Un projet ? N'hésitez pas à nous contacter, nous vous
+            Une question ? Un projet ? N&apos;hésitez pas à nous contacter, nous vous
             répondrons dans les plus brefs délais.
           </p>
         </div>
@@ -238,7 +238,7 @@ export default function ContactSection() {
               rel="noopener noreferrer"
               className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              Obtenir l'itinéraire
+              Obtenir l&apos;itinéraire
             </Link>
           </div>
         </div>
