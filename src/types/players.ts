@@ -1,0 +1,35 @@
+export interface Player {
+    licenceligue: string;
+    licencecomite: string;
+    sexe: string;
+    ligue: string;
+    comite: string;
+    championnat: string;
+    phase_g: string;
+    competition: string;
+    phase: string;
+    groupe: string;
+    licence: string;
+    sexe_i: string;
+    structure: string;
+    str_code: string;
+    nom_naissance: string;
+    prenom: string;
+    cat_age: string;
+    nb_match: string;
+    but: string;
+    tir: string;
+    sept_m: string;
+    avertissement: string;
+    deux_min: string;
+    disq: string;
+    expulsion: string;
+    num_club: string;
+    numligue: string;
+    numcomite: string;
+    compet_age_min: string;
+    compet_age_max: string;
+    moyenne: string;
+    taille: string;
+    lateralite: string;
+}
