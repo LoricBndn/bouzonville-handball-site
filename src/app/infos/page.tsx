@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import InformationsHeader from "@/components/informations/InformationsHeader";
-import TabsNavigation from "@/components/informations/TabsNavigation";
-import PlanningSection from "@/components/informations/planning/PlanningSection";
-import LicencesSection from "@/components/informations/licences/LicencesSection";
-import ContactsSection from "@/components/informations/contacts/ContactsSection";
-import DocumentsSection from "@/components/informations/documents/DocumentsSection";
+import InformationsHeader from "@/components/pages/informations/InformationsHeader";
+import TabsNavigation from "@/components/pages/informations/TabsNavigation";
+import PlanningSection from "@/components/pages/informations/planning/PlanningSection";
+import LicencesSection from "@/components/pages/informations/licences/LicencesSection";
+import ContactsSection from "@/components/pages/informations/contacts/ContactsSection";
+import DocumentsSection from "@/components/pages/informations/documents/DocumentsSection";
 
 export default function InformationsSection() {
   const [activeTab, setActiveTab] = useState<

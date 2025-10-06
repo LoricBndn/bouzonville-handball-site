@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import BoutiqueHeader from '@/components/boutique/BoutiqueHeader';
-import CategoryFilter from '@/components/boutique/CategoryFilter';
-import ProductGrid from '@/components/boutique/ProductGrid';
-import PartnerInfo from '@/components/boutique/PartnerInfo';
+import BoutiqueHeader from '@/components/pages/boutique/BoutiqueHeader';
+import CategoryFilter from '@/components/pages/boutique/CategoryFilter';
+import ProductGrid from '@/components/pages/boutique/ProductGrid';
+import PartnerInfo from '@/components/pages/boutique/PartnerInfo';
 import { products, categories } from '@/data/products';
 
 export default function BoutiqueSection() {

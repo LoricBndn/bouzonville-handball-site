@@ -1,5 +1,5 @@
 import React from "react";
-import PartnerCard from "@/components/partenaires/PartnerCard";
+import PartnerCard from "@/components/pages/partenaires/PartnerCard";
 import { Partner } from "@/types/partners";
 
 interface Props {

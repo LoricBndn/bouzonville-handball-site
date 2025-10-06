@@ -1,6 +1,6 @@
 import React from "react";
-import PartenaireSection from "@/components/partenaires/PartnersSection";
-import SupportSection from "@/components/partenaires/SupportSection";
+import PartenaireSection from "@/components/pages/partenaires/PartnersSection";
+import SupportSection from "@/components/pages/partenaires/SupportSection";
 import {
   partenairesInstitutionnels,
   partenairesFederaux,

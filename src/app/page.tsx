@@ -1,9 +1,9 @@
-import Hero from "@/components/home/Hero";
-import About from "@/components/home/About";
-import Stats from "@/components/home/Stats";
-import Highlights from "@/components/home/Highlights";
-import Activities from "@/components/home/Activities";
-import CallToAction from "@/components/home/CallToAction";
+import Hero from "@/components/pages/home/Hero";
+import About from "@/components/pages/home/About";
+import Stats from "@/components/pages/home/Stats";
+import Highlights from "@/components/pages/home/Highlights";
+import Activities from "@/components/pages/home/Activities";
+import CallToAction from "@/components/pages/home/CallToAction";
 
 export default function HomePage() {
   return (

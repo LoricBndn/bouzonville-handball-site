@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import PageSkeleton from "@/components/PageSkeleton";
+import PageSkeleton from "@/components/ui/PageSkeleton";
 
 export default function TeamPage() {
   return (

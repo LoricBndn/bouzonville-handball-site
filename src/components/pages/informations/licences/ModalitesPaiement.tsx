@@ -1,6 +1,6 @@
 import React from "react";
 import { Euro, Calendar, FileText } from "lucide-react";
-import PaiementOption from "@/components/informations/licences/PaiementOption";
+import PaiementOption from "@/components/pages/informations/licences/PaiementOption";
 
 export default function ModalitesPaiement() {
   return (

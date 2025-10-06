@@ -1,11 +1,11 @@
 import React from "react";
 import { documentsNecessaires } from "@/data/infos";
-import DocumentItem from "@/components/informations/documents/DocumentItem";
-import CertificatCard from "@/components/informations/documents/CertificatCard";
-import AutorisationParentaleCard from "@/components/informations/documents/AutorisationParentaleCard";
-import QuestionnaireMajeurCard from "@/components/informations/documents/QuestionnaireMajeurCard";
-import QuestionnaireMineurCard from "@/components/informations/documents/QuestionnaireMineurCard";
-import PeriodeInscription from "@/components/informations/documents/PeriodeInscription";
+import DocumentItem from "@/components/pages/informations/documents/DocumentItem";
+import CertificatCard from "@/components/pages/informations/documents/CertificatCard";
+import AutorisationParentaleCard from "@/components/pages/informations/documents/AutorisationParentaleCard";
+import QuestionnaireMajeurCard from "@/components/pages/informations/documents/QuestionnaireMajeurCard";
+import QuestionnaireMineurCard from "@/components/pages/informations/documents/QuestionnaireMineurCard";
+import PeriodeInscription from "@/components/pages/informations/documents/PeriodeInscription";
 
 export default function DocumentsSection() {
   return (

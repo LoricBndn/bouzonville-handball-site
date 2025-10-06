@@ -1,8 +1,8 @@
 import React from "react";
-import Organigramme from "@/components/staff/Organigramme";
-import ClubHeader from "@/components/club/ClubHeader";
-import ClubHistory from "@/components/club/ClubHistory";
-import ClubValues from "@/components/club/ClubValues";
+import Organigramme from "@/components/pages/staff/Organigramme";
+import ClubHeader from "@/components/pages/club/ClubHeader";
+import ClubHistory from "@/components/pages/club/ClubHistory";
+import ClubValues from "@/components/pages/club/ClubValues";
 
 export default function ClubPage() {
   return (

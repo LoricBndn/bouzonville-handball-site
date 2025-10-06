@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import BoutiqueSection from "@/components/boutique/BoutiqueSection";
+import BoutiqueSection from "@/components/pages/boutique/BoutiqueSection";
 
 export default function ShopPage() {
   return (

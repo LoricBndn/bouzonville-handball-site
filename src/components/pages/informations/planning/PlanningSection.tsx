@@ -1,6 +1,6 @@
 import React from "react";
-import PlanningTable from "@/components/informations/planning/PlanningTable";
-import PlanningInfos from "@/components/informations/planning/PlanningInfos";
+import PlanningTable from "@/components/pages/informations/planning/PlanningTable";
+import PlanningInfos from "@/components/pages/informations/planning/PlanningInfos";
 
 export default function PlanningSection() {
   return (

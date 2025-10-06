@@ -1,5 +1,5 @@
 import React from "react";
-import TarifCard from "@/components/informations/licences/TarifCard";
+import TarifCard from "@/components/pages/informations/licences/TarifCard";
 import { Tarif } from "@/types/licences";
 
 interface TarifsListProps {

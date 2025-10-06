@@ -1,5 +1,5 @@
 import React from "react";
-import StaffMember from "@/components/staff/StaffMember";
+import StaffMember from "@/components/pages/staff/StaffMember";
 import { staff } from "@/data/staff";
 
 export default function Organigramme() {

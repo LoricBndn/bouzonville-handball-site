@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PlanningCell from "@/components/informations/planning/PlanningCell";
+import PlanningCell from "@/components/pages/informations/planning/PlanningCell";
 import { trainingSchedule, daysOfWeek } from "@/data/planning";
 import { ChevronDown, ChevronUp } from "lucide-react";
 

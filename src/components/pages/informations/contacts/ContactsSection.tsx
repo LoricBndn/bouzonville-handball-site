@@ -2,8 +2,8 @@
 
 import React from "react";
 import { contactsUtiles } from "@/data/infos";
-import ContactCard from "@/components/informations/contacts/ContactCard";
-import AdresseClub from "@/components/informations/contacts/AdresseClub";
+import ContactCard from "@/components/pages/informations/contacts/ContactCard";
+import AdresseClub from "@/components/pages/informations/contacts/AdresseClub";
 
 export default function ContactsSection() {
   return (

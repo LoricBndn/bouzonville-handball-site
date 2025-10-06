@@ -1,6 +1,6 @@
 import React from "react";
 import { Users, Heart, Target, Award } from "lucide-react";
-import ClubValueCard from "@/components/club/ClubValueCard";
+import ClubValueCard from "@/components/pages/club/ClubValueCard";
 
 export default function ClubValues() {
   const values = [
