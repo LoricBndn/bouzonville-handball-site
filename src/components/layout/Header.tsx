@@ -12,7 +12,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <Image
-              src="/logo/logo-transparent.png"
+              src="/images/logo/logo-transparent.png"
               alt="Logo Bouzonville Handball"
               width={48}
               height={48}
