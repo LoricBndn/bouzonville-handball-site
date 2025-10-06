@@ -1,17 +1,25 @@
+import React, { ChangeEvent } from "react";
+
+interface TextAreaFieldProps {
+  id: string;
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  required?: boolean;
+}
+
 export default function TextAreaField({
   id,
   label,
   name,
   value,
   onChange,
-  required = false,
-}: any) {
+  required = false
+}: TextAreaFieldProps) {
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="block text-sm font-medium text-gray-700 mb-2"
-      >
+      <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-2">
         {label}
       </label>
       <textarea

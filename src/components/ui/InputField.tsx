@@ -1,3 +1,15 @@
+import React, { ChangeEvent } from "react";
+
+interface InputFieldProps {
+  id: string;
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
+  required?: boolean;
+}
+
 export default function InputField({
   id,
   label,
@@ -5,14 +17,11 @@ export default function InputField({
   value,
   onChange,
   type = "text",
-  required = false,
-}: any) {
+  required = false
+}: InputFieldProps) {
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="block text-sm font-medium text-gray-700 mb-2"
-      >
+      <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-2">
         {label}
       </label>
       <input
