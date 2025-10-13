@@ -118,7 +118,12 @@ export const trainingSchedule: {
     days: {
       Lundi: [],
       Mardi: [],
-      Mercredi: [],
+      Mercredi: [{
+          gym: "Bouzonville Salle des fêtes",
+          category: "Handfit",
+          duration: 60,
+          time: "19h00 - 20h00",
+        },],
       Jeudi: [],
       Vendredi: [],
     },

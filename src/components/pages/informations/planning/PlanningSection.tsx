@@ -10,7 +10,7 @@ export default function PlanningSection() {
           Planning des Entraînements
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Consultez le planning des entraînements par jour et par créneau.
+          Consultez le planning des entraînements.
         </p>
       </div>
       <PlanningTable />

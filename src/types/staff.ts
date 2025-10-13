@@ -1,5 +1,5 @@
 export interface Staff {
   name: string;
   role: string;
-  photo?: string;
+  photo?: string | null;
 }

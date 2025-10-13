@@ -43,6 +43,17 @@ export default function PlanningInfos() {
               </a>
             </li>
             <li>
+              • Bouzonville Salle des fêtes :{" "}
+              <a
+                href="https://maps.app.goo.gl/NEb7Xpb3nvSjmpxn9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-secondary underline"
+              >
+                Rue du Gymnase, 57320 Bouzonville
+              </a>
+            </li>
+            <li>
               • Gymnase Boulay Omnisport :{" "}
               <a
                 href="https://maps.app.goo.gl/1HSNCpspTnHRhHEr5"
