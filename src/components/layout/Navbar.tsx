@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -23,6 +23,9 @@ import {
   Dumbbell,
   Scale,
   UserCheck,
+  CalendarClock,
+  FileText,
+  FolderOpen,
 } from "lucide-react";
 
 export default function NavBar() {
@@ -68,7 +71,27 @@ export default function NavBar() {
       ],
     },
     { href: "/partenaires", label: "Partenaires", icon: Handshake },
-    { href: "/infos", label: "Informations", icon: Info },
+    {
+      label: "Informations",
+      icon: Info,
+      children: [
+        {
+          href: "/informations/planning-entrainement",
+          label: "Planning Entraînements",
+          icon: CalendarClock,
+        },
+        {
+          href: "/informations/licences",
+          label: "Licences & Tarifs",
+          icon: FileText,
+        },
+        {
+          href: "/informations/documents",
+          label: "Documents",
+          icon: FolderOpen,
+        },
+      ],
+    },
     { href: "/boutique", label: "Boutique", icon: Store },
   ];
 
@@ -136,14 +159,10 @@ export default function NavBar() {
                     <span>{item.label}</span>
 
                     <ChevronDown
-                      className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${
-                        openDropdown === item.label ||
-                        pathname.startsWith(
-                          item.children?.[0]?.href?.split("/")[1] ?? ""
-                        )
-                          ? "rotate-180"
-                          : "rotate-0"
-                      } group-hover:rotate-180 xl:group-hover:transition-transform`}
+                      className={`w-4 h-4 ml-1 transform transition-transform duration-300
+                        ${openDropdown === item.label ? "rotate-180" : "rotate-0"}
+                        xl:group-hover:rotate-180
+                      `}
                     />
                   </button>
 
