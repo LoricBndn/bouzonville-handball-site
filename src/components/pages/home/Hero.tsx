@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden mb-12">
-      <div className="relative h-[500px]">
+    <div className="bg-white rounded-lg shadow-md relative z-0 mb-12">
+      <div className="relative h-[500px] overflow-hidden z-0">
         <Image
           src="/images/installations/gymnase_norbert_noel.jpg"
           alt="Centre sportif moderne"

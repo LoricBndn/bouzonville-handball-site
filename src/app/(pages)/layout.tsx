@@ -17,10 +17,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="flex flex-col min-h-screen">
-        <Header></Header>
-        <NavBar></NavBar>
+        <Header />
+        <NavBar />
         <main className="flex-grow">{children}</main>
-        <Footer></Footer>
+        <Footer />
       </body>
     </html>
   );

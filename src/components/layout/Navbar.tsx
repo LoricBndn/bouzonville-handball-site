@@ -88,7 +88,7 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="bg-primary shadow-lg">
+    <nav className="bg-primary shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
         {/* Menu mobile */}
         <div className="flex items-center justify-between py-2 xl:hidden">
