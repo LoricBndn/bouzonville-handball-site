@@ -38,4 +38,11 @@ export const responsables = [
     email: "a.salmon@bouzonvillehb.fr",
     photo: "/images/staff/anne_salmon.jpg",
   },
+  {
+    nom: "Thomas GROSJEAN",
+    fonction: "Responsable Technique",
+    telephone: "06 70 34 07 96",
+    email: "t.grosjean@bouzonvillehb.fr",
+    photo: "/images/staff/thomas_grosjean.jpg",
+  },
 ];

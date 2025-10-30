@@ -10,4 +10,5 @@ export const staff: Staff[] = [
   { name: "David THEOBALD", role: "Assesseur" },
   { name: "Michael REICHLING", role: "Assesseur" },
   { name: "Olivia ROGER", role: "Assesseure" },
+  { name: "Thomas GROSJEAN", role: "Assesseur" },
 ];

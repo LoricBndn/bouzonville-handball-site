@@ -17,42 +17,60 @@ export default function ContactSection() {
     telephone: "",
     sujet: "",
     message: "",
+    consentement: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
-    "idle"
-  );
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value, type } = e.target;
+    const { name, value, type, checked } = e.target as HTMLInputElement;
     setFormData((prev) => ({
       ...prev,
-      [name]:
-        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    setTimeout(() => {
-      setSubmitStatus("success");
-      setIsSubmitting(false);
-      setFormData({
-        nom: "",
-        prenom: "",
-        email: "",
-        telephone: "",
-        sujet: "",
-        message: "",
+    if (!formData.consentement) {
+      alert("Veuillez consentir au traitement de vos données avant d'envoyer le message.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    }, 1500);
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({
+          nom: "",
+          prenom: "",
+          email: "",
+          telephone: "",
+          sujet: "",
+          message: "",
+          consentement: false,
+        });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setSubmitStatus("error");
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -60,13 +78,10 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-primary mb-4">
-            Nous Contacter
-          </h1>
+          <h1 className="text-4xl font-bold text-primary mb-4">Nous Contacter</h1>
           <div className="w-24 h-1 bg-secondary mx-auto rounded mb-6"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Une question ? Un projet ? N&apos;hésitez pas à nous contacter, nous vous
-            répondrons dans les plus brefs délais.
+            Une question ? Un projet ? N&apos;hésitez pas à nous contacter, nous vous répondrons dans les plus brefs délais.
           </p>
         </div>
 
@@ -83,8 +98,13 @@ export default function ContactSection() {
                 <p className="text-green-800 font-medium">
                   ✅ Votre message a été envoyé avec succès !
                 </p>
-                <p className="text-green-600 text-sm mt-1">
-                  Nous vous répondrons dans les plus brefs délais.
+              </div>
+            )}
+
+            {submitStatus === "error" && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-center">
+                <p className="text-red-800 font-medium">
+                  ❌ Une erreur est survenue. Veuillez réessayer.
                 </p>
               </div>
             )}
@@ -138,7 +158,6 @@ export default function ContactSection() {
                 options={sujets}
                 required
               />
-
               <TextAreaField
                 id="message"
                 label="Message *"
@@ -147,6 +166,23 @@ export default function ContactSection() {
                 onChange={handleInputChange}
                 required
               />
+
+              {/* ✅ Consentement RGPD */}
+              <div className="flex items-start gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  id="consentement"
+                  name="consentement"
+                  checked={formData.consentement}
+                  onChange={handleInputChange}
+                  required
+                  className="mt-1 accent-primary w-4 h-4"
+                />
+                <label htmlFor="consentement" className="leading-snug">
+                  Je consens par la présente à ce que ces données soient stockées et traitées dans le but d&apos;établir un contact. 
+                  Je sais que je peux révoquer mon consentement à tout moment *.
+                </label>
+              </div>
 
               <button
                 type="submit"
@@ -174,40 +210,67 @@ export default function ContactSection() {
           <h2 className="text-2xl font-bold text-secondary mb-8 text-center">
             Contacts Directs
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              sm:grid-cols-2
+              lg:grid-cols-3
+              xl:grid-cols-5
+              gap-6
+              justify-items-center
+            "
+          >
             {responsables.map((responsable, index) => (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow"
+                className="
+                  bg-white
+                  border border-gray-200
+                  rounded-2xl
+                  shadow-md
+                  p-6
+                  text-center
+                  w-full
+                  max-w-xs
+                  hover:shadow-xl
+                  transition-all
+                  duration-200
+                  hover:-translate-y-1
+                "
               >
                 <Image
                   src={responsable.photo}
                   alt={responsable.nom}
-                  width={80}
-                  height={80}
-                  className="rounded-full object-cover mx-auto mb-4"
+                  width={100}
+                  height={100}
+                  className="rounded-full object-cover mx-auto mb-4 border-4 border-secondary shadow-md"
                 />
                 <h3 className="text-lg font-bold text-gray-800 mb-1">
                   {responsable.nom}
                 </h3>
-                <p className="text-primary font-medium mb-4">
-                  {responsable.fonction}
-                </p>
+                <p className="text-primary font-medium mb-4">{responsable.fonction}</p>
+
                 <div className="space-y-2">
-                  <a
-                    href={`mailto:${responsable.email}`}
-                    className="flex items-center justify-center space-x-2 text-sm text-gray-600 hover:text-primary transition-colors"
-                  >
-                    <Mail className="w-4 h-4" />
-                    <span>{responsable.email}</span>
-                  </a>
-                  <a
-                    href={`tel:${responsable.telephone}`}
-                    className="flex items-center justify-center space-x-2 text-sm text-gray-600 hover:text-primary transition-colors"
-                  >
-                    <Phone className="w-4 h-4" />
-                    <span>{responsable.telephone}</span>
-                  </a>
+                  {responsable.email && (
+                    <a
+                      href={`mailto:${responsable.email}`}
+                      className="flex items-center justify-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
+                    >
+                      <Mail className="w-4 h-4" />
+                      <span className="truncate max-w-[160px]">{responsable.email}</span>
+                    </a>
+                  )}
+                  {responsable.telephone && (
+                    <a
+                      href={`tel:${responsable.telephone}`}
+                      className="flex items-center justify-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
+                    >
+                      <Phone className="w-4 h-4" />
+                      <span>{responsable.telephone}</span>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
