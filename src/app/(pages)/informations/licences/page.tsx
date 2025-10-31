@@ -1,30 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import InformationsHeader from "@/components/pages/informations/InformationsHeader";
-import TabsNavigation from "@/components/pages/informations/TabsNavigation";
-import PlanningSection from "@/components/pages/informations/planning/PlanningSection";
 import LicencesSection from "@/components/pages/informations/licences/LicencesSection";
-import ContactsSection from "@/components/pages/informations/contacts/ContactsSection";
-import DocumentsSection from "@/components/pages/informations/documents/DocumentsSection";
 
-export default function InformationsSection() {
-  const [activeTab, setActiveTab] = useState<
-    "planning" | "licences" | "docs" | "contact"
-  >("planning");
-
+export default function LicencesPage() {
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <InformationsHeader />
-        <TabsNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-primary mb-4">
+            Tarifs des Licences
+          </h1>
+          <div className="w-24 h-1 bg-secondary mx-auto rounded mb-6"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Consultez les tarifs des licences de la saison 2025-2026.
+          </p>
+        </div>
 
-        {/* Contenu des onglets */}
-        {activeTab === "planning" && <PlanningSection />}
-        {activeTab === "licences" && <LicencesSection />}
-        {activeTab === "docs" && <DocumentsSection />}
-        {activeTab === "contact" && <ContactsSection />}
-        
+        <LicencesSection />
       </div>
     </div>
   );

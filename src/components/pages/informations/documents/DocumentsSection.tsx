@@ -10,10 +10,6 @@ import PeriodeInscription from "@/components/pages/informations/documents/Period
 export default function DocumentsSection() {
   return (
     <div>
-      <h2 className="text-2xl font-bold text-secondary mb-8 text-center">
-        Documents Nécessaires
-      </h2>
-
       {/* Liste des documents */}
       <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6 mb-8">
         <h3 className="text-xl font-bold text-gray-800 mb-6">

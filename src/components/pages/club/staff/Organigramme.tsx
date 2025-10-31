@@ -30,14 +30,6 @@ export default function Organigramme() {
     fetchStaff();
   }, []);
 
-  if (loading) {
-    return <p className="text-center text-gray-400">Chargement du staff...</p>;
-  }
-
-  if (!staff.length) {
-    return <p className="text-center text-gray-400">Aucun membre trouvé.</p>;
-  }
-
   // Organisation des rôles
   const president = staff.find((m) =>
     m.role.toLowerCase().includes("présidente")
@@ -54,10 +46,6 @@ export default function Organigramme() {
   return (
     <div className="">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-2xl font-bold text-secondary mb-12">
-          Organigramme - Équipe Dirigeante
-        </h2>
-
         {/* Présidente */}
         {president && (
           <div className="flex justify-center mb-12">

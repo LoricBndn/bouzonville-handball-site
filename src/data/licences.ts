@@ -1,6 +1,6 @@
 export const tarifsLicences = [
   {
-    categorie: "Hand à 7 (Seniors +16 ans)",
+    categorie: "Hand à 7 (+16 ans)",
     tarif: "120€",
     inclus: ["Licence FFHB", "Assurance"],
     details: "Années : 1926 - 2008 | Âge : 17 à 99 ans",
@@ -24,8 +24,8 @@ export const tarifsLicences = [
     details: "Années : 2020 - 2025 | Âge : 0 à 5 ans",
   },
   {
-    categorie: "Handfit +16 ans",
-    tarif: "100€",
+    categorie: "Handfit (+16 ans)",
+    tarif: "80€",
     inclus: ["Licence FFHB", "Assurance"],
     details: "Années : 1926 - 2008 | Âge : 17 à 99 ans",
   },
