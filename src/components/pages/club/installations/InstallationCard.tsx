@@ -42,7 +42,7 @@ export default function InstallationCard({ inst }: Readonly<{ inst: Installation
 
         {/* Infos */}
         <ul className="space-y-1 text-sm text-dark/70 mb-4">
-          {inst.infos.map((info, i) => (
+          {inst.infos.map((info) => (
             <li key={info.slice(0, 20)}>• {info}</li>
           ))}
         </ul>

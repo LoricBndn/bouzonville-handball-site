@@ -31,27 +31,3 @@ export const sessions = [
     coach: "Léane BONDON",
   },
 ];
-
-export const testimonials = [
-  {
-    name: "Claire Dubois",
-    age: 35,
-    photo:
-      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150",
-    text: "Le Handfit m'a permis de retrouver la forme tout en m'amusant. L'ambiance est fantastique !",
-  },
-  {
-    name: "Marc Petit",
-    age: 42,
-    photo:
-      "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150",
-    text: "Une excellente alternative à la salle de sport classique. Je recommande vivement !",
-  },
-  {
-    name: "Julie Moreau",
-    age: 28,
-    photo:
-      "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150",
-    text: "J'ai découvert le handball grâce au Handfit et j'adore cette discipline !",
-  },
-];

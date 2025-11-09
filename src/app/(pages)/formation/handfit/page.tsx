@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { benefits, sessions, testimonials } from "@/data/handfit";
+import Image from "next/image";
+import { benefits, sessions } from "@/data/handfit";
 import { Clock, MapPin, Users, Heart } from "lucide-react";
 
 export default function HandfitPage() {
@@ -22,7 +23,7 @@ export default function HandfitPage() {
         {/* Qu'est-ce que le Handfit */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <div>
-            <h2 className="text-2xl font-bold text-secondary mb-6">Qu'est-ce que le Handfit ?</h2>
+            <h2 className="text-2xl font-bold text-secondary mb-6">Qu&apos;est-ce que le Handfit ?</h2>
             <p className="text-gray-600 mb-4">
               Le Handfit est une activité physique inspirée du handball, adaptée à tous les niveaux et tous les âges. 
               Cette discipline combine les gestes techniques du handball avec des exercices de fitness pour 
@@ -30,7 +31,7 @@ export default function HandfitPage() {
             </p>
             <p className="text-gray-600 mb-4">
               Accessible à tous, le Handfit ne nécessite aucune expérience préalable du handball. 
-              Les séances sont conçues pour être progressives et s'adapter au niveau de chaque participant.
+              Les séances sont conçues pour être progressives et s&apos;adapter au niveau de chaque participant.
             </p>
             <p className="text-gray-600 mb-6">
               Venez découvrir cette activité dans une ambiance détendue et conviviale, 
@@ -47,9 +48,11 @@ export default function HandfitPage() {
             </div>
           </div>
           <div>
-            <img
+            <Image
               src="/images/divers/handfit.jpg"
               alt="Séance de Handfit"
+              width={800}
+              height={500}
               className="w-full h-80 object-cover rounded-lg shadow-lg"
             />
           </div>
@@ -133,7 +136,7 @@ export default function HandfitPage() {
                 <div>
                   <h3 className="font-semibold text-gray-800">Équipement</h3>
                   <p className="text-gray-600">
-                    Tenue de sport, chaussures de sport en salle, bouteille d'eau
+                    Tenue de sport, chaussures de sport en salle, bouteille d&apos;eau
                   </p>
                 </div>
               </div>
@@ -142,7 +145,7 @@ export default function HandfitPage() {
                 <div>
                   <h3 className="font-semibold text-gray-800">Tarifs</h3>
                   <p className="text-gray-600">
-                    100€ l'abonnement annuel
+                    100€ l&apos;abonnement annuel
                   </p>
                 </div>
               </div>
@@ -152,13 +155,13 @@ export default function HandfitPage() {
           <div className="bg-orange-50 p-8 rounded-lg">
             <h2 className="text-2xl font-bold text-secondary mb-6">Première Séance Gratuite !</h2>
             <p className="text-gray-600 mb-6">
-              Venez découvrir le Handfit lors d'une séance d'essai gratuite.<br />
+              Venez découvrir le Handfit lors d&apos;une séance d&apos;essai gratuite.<br />
               Pré-inscription préalable nécessaire, présentez-vous 15 minutes avant le début de la séance.
             </p>
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-secondary rounded-full"></div>
-                <span className="text-gray-600">Séance d'essai gratuite</span>
+                <span className="text-gray-600">Séance d&apos;essai gratuite</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-secondary rounded-full"></div>
@@ -170,7 +173,7 @@ export default function HandfitPage() {
               </div>
             </div>
             <button className="w-full bg-secondary text-white py-3 rounded-md hover:bg-orange-600 transition-colors font-medium">
-              Réserver ma séance d'essai
+              Réserver ma séance d&apos;essai
             </button>
           </div>
         </div>
