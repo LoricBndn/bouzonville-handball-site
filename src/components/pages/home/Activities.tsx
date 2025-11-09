@@ -10,7 +10,7 @@ export default function Activities() {
         "Initiation au handball pour les jeunes de 6 à 12 ans dans une ambiance ludique et éducative.",
       badge: "Samedi matin",
       badgeColorClass: "text-primary",
-      link: "/ecole-handball",
+      link: "/formation/ecole-handball",
       linkLabel: "En savoir plus",
     },
     {
@@ -21,7 +21,7 @@ export default function Activities() {
         "Fitness inspiré du handball pour tous les âges. Cardio, renforcement musculaire et plaisir !",
       badge: "Séance d'essai gratuite",
       badgeColorClass: "text-secondary",
-      link: "/handfit",
+      link: "/formation/handfit",
       linkLabel: "Découvrir",
     },
     {
@@ -32,7 +32,7 @@ export default function Activities() {
         "Formations d'arbitrage du niveau départemental au niveau national. Rejoignez-nous !",
       badge: "Formation gratuite",
       badgeColorClass: "text-danger",
-      link: "/arbitrage",
+      link: "/formation/arbitrage",
       linkLabel: "S'inscrire",
     },
   ];

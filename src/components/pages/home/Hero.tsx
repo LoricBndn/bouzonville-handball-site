@@ -35,7 +35,7 @@ export default function Hero() {
                 Nous Rejoindre
               </Link>
               <Link
-                href="/club"
+                href="/club/histoire"
                 className="border-2 border-light text-light hover:bg-light hover:text-primary px-6 sm:px-8 py-3 rounded-lg font-semibold transition-colors text-center"
               >
                 Découvrir le Club
