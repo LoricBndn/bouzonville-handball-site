@@ -1,4 +1,4 @@
-import { Product } from '@/types/products';
+import { Product } from '@/types/club-types';
 import ProductCard from '@/components/pages/boutique/ProductCard';
 
 interface Props {

@@ -5,7 +5,7 @@ import {
   partenairesInstitutionnels,
   partenairesFederaux,
   sponsors,
-} from "@/data/partners";
+} from "@/data/partners-data";
 
 export default function PartenairesPage() {
   return (

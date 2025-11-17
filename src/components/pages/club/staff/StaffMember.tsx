@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import { User } from "lucide-react";
-import { Staff } from "@/types/staff";
+import { StaffMember } from "@/types/personnel";
 
-export default function StaffMember({ name, role, photo }: Staff) {
+export default function StaffMemberCard({ name, role, photo }: StaffMember) {
   const getCardSize = (role: string) => {
     if (role.toLowerCase().includes("présidente")) return "w-[250px] h-[250px]";
     if (

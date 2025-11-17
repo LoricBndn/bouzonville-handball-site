@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Product } from "@/types/products";
+import { Product } from "@/types/club-types";
 
 interface Props {
   product: Product;
