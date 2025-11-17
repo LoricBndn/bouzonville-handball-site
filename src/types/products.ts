@@ -1,5 +1,11 @@
+import { ID } from "@/types/base-types";
+
+/**
+ * Interface Product (Produit)
+ * Représente un article vendu par le club (boutique, packs, vêtements, accessoires).
+ */
 export interface Product {
-  id: number;
+  id: ID;
   name: string;
   description: string;
   price: number;
