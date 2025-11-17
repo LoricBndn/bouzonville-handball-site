@@ -100,7 +100,7 @@ export const TeamsData: Team[] = [
     id: 3 as ID,
     name: "Séniors Féminines 1",
     slug: "seniors-feminines-1",
-    photoUrl: "/images/teams/seniors-feminines-2.jpg",
+    photoUrl: "/images/teams/seniors-feminines-1.jpg",
     category: "Senior" as CategoryType,
     gender: "Feminin" as GenderType,
     level: "Départemental" as LevelType,
