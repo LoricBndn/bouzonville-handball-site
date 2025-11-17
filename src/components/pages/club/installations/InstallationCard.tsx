@@ -4,15 +4,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import { Installation } from "@/types/installations";
+import { Venue } from "@/types/venue";
 
-export default function InstallationCard({ inst }: Readonly<{ inst: Installation }>) {
+export default function InstallationCard({ inst }: Readonly<{ inst: Venue }>) {
   return (
     <div className="bg-light rounded-2xl shadow-lg overflow-hidden hover:scale-[1.02] hover:shadow-xl transition-all duration-300 border border-accent/10">
       {/* Image */}
       <div className="relative w-full h-56">
         <Image
-          src={inst.image}
+          src={inst.imageUrl}
           alt={inst.name}
           fill
           className="object-cover"
@@ -49,7 +49,7 @@ export default function InstallationCard({ inst }: Readonly<{ inst: Installation
 
         {/* Lien vers Google Maps */}
         <Link
-          href={inst.link}
+          href={inst.linkMap || "#"}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-secondary font-medium text-sm hover:underline transition-colors"
