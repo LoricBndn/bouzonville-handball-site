@@ -1,0 +1,65 @@
+// src/data/club-persons-data.ts
+
+import { ID } from "@/types/base-types";
+import { ClubPerson } from "@/types/personnel";
+
+export const ClubPersonsData: ClubPerson[] = [
+  {
+    id: 1 as ID,
+    firstName: "Michèle",
+    lastName: "ROUSSEL",
+    gender: "F",
+    contactEmail: "m.roussel@bouzonvillehb.fr",
+    contactPhone: "06 72 63 11 75",
+    photoUrl: "/images/staff/michele_roussel.jpg",
+  },
+  {
+    id: 2 as ID,
+    firstName: "Bruno",
+    lastName: "SALMON",
+    gender: "M",
+    contactEmail: "b.salmon@bouzonvillehb.fr",
+    contactPhone: "06 85 48 22 28",
+    photoUrl: "/images/staff/bruno_salmon.jpg",
+  },
+  {
+    id: 3 as ID,
+    firstName: "Nicolas",
+    lastName: "GRANDEMANGE",
+    gender: "M",
+    contactEmail: "n.grandemange@bouzonvillehb.fr",
+    contactPhone: "06 69 47 41 67",
+    photoUrl: "/images/staff/nicolas_grandemange.jpg",
+  },
+  {
+    id: 4 as ID,
+    firstName: "Anne",
+    lastName: "SALMON",
+    gender: "F",
+    contactEmail: "a.salmon@bouzonvillehb.fr",
+    contactPhone: "06 78 99 55 91",
+    photoUrl: "/images/staff/anne_salmon.jpg",
+  },
+  {
+    id: 5 as ID,
+    firstName: "Thomas",
+    lastName: "GROSJEAN",
+    gender: "M",
+    contactEmail: "t.grosjean@bouzonvillehb.fr",
+    contactPhone: "06 70 34 07 96",
+    photoUrl: "/images/staff/thomas_grosjean.jpg",
+  },
+  { id: 6 as ID, firstName: "Arnaud", lastName: "HARDT", gender: "M" },
+  { id: 7 as ID, firstName: "David", lastName: "LOFFREDO", gender: "M" },
+  { id: 8 as ID, firstName: "David", lastName: "THEOBALD", gender: "M" },
+  { id: 9 as ID, firstName: "Michael", lastName: "REICHLING", gender: "M" },
+  { id: 10 as ID, firstName: "Olivia", lastName: "ROGER", gender: "F" },
+  { id: 11 as ID, firstName: "Gabriel", lastName: "Koch", gender: "M" },
+  { id: 12 as ID, firstName: "Olivier", lastName: "Crouzet", gender: "M" },
+  { id: 13 as ID, firstName: "Evan", lastName: "Rochotte", gender: "M" },
+  { id: 14 as ID, firstName: "Stéphane", lastName: "Houlle", gender: "M" },
+  { id: 15 as ID, firstName: "Yannick", lastName: "Schaaf", gender: "M" },
+  { id: 16 as ID, firstName: "Fabrice", lastName: "Schmitt", gender: "M" },
+  { id: 17 as ID, firstName: "Aline", lastName: "Lemaire", gender: "F" },
+  { id: 18 as ID, firstName: "Damien", lastName: "Paul", gender: "M" },
+];
