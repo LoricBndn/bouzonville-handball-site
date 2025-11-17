@@ -11,7 +11,7 @@ export interface Venue {
   city: string; // Ville (ex: "Metz")
   description?: string; // Description optionnelle du lieu
   infos: string[]; // Informations supplémentaires (ex: accès, parking, équipements)
-  imageUrl?: string; // URL d'une image représentant le lieu
+  imageUrl: string; // URL d'une image représentant le lieu
   linkMap?: string; // URL vers une carte (ex: Google Maps)
 }
 
