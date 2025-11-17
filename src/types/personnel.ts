@@ -1,4 +1,4 @@
-import { ID, StaffRole, CoachRole } from "@/types/base-types";
+import { ID, MemberRole, CoachRole } from "@/types/base-types";
 
 /**
  * Interface ClubPerson (Personne de base du club)
@@ -9,29 +9,31 @@ export interface ClubPerson {
   id: ID; 
   firstName: string;
   lastName: string;
+  gender: "M" | "F";
   contactEmail?: string;
   contactPhone?: string;
   photoUrl?: string;
 }
 
 /**
- * Interface Staff (Liaison Rôle Administratif/Bénévole)
- * Table de liaison qui attribue un rôle administratif (StaffRole) à une personne du club (ClubPerson).
+ * Interface StaffMember (Liaison Rôle Administratif/Bénévole)
+ * Table de liaison qui attribue un rôle administratif (MemberRole) à une personne du club (ClubPerson).
  * Représente un dirigeant ou un bénévole.
  */
-export interface Staff {
+export interface StaffMember {
   clubPersonId: ID; 
-  role: StaffRole;
+  role: MemberRole;
   isContactPublic: boolean;
   publicTitle?: string;
 }
 
 /**
- * Interface CoachingStaff (Liaison Rôle Technique/Équipe)
+ * Interface StaffCoach (Liaison Rôle Technique/Équipe)
  * Table de liaison qui définit le rôle d'encadrement technique (CoachRole) d'une personne pour une équipe spécifique.
  * Ce rôle est contextuel (par équipe).
  */
-export interface CoachingStaff {
+export interface StaffCoach {
   clubPersonId: ID;
+  teamId: ID;
   role: CoachRole;
 }

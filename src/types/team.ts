@@ -1,12 +1,11 @@
 import { CategoryType, GenderType, LevelType, ConventionType, ID } from "@/types/base-types";
-import { CoachingStaff } from "@/types/personnel";
 
 /**
  * Interface Team (Équipe)
  * Représente une équipe sportive interne au club, participant à des compétitions.
  */
 export interface Team {
-  id: number;
+  id: ID;
   name: string;
   slug: string;
   photoUrl: string;
@@ -19,7 +18,9 @@ export interface Team {
   nameConvention?: string;
   conventionType?: ConventionType;
 
-  staff?: CoachingStaff[];
+  externalNames: string[];
+
   competitionIds?: ID[];
   playerIds?: ID[];
+  matchIds?: ID[];
 }

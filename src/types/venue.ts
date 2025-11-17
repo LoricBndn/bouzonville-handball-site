@@ -10,7 +10,7 @@ export interface Venue {
   address: string; // Adresse complète (ex: "12 Rue de la Source")
   city: string; // Ville (ex: "Metz")
   description?: string; // Description optionnelle du lieu
-  infos: string; // Informations supplémentaires (ex: accès, parking, équipements)
+  infos: string[]; // Informations supplémentaires (ex: accès, parking, équipements)
   imageUrl?: string; // URL d'une image représentant le lieu
   linkMap?: string; // URL vers une carte (ex: Google Maps)
 }
@@ -20,10 +20,11 @@ export interface Venue {
  * Définit les caractéristiques d'une séance récurrente (jour, heure, durée, lieu).
  */
 export interface TrainingSession {
+  id: ID;
   day: DayOfWeek;
   time: string; // Ex: "20:30"
   duration: number;
-  venue: Venue; // Détails du lieu de l'entraînement
+  venueId: ID; // Détails du lieu de l'entraînement
 }
 
 /**

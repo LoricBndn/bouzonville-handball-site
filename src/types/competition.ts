@@ -4,6 +4,7 @@ import {
   GenderType,
   ID,
   LevelType,
+  OpponentType,
   ResultType,
   StatusType,
 } from "@/types/base-types";
@@ -47,14 +48,12 @@ export interface Match {
   awayTeamId: ID;
 
   opponentTargetId?: ID;
-  opponentTargetType?: "Club" | "Entente";
+  opponentTargetType?: OpponentType;
 
-  location?: {
-    stadiumName: string;
-    stadiumAddress: string;
-    zipCode: string;
-    city: string;
-  };
+  stadiumName?: string;
+  stadiumAddress?: string;
+  zipCode?: string;
+  city?: string;
 
   scoreHome?: number;
   scoreAway?: number;

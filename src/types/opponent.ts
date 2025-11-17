@@ -1,4 +1,4 @@
-import { ID } from '@/types/base-types';
+import { CategoryType, GenderType, ID } from '@/types/base-types';
 
 /**
  * Interface Club (Adversaire Simple)
@@ -22,7 +22,8 @@ export interface Entente {
   id: ID; 
   name: string;
   slug: string;
-  category: string;
+  category: CategoryType;
+  gender: GenderType
   clubIds: ID[]; 
   pilotingClubId: ID;
   referenceCity: string;

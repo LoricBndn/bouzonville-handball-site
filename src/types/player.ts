@@ -1,6 +1,6 @@
 // Fichier: player.ts (Contient Joueur et Statistiques)
 
-import { ID, GenderType, HandType } from "@/types/base-types";
+import { ID, GenderType, HandType, PositionType } from "@/types/base-types";
 
 /**
  * Interface Player (Joueur)
@@ -14,7 +14,7 @@ export interface Player {
   age: number;
   hand: HandType;
   photoUrl: string;
-  position: string;
+  position: PositionType;
 }
 
 /**

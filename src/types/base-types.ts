@@ -31,7 +31,7 @@ export type StatusType = "Joué" | "À venir" | "Reporté" | "Annulé";
 export type LevelType = "National" | "Régional" | "Départemental" | "Amical";
 
 export type CategoryType =
-  | "Séniors"
+  | "Senior"
   | "U18"
   | "U17"
   | "U16"
@@ -41,11 +41,13 @@ export type CategoryType =
   | "U12"
   | "U11"
   | "U10"
-  | "U9";
+  | "U9"
+  | "BabyHand"
+  | "Handfit";
 
 export type CompetitionType = "Championnat" | "Coupe" | "Tournoi";
 
-export type GenderType = "MASCULIN" | "FEMININ" | "MIXTE";
+export type GenderType = "Masculin" | "Feminin" | "Mixte";
 
 export type OpponentType = "Club" | "Entente" | "Sélection";
 
@@ -58,7 +60,7 @@ export type CoachRole =
   | "Préparateur Physique"
   | "Manager";
 
-export type StaffRole =
+export type MemberRole =
   | "Président"
   | "Vice-Président"
   | "Trésorier"
@@ -68,7 +70,9 @@ export type StaffRole =
   | "Responsable Technique"
   | "Bénévole";
 
-export type HandType = "Droitier" | "Gaucher" | "Ambidextre";
+export type HandType = "Droit" | "Gauche" | "Ambidextre";
+
+export type PositionType = "Gardien" | "Ailier" | "Arrière" | "Demi-Centre" | "Pivot";
 
 /**
  * Types Administratifs et Commerciaux
@@ -83,4 +87,14 @@ export type PartnerType = "Institutionnel" | "Fédéral" | "Sponsor";
 
 export type ProductCategory = "Pack" | "Vêtement" | "Accessoire";
 
-export type ProductAgeGroup = "Adulte" | "Enfant" | "Tous";
+export type ProductAgeGroup = "Adulte" | "Junior" | "Tous";
+
+export type LicenseCategory =
+  | "Hand à 7 (+16 ans)"
+  | "Hand à 7 (12-16 ans)"
+  | "Hand à 7 (6-11 ans)"
+  | "Baby-hand (0-5 ans)"
+  | "Handfit (+16 ans)"
+  | "Dirigeant";
+
+export type IncludedFeeItem = "Licence FFHB" | "Assurance";

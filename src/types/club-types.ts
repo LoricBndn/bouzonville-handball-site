@@ -1,10 +1,11 @@
-import { ID, PartnerType, ProductCategory, ProductAgeGroup } from "@/types/base-types";
+import { ID, PartnerType, ProductCategory, ProductAgeGroup, LicenseCategory, IncludedFeeItem } from "@/types/base-types";
 
 /**
  * Interface Partner (Partenaire)
  * Représente un sponsor, un collaborateur ou une entité partenaire du club.
  */
 export interface Partner {
+  id: ID;
   name: string;
   logoUrl: string;
   url: string;
@@ -15,12 +16,13 @@ export interface Partner {
  * Interface Fee (Tarif/Cotisation)
  * Définit la structure d'un tarif d'adhésion, d'une cotisation ou d'un prix de licence.
  */
-export interface Fee {
+export interface LicenseFee {
   id: ID;
-  category: string;
+  category: LicenseCategory;
   feeAmount: string; 
-  includes: string[];
-  details: string;
+  includes: IncludedFeeItem[];
+  minAge: number; 
+  maxAge: number;
 }
 
 /**
@@ -28,7 +30,7 @@ export interface Fee {
  * Représente un article vendu par le club (boutique, packs, vêtements, accessoires).
  */
 export interface Product {
-  id: number;
+  id: ID;
   name: string;
   description: string;
   price: number;
