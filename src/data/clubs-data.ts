@@ -1667,15 +1667,6 @@ export const clubsData: Club[] = [
     logoUrl: "/images/clubs/bas-rhin/gerstheim.jpg",
   },
   {
-    id: 5667121 as ID,
-    name: "GERSTHEIM",
-    slug: "gerstheim",
-    city: "GERSTHEIM",
-    depNum: "67" as ID,
-    depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/gerstheim.jpg",
-  },
-  {
     id: 5667122 as ID,
     name: "ENTZHEIM",
     slug: "entzheim",
