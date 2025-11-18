@@ -1,17 +1,25 @@
 import React from "react";
 import Image from "next/image";
 import { User } from "lucide-react";
-import { StaffMember } from "@/types/personnel";
 
-export default function StaffMemberCard({ name, role, photo }: StaffMember) {
+interface StaffMemberCardProps {
+  name: string;
+  role: string;
+  photo: string | null | undefined;
+}
+
+export default function StaffMemberCard({ name, role, photo }: Readonly<StaffMemberCardProps>) {
+  
   const getCardSize = (role: string) => {
-    if (role.toLowerCase().includes("présidente")) return "w-[250px] h-[250px]";
+    if (role.toLowerCase() === "président") return "w-[250px] h-[250px]";
     if (
       role.toLowerCase().includes("vice-président") ||
-      role.toLowerCase().includes("trésorière")
+      role.toLowerCase().includes("trésorier") || 
+      role.toLowerCase().includes("secrétaire")
     )
       return "w-[220px] h-[250px]";
-    if (role.toLowerCase().includes("assesseur")) return "w-[180px] h-[250px]";
+    if (role.toLowerCase().includes("assesseur")) 
+      return "w-[180px] h-[250px]";
     return "w-[150px] h-[250px]";
   };
 

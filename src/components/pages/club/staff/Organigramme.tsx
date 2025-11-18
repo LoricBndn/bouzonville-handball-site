@@ -1,47 +1,59 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { ClubPersonWithRoles } from "@/services/personnelService";
 import StaffMember from "@/components/pages/club/staff/StaffMember";
 
-type Staff = {
-  id: string;
-  name: string;
-  role: string;
-  photo?: string | null;
+interface OrganigrammeProps {
+  staff: ClubPersonWithRoles[];
+}
+
+const getPrimaryRole = (member: ClubPersonWithRoles): string => {
+  const rolesSet = new Set<string>();
+
+  member.staffMembers.forEach((m) => {
+    if (m.role) {
+      rolesSet.add(m.role);
+    }
+  });
+
+  if (rolesSet.size === 0) {
+    return "Membre";
+  }
+
+  return Array.from(rolesSet).join(" / ");
 };
 
-export default function Organigramme() {
-  const [staff, setStaff] = useState<Staff[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchStaff() {
-      try {
-        const res = await fetch("/api/staff");
-        const data = await res.json();
-        setStaff(data);
-      } catch (error) {
-        console.error("Erreur lors du chargement du staff:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchStaff();
-  }, []);
-
-  // Organisation des rôles
-  const president = staff.find((m) =>
-    m.role.toLowerCase().includes("présidente")
+const hasRole = (
+  member: ClubPersonWithRoles,
+  requiredRole: string
+): boolean => {
+  const requiredLower = requiredRole.toLowerCase();
+  return member.staffMembers.some(
+    (m) => m.role?.toLowerCase() === requiredLower
   );
+};
+
+export default function Organigramme({ staff }: Readonly<OrganigrammeProps>) {
+  if (!Array.isArray(staff) || staff.length === 0) {
+    return (
+      <p className="text-center py-10 text-gray-500">
+        Aucun membre du personnel à afficher.
+      </p>
+    );
+  }
+  const president = staff.find((m) => hasRole(m, "Président"));
+  const assesseurs = staff.filter((m) => hasRole(m, "Assesseur"));
+
   const dirigeants = staff.filter(
-    (m) =>
-      !m.role.toLowerCase().includes("présidente") &&
-      !m.role.toLowerCase().includes("assesseur")
+    (m) => !hasRole(m, "Président") && !hasRole(m, "Assesseur")
   );
-  const assesseurs = staff.filter((m) =>
-    m.role.toLowerCase().includes("assesseur")
-  );
+  const renderData = (member: ClubPersonWithRoles) => ({
+    id: member.id,
+    name: `${member.firstName} ${member.lastName}`,
+    role: getPrimaryRole(member),
+    photo: member.photoUrl,
+  });
 
   return (
     <div className="">
@@ -49,35 +61,21 @@ export default function Organigramme() {
         {/* Présidente */}
         {president && (
           <div className="flex justify-center mb-12">
-            <StaffMember
-              name={president.name}
-              role={president.role}
-              photo={president.photo}
-            />
+            <StaffMember {...renderData(president)} />
           </div>
         )}
 
         {/* Vice-Présidents et Trésorière */}
         <div className="flex justify-center gap-6 mb-12 flex-wrap">
           {dirigeants.map((member) => (
-            <StaffMember
-              key={member.id}
-              name={member.name}
-              role={member.role}
-              photo={member.photo}
-            />
+            <StaffMember key={member.id} {...renderData(member)} />
           ))}
         </div>
 
         {/* Assesseurs */}
         <div className="flex justify-center gap-4 flex-wrap">
           {assesseurs.map((member) => (
-            <StaffMember
-              key={member.id}
-              name={member.name}
-              role={member.role}
-              photo={member.photo}
-            />
+            <StaffMember key={member.id} {...renderData(member)} />
           ))}
         </div>
       </div>

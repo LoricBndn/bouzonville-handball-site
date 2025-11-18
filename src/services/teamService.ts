@@ -65,9 +65,15 @@ export type TeamWithDetails = Team & {
 export async function getAllTeams(): Promise<Team[] | null> {
   const { data, error } = await supabase
     .from("teams")
-    .select("*")
-    .order("level") // Tri par Niveau (ex: National, Régional, Départemental)
-    .order("category"); // Tri par Catégorie (ex: Senior, U18, U15)
+    .select(`
+      *,
+      staffCoaches (
+        role,
+        clubPersons (firstName, lastName)
+      )
+    `)
+    .order("level")
+    .order("category");
 
   if (error) {
     console.error(

@@ -3,7 +3,7 @@ import BoutiqueHeader from '@/components/pages/boutique/BoutiqueHeader';
 import CategoryFilter from '@/components/pages/boutique/CategoryFilter';
 import ProductGrid from '@/components/pages/boutique/ProductGrid';
 import PartnerInfo from '@/components/pages/boutique/PartnerInfo';
-import { getAllProducts, getProductsByCategory } from '@/services/clubTypesService'; 
+import { getAllProducts } from '@/services/clubTypesService'; 
 import { Product } from '@/types/club-types';
 import { ProductCategory } from '@/types/base-types';
 import { categories } from '@/data/products-data';

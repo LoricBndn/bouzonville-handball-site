@@ -44,7 +44,6 @@ function transformSchedule(
     Record<DayOfWeek, CategoryTrainingSessionWithDetails[]>
   > = {};
 
-  // 1. Regrouper les données existantes par heure et par jour
   flatSchedule.forEach((item) => {
     const day = item.trainingSessions?.day;
     const time = item.trainingSessions?.time;
@@ -52,7 +51,6 @@ function transformSchedule(
     if (!day || !time) return;
 
     if (!dataByTime[time]) {
-      // Initialiser le slot horaire avec des tableaux vides pour chaque jour
       dataByTime[time] = daysOfWeek.reduce(
         (acc, d) => ({ ...acc, [d]: [] }),
         {} as Record<DayOfWeek, CategoryTrainingSessionWithDetails[]>
@@ -62,18 +60,14 @@ function transformSchedule(
     dataByTime[time][day].push(item);
   });
 
-  // 2. Créer le tableau final en utilisant hoursOfOperation pour les lignes,
-  // garantissant que tous les créneaux horaires sont inclus.
   const fullSchedule: PivotedScheduleSlot[] = hoursOfOperation
     .map((time) => {
       const existingEntry = dataByTime[time];
 
-      // Si le créneau horaire existe dans les données
       if (existingEntry) {
         return { time, days: existingEntry };
       }
 
-      // Si le créneau horaire n'a pas d'entraînement, le créer avec des tableaux vides
       return {
         time,
         days: daysOfWeek.reduce(
@@ -186,7 +180,7 @@ export default function PlanningTable({ schedule }: PlanningTableProps) {
               )}
               {openDays[day] && dailySchedule.length === 0 && (
                 <p className="p-3 text-center text-gray-500 italic text-sm">
-                  Pas d'entraînement prévu ce jour.
+                  Pas d&apos;entraînement prévu ce jour.
                 </p>
               )}
             </div>

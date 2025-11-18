@@ -86,7 +86,7 @@ export async function getAllMatches(): Promise<Match[] | null> {
  * @param {ID} competitionId L'ID de la compétition.
  * @returns {Promise<Match[] | null>} La liste des matchs pour cette compétition.
  */
-export async function getMatchesByCompetition(competitionId: ID): Promise<Match[] | null> {
+export async function getMatchesByCompetitionId(competitionId: ID): Promise<Match[] | null> {
   const { data, error } = await supabase
     .from('matches')
     .select('*')
@@ -96,6 +96,27 @@ export async function getMatchesByCompetition(competitionId: ID): Promise<Match[
 
   if (error) {
     console.error(`Erreur lors de la récupération des matchs pour la compétition ${competitionId}:`, error);
+    return null;
+  }
+
+  return data as Match[];
+}
+
+/**
+ * Récupère tous les matchs bruts pour une liste d'IDs de compétition donnée.
+ *
+ * @param {ID[]} competitionIds Liste des IDs de compétition de l'équipe interne.
+ * @returns {Promise<Match[] | null>} La liste brute des matchs des compétitions de l'équipe.
+ */
+export async function getMatchesByCompetitionIds(competitionIds: ID[]): Promise<Match[] | null> {
+  const { data, error } = await supabase
+    .from('matches')
+    .select('*')
+    .in('competitionId', competitionIds) // Filtre les matchs dont l'ID est dans la liste
+    .order('date', { ascending: true });
+
+  if (error) {
+    console.error("Erreur lors de la récupération des matchs par liste de compétitions:", error);
     return null;
   }
 

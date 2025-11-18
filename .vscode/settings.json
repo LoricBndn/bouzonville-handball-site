@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "loricbndn",
+        "projectKey": "LoricBndn_bouzonville-handball-site"
+    }
+}

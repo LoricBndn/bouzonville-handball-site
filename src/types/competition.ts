@@ -34,6 +34,7 @@ export interface Competition {
  */
 export interface Match {
   id: ID;
+  week: string;
   competitionId: ID;
 
   homeTeam: string;
@@ -47,6 +48,7 @@ export interface Match {
   homeTeamId: ID;
   awayTeamId: ID;
 
+  isHome: boolean;
   opponentTargetId?: ID;
   opponentTargetType?: OpponentType;
 
@@ -57,13 +59,15 @@ export interface Match {
 
   scoreHome?: number;
   scoreAway?: number;
+  fdmeHome?: number;
+  fdmeAway?: number;
 
   forfeitHome: boolean;
   forfeitAway: boolean;
   penaltyHome: boolean;
   penaltyAway: boolean;
 
-  result?: ResultType;
+  result: ResultType;
   status: StatusType;
   matchSheetUrl?: string;
 }

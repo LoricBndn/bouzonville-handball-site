@@ -5,7 +5,7 @@ interface Props {
   product: Product;
 }
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product }: Readonly<Props>) {
   return (
     <div
       className="
@@ -43,7 +43,7 @@ export default function ProductCard({ product }: Props) {
               <div className="flex flex-wrap justify-center gap-1 mt-1">
                 {product.colors.map((c, i) => (
                   <span
-                    key={i}
+                    key={c + i}
                     className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded"
                   >
                     {c}

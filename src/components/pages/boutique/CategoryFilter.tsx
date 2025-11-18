@@ -12,7 +12,7 @@ interface Props {
   onSelect: (id: string) => void;
 }
 
-export default function CategoryFilter({ categories, selected, onSelect }: Props) {
+export default function CategoryFilter({ categories, selected, onSelect }: Readonly<Props>) {
   return (
     <div className="flex flex-wrap justify-center space-x-2 mb-8">
       {categories.map(({ id, label, icon: Icon }) => (

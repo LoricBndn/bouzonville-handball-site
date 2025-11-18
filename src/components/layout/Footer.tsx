@@ -29,6 +29,7 @@ export default function Footer() {
         {/* Section Carte Google Maps */}
         <div className="rounded-lg overflow-hidden shadow-lg h-64">
           <iframe
+            title="Carte Google Maps de Bouzonville Handball"
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d650.4395848687866!2d6.5227024!3d49.2999208!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479505f97a6e04c1%3A0xc51d5459bca99c8e!2sBouzonville%20Handball!5e0!3m2!1sfr!2sfr!4v1757883767537!5m2!1sfr!2sfr"
             width="100%"
             height="100%"

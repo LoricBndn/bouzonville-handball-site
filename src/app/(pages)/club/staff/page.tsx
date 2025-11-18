@@ -1,7 +1,23 @@
 import React from "react";
 import Organigramme from "@/components/pages/club/staff/Organigramme";
+import {
+  getStaffMembers,
+  ClubPersonWithRoles,
+} from "@/services/personnelService";
 
-export default function StaffPage() {
+export default async function StaffPage() {
+  const staff: ClubPersonWithRoles[] = (await getStaffMembers()) || [];
+
+  if (staff.length === 0) {
+    return (
+      <div className="py-12 text-center">
+        <p className="text-xl text-gray-500">
+          Impossible de charger l'équipe dirigeante pour le moment.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="py-12 bg-background text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,10 +27,11 @@ export default function StaffPage() {
           </h1>
           <div className="w-24 h-1 bg-secondary mx-auto rounded mb-6"></div>
           <p className="text-xl text-accent max-w-3xl mx-auto font-body mb-12">
-            Découvrez l&apos;équipe dirigeante du Club de Handball de Bouzonville
+            Découvrez l&apos;équipe dirigeante du Club de Handball de
+            Bouzonville
           </p>
           <div className="mb-12">
-            <Organigramme />
+            <Organigramme staff={staff} />
           </div>
         </div>
       </div>
