@@ -10,10 +10,7 @@ import { categories } from '@/data/products-data';
 
 export default function BoutiqueSection() {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'Tous'>('Tous');
-  
-  // NOUVEAU : État pour stocker tous les produits non filtrés (la source de vérité)
   const [allProducts, setAllProducts] = useState<Product[]>([]);
-  // NOUVEAU : État pour le chargement
   const [isLoading, setIsLoading] = useState(true);
 
   // --- Chargement des Données depuis le Service ---

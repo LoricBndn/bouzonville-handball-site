@@ -1,8 +1,12 @@
-"use client";
-
 import LicencesSection from "@/components/pages/informations/licences/LicencesSection";
 
-export default function LicencesPage() {
+import { getAllLicenseFees } from "@/services/clubTypesService"; 
+import { LicenseFee } from '@/types/club-types';
+
+export default async function LicencesPage() {
+  const licenseFees: LicenseFee[] = (await getAllLicenseFees()) || [];
+  const currentYear = 2025;
+
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,11 +16,11 @@ export default function LicencesPage() {
           </h1>
           <div className="w-24 h-1 bg-secondary mx-auto rounded mb-6"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Consultez les tarifs des licences de la saison 2025-2026.
+            Consultez les tarifs des licences de la saison {currentYear}-{currentYear + 1}.
           </p>
         </div>
 
-        <LicencesSection />
+        <LicencesSection fees={licenseFees} />
       </div>
     </div>
   );

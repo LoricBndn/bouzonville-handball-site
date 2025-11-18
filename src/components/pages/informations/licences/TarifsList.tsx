@@ -1,16 +1,20 @@
 import React from "react";
 import TarifCard from "@/components/pages/informations/licences/TarifCard";
-import { Tarif } from "@/types/licences";
+import { LicenseFee } from "@/types/club-types"; 
+import { ID } from "@/types/base-types";
 
 interface TarifsListProps {
-  tarifs: Tarif[];
+  fees: LicenseFee[];
 }
 
-export default function TarifsList({ tarifs }: TarifsListProps) {
+export default function TarifsList({ fees }: TarifsListProps) {
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      {tarifs.map((tarif, index) => (
-        <TarifCard key={index} tarif={tarif} />
+      {fees.map((fee) => (
+        <TarifCard 
+          key={fee.id as React.Key} 
+          tarif={fee} 
+        />
       ))}
     </div>
   );

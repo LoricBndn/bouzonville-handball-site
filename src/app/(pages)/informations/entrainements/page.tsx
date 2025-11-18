@@ -1,8 +1,9 @@
-"use client";
-
 import PlanningSection from "@/components/pages/informations/planning/PlanningSection";
 
-export default function PlanningPage() {
+import { getAllTrainingSchedule, CategoryTrainingSessionWithDetails } from "@/services/venueService"; 
+
+export default async function PlanningPage() {
+  const trainingSchedule: CategoryTrainingSessionWithDetails[] = (await getAllTrainingSchedule()) || [];
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,7 +17,7 @@ export default function PlanningPage() {
           </p>
         </div>
 
-        <PlanningSection />
+        <PlanningSection schedule={trainingSchedule}/>
       </div>
     </div>
   );

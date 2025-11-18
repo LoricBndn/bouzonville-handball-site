@@ -1,9 +1,98 @@
-import React, { useState } from "react";
-import PlanningCell from "@/components/pages/informations/planning/PlanningCell";
-import { trainingSchedule, daysOfWeek } from "@/data/planning";
-import { ChevronDown, ChevronUp } from "lucide-react";
+"use client";
 
-export default function PlanningTable() {
+import React, { useState, useMemo } from "react";
+import PlanningCell from "@/components/pages/informations/planning/PlanningCell";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { CategoryTrainingSessionWithDetails } from "@/services/venueService";
+import { DayOfWeek } from "@/types/base-types";
+
+const daysOfWeek: DayOfWeek[] = [
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi"
+];
+
+const hoursOfOperation: string[] = [
+  "17:30:00",
+  "18:00:00",
+  "18:30:00",
+  "19:00:00",
+  "19:30:00",
+  "20:00:00",
+];
+
+type PivotedScheduleSlot = {
+  time: string;
+  days: Record<DayOfWeek, CategoryTrainingSessionWithDetails[]>;
+};
+
+interface PlanningTableProps {
+  schedule: CategoryTrainingSessionWithDetails[];
+}
+
+/**
+ * Transforme le tableau plat des sessions en une structure pivotée (créneau/jour)
+ * en GARANTISSANT que tous les créneaux horaires de hoursOfOperation sont présents.
+ */
+function transformSchedule(
+  flatSchedule: CategoryTrainingSessionWithDetails[]
+): PivotedScheduleSlot[] {
+  const dataByTime: Record<
+    string,
+    Record<DayOfWeek, CategoryTrainingSessionWithDetails[]>
+  > = {};
+
+  // 1. Regrouper les données existantes par heure et par jour
+  flatSchedule.forEach((item) => {
+    const day = item.trainingSessions?.day;
+    const time = item.trainingSessions?.time;
+
+    if (!day || !time) return;
+
+    if (!dataByTime[time]) {
+      // Initialiser le slot horaire avec des tableaux vides pour chaque jour
+      dataByTime[time] = daysOfWeek.reduce(
+        (acc, d) => ({ ...acc, [d]: [] }),
+        {} as Record<DayOfWeek, CategoryTrainingSessionWithDetails[]>
+      );
+    }
+
+    dataByTime[time][day].push(item);
+  });
+
+  // 2. Créer le tableau final en utilisant hoursOfOperation pour les lignes,
+  // garantissant que tous les créneaux horaires sont inclus.
+  const fullSchedule: PivotedScheduleSlot[] = hoursOfOperation
+    .map((time) => {
+      const existingEntry = dataByTime[time];
+
+      // Si le créneau horaire existe dans les données
+      if (existingEntry) {
+        return { time, days: existingEntry };
+      }
+
+      // Si le créneau horaire n'a pas d'entraînement, le créer avec des tableaux vides
+      return {
+        time,
+        days: daysOfWeek.reduce(
+          (acc, d) => ({ ...acc, [d]: [] }),
+          {} as Record<DayOfWeek, CategoryTrainingSessionWithDetails[]>
+        ),
+      };
+    })
+    .sort((a, b) => a.time.localeCompare(b.time));
+
+  return fullSchedule;
+}
+
+export default function PlanningTable({ schedule }: PlanningTableProps) {
+  const pivotedSchedule = useMemo(
+    () => transformSchedule(schedule),
+    [schedule]
+  );
+
   const [openDays, setOpenDays] = useState<Record<string, boolean>>(
     daysOfWeek.reduce((acc, day) => ({ ...acc, [day]: true }), {})
   );
@@ -15,19 +104,30 @@ export default function PlanningTable() {
   return (
     <div className="overflow-x-auto">
       {/* Table normale pour grand écran */}
-      <table className="w-full border-collapse border border-gray-300 text-sm lg:text-base hidden lg:table">
+      <table className="w-full border-collapse border border-gray-300 text-sm lg:text-base hidden lg:table table-fixed">
         <thead>
           <tr className="bg-primary text-white">
-            <th className="border border-gray-300 p-2 text-left">Horaire</th>
+            {/* Augmentation de la largeur pour la colonne "Horaire" (w-[100px]) */}
+            <th className="border border-gray-300 p-2 text-left w-[100px]">
+              Horaire
+            </th>
+
+            {/* Les colonnes restantes se partageront la largeur restante grâce à table-fixed */}
             {daysOfWeek.map((day) => (
-              <th key={day} className="border border-gray-300 p-2">{day}</th>
+              <th key={day} className="border border-gray-300 p-2">
+                {day}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {trainingSchedule.map((slot, idx) => (
+          {/* Utiliser le nouveau tableau 'pivotedSchedule' qui contient tous les horaires fixes */}
+          {pivotedSchedule.map((slot, idx) => (
             <tr key={idx} className="bg-light">
-              <td className="border border-gray-300 p-2 font-semibold text-gray-800">{slot.time}</td>
+              {/* Assurez-vous que le <td> correspondant à l'Horaire utilise la même classe de largeur */}
+              <td className="border border-gray-300 p-2 font-semibold text-gray-800 w-[100px]">
+                {slot.time.substring(0, 5)}
+              </td>
               {daysOfWeek.map((day) => (
                 <PlanningCell key={day} trainings={slot.days[day] || []} />
               ))}
@@ -38,40 +138,60 @@ export default function PlanningTable() {
 
       {/* Version mobile : affichage accordéon */}
       <div className="lg:hidden space-y-4">
-        {daysOfWeek.map((day) => (
-          <div key={day} className="bg-white border border-gray-300 rounded-lg shadow-sm">
-            {/* Entête jour clickable */}
+        {daysOfWeek.map((day) => {
+          const dailySchedule = pivotedSchedule.filter(
+            (slot) => (slot.days[day] || []).length > 0
+          );
+
+          return (
             <div
-              className="flex justify-between items-center bg-primary text-white px-3 py-2 font-semibold text-lg cursor-pointer"
-              onClick={() => toggleDay(day)}
+              key={day}
+              className="bg-white border border-gray-300 rounded-lg shadow-sm"
             >
-              {day}
-              {openDays[day] ? (
-                <ChevronUp className="w-5 h-5" />
-              ) : (
-                <ChevronDown className="w-5 h-5" />
+              {/* Entête jour clickable */}
+              <div
+                className="flex justify-between items-center bg-primary text-white px-3 py-2 font-semibold text-lg cursor-pointer"
+                onClick={() => toggleDay(day)}
+              >
+                {day} {" "}
+                {openDays[day] ? (
+                  <ChevronUp className="w-5 h-5" />
+                ) : (
+                  <ChevronDown className="w-5 h-5" />
+                )}
+              </div>
+
+              {/* Contenu du jour */}
+              {openDays[day] && dailySchedule.length > 0 && (
+                <div className="p-3 space-y-2">
+                  {dailySchedule.map((slot, idx) => {
+                    const trainings = slot.days[day] || [];
+                    return (
+                      <div
+                        key={idx}
+                        className="border border-gray-200 rounded p-2 bg-background"
+                      >
+                        <p className="font-semibold text-gray-800 mb-1">
+                          {slot.time.substring(0, 5)}
+                        </p>
+                        <PlanningCell
+                          key={day}
+                          trainings={trainings}
+                          isMobile
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+              {openDays[day] && dailySchedule.length === 0 && (
+                <p className="p-3 text-center text-gray-500 italic text-sm">
+                  Pas d'entraînement prévu ce jour.
+                </p>
               )}
             </div>
-
-            {/* Contenu du jour */}
-            {openDays[day] && (
-              <div className="p-3 space-y-2">
-                {trainingSchedule.map((slot, idx) => {
-                  const trainings = slot.days[day] || [];
-                  return trainings.length > 0 ? (
-                    <div
-                      key={idx}
-                      className="border border-gray-200 rounded p-2 bg-background"
-                    >
-                      <p className="font-semibold text-gray-800 mb-1">{slot.time}</p>
-                      <PlanningCell trainings={trainings} isMobile />
-                    </div>
-                  ) : null;
-                })}
-              </div>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
