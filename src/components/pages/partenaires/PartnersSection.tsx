@@ -1,6 +1,6 @@
 import React from "react";
 import PartnerCard from "@/components/pages/partenaires/PartnerCard";
-import { Partner } from "@/types/partners";
+import { Partner } from "@/types/club-types";
 
 interface Props {
   title: string;

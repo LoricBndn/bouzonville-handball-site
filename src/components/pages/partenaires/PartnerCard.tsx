@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Partner } from "@/types/partners";
+import { Partner } from "@/types/club-types";
 
-export default function PartnerCard({ name, logo, url }: Partner) {
+export default function PartnerCard({ name, logoUrl, url }: Partner) {
   return (
     <div className="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow duration-200 bg-gray-50 w-[200px] h-[200px]">
       <Link
@@ -14,7 +14,7 @@ export default function PartnerCard({ name, logo, url }: Partner) {
       >
         <div className="flex items-center justify-center w-full h-24">
           <Image
-            src={logo}
+            src={logoUrl}
             alt={name}
             width={150}
             height={80}
