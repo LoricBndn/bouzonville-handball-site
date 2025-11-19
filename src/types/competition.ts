@@ -8,6 +8,7 @@ import {
   ResultType,
   StatusType,
 } from "@/types/base-types";
+import { Team } from "./team";
 
 /**
  * Interface Competition (Compétition ou Poule)
@@ -29,10 +30,10 @@ export interface Competition {
 }
 
 /**
- * Interface Match (Rencontre)
+ * Interface RawMatch (Rencontre)
  * Représente un événement sportif spécifique entre deux équipes.
  */
-export interface Match {
+export interface RawMatch {
   id: ID;
   week: string;
   competitionId: ID;
@@ -48,10 +49,6 @@ export interface Match {
   homeTeamId: ID;
   awayTeamId: ID;
 
-  isHome: boolean;
-  opponentTargetId?: ID;
-  opponentTargetType?: OpponentType;
-
   stadiumName?: string;
   stadiumAddress?: string;
   zipCode?: string;
@@ -62,12 +59,36 @@ export interface Match {
   fdmeHome?: number;
   fdmeAway?: number;
 
-  forfeitHome: boolean;
-  forfeitAway: boolean;
-  penaltyHome: boolean;
-  penaltyAway: boolean;
+  forfeitHome?: boolean;
+  forfeitAway?: boolean;
+  penaltyHome?: boolean;
+  penaltyAway?: boolean;
 
-  result: ResultType;
   status: StatusType;
   matchSheetUrl?: string;
 }
+
+/**
+ * MatchContext : Données calculées pour l'équipe affichée
+ */
+export interface MatchContext {
+  isHome: boolean;
+  opponentId: ID;
+  opponentType: OpponentType;
+  opponentName: string;
+  opponentLogoUrl: string;
+  result: ResultType;
+}
+
+/**
+ * Match complet enrichi (ce que vous utilisez dans vos composants)
+ */
+export type Match = RawMatch & MatchContext;
+
+/**
+ * Match enrichi AVEC les infos de l'équipe associée
+ * On ajoute une propriété 'teamDetails' pour éviter les conflits
+ */
+export type TeamMatch = Match & {
+  teamDetails: Team; 
+};
