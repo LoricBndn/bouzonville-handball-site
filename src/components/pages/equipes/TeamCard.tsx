@@ -1,8 +1,8 @@
 import React from "react";
+import Image from "next/image";
 import { Award, User, Trophy, ArrowRight } from "lucide-react";
 import { Team } from "@/types/team"; 
 import { ConventionType, LevelType, GenderType } from "@/types/base-types";
-import { ClubPersonWithRoles } from "@/services/personnelService"; 
 import { TeamWithDetails } from "@/services/teamService";
 
 interface TeamCardProps {
@@ -38,10 +38,7 @@ const getConventionColor = (type: ConventionType | undefined) => {
     }
 };
 
-export default function TeamCard({ team, onSelect }: TeamCardProps) {
-    
-    // CORRECTION D'ACCÈS: Trouver le coach principal de manière sécurisée
-    // team.staffCoaches est optionnel dans ce contexte d'itération de liste.
+export default function TeamCard({ team, onSelect }: Readonly<TeamCardProps>) {
     const principalCoach = team.staffCoaches?.find(
         (c) => c.role === "Principal"
     )?.clubPersons;
@@ -50,7 +47,7 @@ export default function TeamCard({ team, onSelect }: TeamCardProps) {
         ? `${principalCoach.firstName} ${principalCoach.lastName}` 
         : 'À définir';
         
-    const conventionTypeDisplay = team.conventionType as ConventionType | undefined;
+    const conventionTypeDisplay = team.conventionType;
 
 
     return (
@@ -59,10 +56,11 @@ export default function TeamCard({ team, onSelect }: TeamCardProps) {
             onClick={onSelect}
         >
             <div className="relative h-64 w-full overflow-hidden bg-gradient-to-br from-accent to-blue-300">
-                <img
+                <Image
                     src={team.photoUrl}
                     alt={team.name}
-                    className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill // Fait en sorte que l'image remplisse son conteneur parent
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-dark/10 to-transparent" />
 

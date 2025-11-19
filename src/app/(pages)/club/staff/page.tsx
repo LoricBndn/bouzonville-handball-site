@@ -12,7 +12,7 @@ export default async function StaffPage() {
     return (
       <div className="py-12 text-center">
         <p className="text-xl text-gray-500">
-          Impossible de charger l'équipe dirigeante pour le moment.
+          Impossible de charger l&apos;équipe dirigeante pour le moment.
         </p>
       </div>
     );

@@ -160,7 +160,7 @@ export default function MatchesTab({ matches }: Readonly<MatchesTabProps>) {
             {/* 3. Aucun Match */}
             {matches.length === 0 && (
                 <div className="text-center py-12">
-                    <p className="text-foreground/60 text-lg">Aucun match disponible pour cette équipe (ou la saison n'a pas commencé).</p>
+                    <p className="text-foreground/60 text-lg">Aucun match disponible pour cette équipe (ou la saison n&apos;a pas commencé).</p>
                 </div>
             )}
         </div>

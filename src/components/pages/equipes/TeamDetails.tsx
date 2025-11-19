@@ -245,7 +245,7 @@ export default function TeamDetails({ team, onBack }: TeamDetailsProps) {
         {/* Affichage des données des onglets ou du chargement */}
         {isTabLoading && (
           <p className="text-center text-xl text-secondary py-10">
-            Chargement des données de l'équipe...
+            Chargement des données de l&apos;équipe...
           </p>
         )}
 
@@ -257,14 +257,14 @@ export default function TeamDetails({ team, onBack }: TeamDetailsProps) {
                   <section className="bg-light rounded-2xl p-8 shadow-lg">
                     <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                       <Users className="text-primary" size={28} />À propos de
-                      l'équipe
+                      l&apos;équipe
                     </h2>
                     <p className="text-foreground/80 leading-relaxed text-lg">
-                      L'équipe {team.name} évolue au niveau{" "}
+                      L&apos;équipe {team.name} évolue au niveau{" "}
                       {team.level.toLowerCase()} sous la direction de{" "}
                       {coachName}. Avec une passion pour le handball et un
-                      esprit d'équipe exemplaire, nos joueurs s'entraînent
-                      régulièrement pour atteindre l'excellence sportive et
+                      esprit d&apos;équipe exemplaire, nos joueurs s&apos;entraînent
+                      régulièrement pour atteindre l&apos;excellence sportive et
                       représenter fièrement notre club.
                     </p>
                   </section>
@@ -309,7 +309,7 @@ export default function TeamDetails({ team, onBack }: TeamDetailsProps) {
                   <section className="bg-light rounded-2xl p-8 shadow-lg">
                     <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                       <Calendar className="text-primary" size={28} />
-                      Horaires d'entraînement
+                      Horaires d&apos;entraînement
                     </h2>
                     <div className="space-y-4">
                       {trainings.length > 0 ? (
@@ -369,7 +369,7 @@ export default function TeamDetails({ team, onBack }: TeamDetailsProps) {
                   <section className="bg-light rounded-2xl p-6 shadow-lg">
                     <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                       <MapPin className="text-primary" size={24} />
-                      Lieu d'entraînement
+                      Lieu d&apos;entraînement
                     </h3>
                     <div className="space-y-3">
                       {firstTrainingVenue ? (
@@ -421,7 +421,7 @@ export default function TeamDetails({ team, onBack }: TeamDetailsProps) {
                     <h3 className="text-xl font-bold mb-3">Rejoignez-nous !</h3>
                     <p className="text-sm mb-4 text-light/90">
                       Envie de rejoindre notre équipe ? Contactez-nous pour plus
-                      d'informations.
+                      d&apos;informations.
                     </p>
                     <button className="w-full px-4 py-3 bg-light text-secondary font-bold rounded-lg hover:bg-light/90 transition-colors duration-300">
                       Nous contacter

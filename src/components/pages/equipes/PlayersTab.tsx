@@ -34,7 +34,7 @@ export default function PlayersTab({ players }: PlayersTabProps) {
     });
   });
 
-  const PlayerCard = ({ player, index }: { player: Player; index: number }) => (
+  const PlayerCard = ({ player }: { player: Player; index: number }) => (
     <div className="group bg-light rounded-2xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-4">

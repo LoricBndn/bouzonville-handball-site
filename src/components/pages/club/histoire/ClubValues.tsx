@@ -16,7 +16,7 @@ export default function ClubValues() {
         Nos Valeurs
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {values.map((value, index) => (
+        {values.map((value) => (
           <ClubValueCard
             key={value.title}
             icon={value.icon}
