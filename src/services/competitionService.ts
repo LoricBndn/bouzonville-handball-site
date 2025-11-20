@@ -6,7 +6,7 @@ import {
   getClubById,
   getEntenteBypilotingClubId,
 } from "@/services/opponentService";
-import { getTeamDetails } from "@/services/teamService";
+import { getAllTeamsWithDetails, getTeamDetails } from "@/services/teamService";
 
 // --- Fonctions de Service pour les Compétitions (Competition) ---
 
@@ -357,6 +357,70 @@ export async function getAllMatchesAnalyzed(): Promise<Match[] | null> {
       return weekA.localeCompare(weekB, undefined, { numeric: true });
     }
 
+    if (a.date && b.date) {
+      const dateA = new Date(`${a.date}T${a.time || "00:00"}`).getTime();
+      const dateB = new Date(`${b.date}T${b.time || "00:00"}`).getTime();
+      return dateA - dateB;
+    }
+
+    return 0;
+  });
+
+  return analyzedMatches;
+}
+
+/**
+ * Récupère tous les matchs enregistrés, enrichis avec l'équipe qui correspond et triés par semaine et par date.
+ * Utilise les IDs fixes du club pour l'analyse (Bouzonville + Boulay).
+ *
+ * @returns {Promise<TeamMatch[] | null>} La liste de tous les matchs enrichis avec les détails de l'équipe.
+ */
+export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[] | null> {
+  const { data: rawMatches, error } = await supabase
+    .from("matches")
+    .select("*");
+
+  if (error) {
+    console.error("Erreur lors de la récupération de tous les matchs:", error);
+    return null;
+  }
+
+  if (!rawMatches) return [];
+
+  const teams = await getAllTeamsWithDetails();
+  
+  if (!teams) return [];
+
+  const internalClubIds: ID[] = [5657013, 5657025];
+
+  const analyzedMatches = await analyzeMatches(
+    rawMatches as RawMatch[],
+    internalClubIds
+  );
+
+  const matchesWithTeams = analyzedMatches.map((match) => {
+    const correspondingTeam = teams.find((t) =>
+      t.teamCompetitions.some((tc) => tc.competitionId === match.competitionId)
+    );
+
+    if (!correspondingTeam) return null;
+
+    const teamMatch: TeamMatch = {
+        ...match,
+        teamDetails: correspondingTeam
+    };
+
+    return teamMatch;
+  }).filter((m): m is TeamMatch => m !== null);
+
+  matchesWithTeams.sort((a, b) => {
+    const weekA = a.week || "";
+    const weekB = b.week || "";
+
+    if (weekA !== weekB) {
+      return weekA.localeCompare(weekB, undefined, { numeric: true });
+    }
+
     const dateA = a.date
       ? new Date(`${a.date}T${a.time || "00:00"}`).getTime()
       : 0;
@@ -367,7 +431,7 @@ export async function getAllMatchesAnalyzed(): Promise<Match[] | null> {
     return dateA - dateB;
   });
 
-  return analyzedMatches;
+  return matchesWithTeams;
 }
 
 /**
@@ -401,13 +465,20 @@ export async function getMatchesAnalyzedByTeamId(
   const teamMatches = await analyzeMatchesForTeam(rawMatches, team);
 
   teamMatches.sort((a, b) => {
-    const dateA = a.date
-      ? new Date(`${a.date}T${a.time || "00:00"}`).getTime()
-      : 0;
-    const dateB = b.date
-      ? new Date(`${b.date}T${b.time || "00:00"}`).getTime()
-      : 0;
-    return dateA - dateB;
+    const weekA = a.week || "";
+    const weekB = b.week || "";
+
+    if (weekA !== weekB) {
+      return weekA.localeCompare(weekB, undefined, { numeric: true });
+    }
+
+    if (a.date && b.date) {
+      const dateA = new Date(`${a.date}T${a.time || "00:00"}`).getTime();
+      const dateB = new Date(`${b.date}T${b.time || "00:00"}`).getTime();
+      return dateA - dateB;
+    }
+
+    return 0;
   });
 
   return teamMatches;

@@ -10,7 +10,7 @@ import { ID } from '@/types/base-types';
  */
 export async function getClubs(): Promise<Club[] | null> {
   const { data, error } = await supabase
-    .from("club")
+    .from("clubs")
     .select("*")
     .order("id", { ascending: true });
 
@@ -29,7 +29,7 @@ export async function getClubs(): Promise<Club[] | null> {
  */
 export async function getClubById(clubId: ID): Promise<Club | null> {
   const { data, error } = await supabase
-    .from("club")
+    .from("clubs")
     .select("*")
     .eq("id", clubId)
     .single();
@@ -51,7 +51,7 @@ export async function getClubById(clubId: ID): Promise<Club | null> {
  */
 export async function getClubBySlug(slug: string): Promise<Club | null> {
   const { data, error } = await supabase
-    .from("club")
+    .from("clubs")
     .select("*")
     .eq("slug", slug)
     .single();
@@ -74,7 +74,7 @@ export async function getClubBySlug(slug: string): Promise<Club | null> {
  */
 export async function getEntentes(): Promise<Entente[] | null> {
   const { data, error } = await supabase
-    .from("entente")
+    .from("ententes")
     .select("*");
 
   if (error) {
@@ -92,7 +92,7 @@ export async function getEntentes(): Promise<Entente[] | null> {
  */
 export async function getEntenteById(ententeId: ID): Promise<Entente | null> {
   const { data, error } = await supabase
-    .from("entente")
+    .from("ententes")
     .select("*")
     .eq("id", ententeId)
     .single();
@@ -114,13 +114,13 @@ export async function getEntenteById(ententeId: ID): Promise<Entente | null> {
  */
 export async function getEntenteBypilotingClubId(pilotingClubId: ID): Promise<Entente | null> {
   const { data, error } = await supabase
-    .from("entente")
+    .from("ententes")
     .select("*")
     .eq("pilotingClubId", pilotingClubId)
     .single();
 
   if (error) {
-    if (error.code !== 'PGRST116') { // Code d'erreur typique pour 'no rows found' dans PostgREST
+    if (error.code !== 'PGRST116') {
       console.error(`Erreur lors de la récupération de l'entente pour le club pilote ID ${pilotingClubId}:`, error);
     }
     return null;

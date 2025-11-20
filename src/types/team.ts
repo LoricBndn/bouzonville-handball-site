@@ -22,5 +22,4 @@ export interface Team {
 
   competitionIds?: ID[];
   playerIds?: ID[];
-  matchIds?: ID[];
 }

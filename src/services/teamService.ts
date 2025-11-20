@@ -65,11 +65,44 @@ export type TeamWithDetails = Team & {
 export async function getAllTeams(): Promise<Team[] | null> {
   const { data, error } = await supabase
     .from("teams")
+    .select("*")
+    .order("category")
+    .order("gender")
+    .order("level");
+
+  if (error) {
+    console.error(
+      "Erreur lors de la récupération de toutes les équipes:",
+      error
+    );
+    return null;
+  }
+
+  return data as TeamWithDetails[];
+}
+
+/**
+ * Récupère toutes les équipes enregistrées, triées par niveau puis par catégorie.
+ *
+ * @returns {Promise<TeamWithDetails[] | null>} La liste de toutes les équipes enrichis.
+ */
+export async function getAllTeamsWithDetails(): Promise<TeamWithDetails[] | null> {
+  const { data, error } = await supabase
+    .from("teams")
     .select(`
       *,
+      teamPlayers (
+        playerId,
+        players (id, firstName, lastName, position, "photoUrl")
+      ),
       staffCoaches (
         role,
-        clubPersons (firstName, lastName)
+        "clubPersonId",
+        clubPersons (id, firstName, lastName, "photoUrl", "contactEmail")
+      ),
+      teamCompetitions (
+        "competitionId",
+        competitions (id, "officialName", type, level, season)
       )
     `)
     .order("level")
@@ -83,7 +116,7 @@ export async function getAllTeams(): Promise<Team[] | null> {
     return null;
   }
 
-  return data as Team[];
+  return data as TeamWithDetails[];
 }
 
 /**
