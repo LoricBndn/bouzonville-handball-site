@@ -1,6 +1,6 @@
 export default function Stats() {
   const stats = [
-    { value: "94", label: "Licenciés", colorClass: "text-primary" },
+    { value: "112", label: "Licenciés", colorClass: "text-primary" },
     { value: "12", label: "Équipes Actives", colorClass: "text-secondary" },
     { value: "60", label: "Années d'Expérience", colorClass: "text-danger" },
   ];

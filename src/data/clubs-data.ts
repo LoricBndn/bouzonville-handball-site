@@ -10,7 +10,7 @@ export const clubsData: Club[] = [
     city: "SEDAN",
     depNum: "08" as ID,
     depName: "ardennes",
-    logoUrl: "/images/clubs/ardennes/hand-sedan-ardennes.jpg",
+    logoUrl: "/images/clubs/ardennes/hand-sedan-ardennes.webp",
   },
   {
     id: 5608006 as ID,
@@ -19,7 +19,7 @@ export const clubsData: Club[] = [
     city: "CARIGNAN",
     depNum: "08" as ID,
     depName: "ardennes",
-    logoUrl: "/images/clubs/ardennes/yvois-carignan-hb.jpg",
+    logoUrl: "/images/clubs/ardennes/yvois-carignan-hb.webp",
   },
   {
     id: 5608007 as ID,
@@ -28,7 +28,7 @@ export const clubsData: Club[] = [
     city: "BOGNY-SUR-MEUSE",
     depNum: "08" as ID,
     depName: "ardennes",
-    logoUrl: "/images/clubs/ardennes/bogny-hautes-rivieres-handball.jpg",
+    logoUrl: "/images/clubs/ardennes/bogny-hautes-rivieres-handball.webp",
   },
   {
     id: 5608024 as ID,
@@ -37,7 +37,7 @@ export const clubsData: Club[] = [
     city: "VOUZIERS",
     depNum: "08" as ID,
     depName: "ardennes",
-    logoUrl: "/images/clubs/ardennes/hbc-vouziers.jpg",
+    logoUrl: "/images/clubs/ardennes/hbc-vouziers.webp",
   },
   {
     id: 5608028 as ID,
@@ -46,7 +46,7 @@ export const clubsData: Club[] = [
     city: "CHARLEVILLE-MÉZIÈRES",
     depNum: "08" as ID,
     depName: "ardennes",
-    logoUrl: "/images/clubs/ardennes/charleville-mezieres-hb.jpg",
+    logoUrl: "/images/clubs/ardennes/charleville-mezieres-hb.webp",
   },
   {
     id: 5608034 as ID,
@@ -55,7 +55,7 @@ export const clubsData: Club[] = [
     city: "AUBRIVES",
     depNum: "08" as ID,
     depName: "ardennes",
-    logoUrl: "/images/clubs/ardennes/handball-club-aubrives-la-pointe.jpg",
+    logoUrl: "/images/clubs/ardennes/handball-club-aubrives-la-pointe.webp",
   },
 
   // Aube (10)
@@ -66,7 +66,7 @@ export const clubsData: Club[] = [
     city: "BAR-SUR-SEINE",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/fjv-bar-sur-seine.jpg",
+    logoUrl: "/images/clubs/aube/fjv-bar-sur-seine.webp",
   },
   {
     id: 5610002 as ID,
@@ -75,7 +75,7 @@ export const clubsData: Club[] = [
     city: "TROYES",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/entente-troyes-aube-champagne-handball.jpg",
+    logoUrl: "/images/clubs/aube/entente-troyes-aube-champagne-handball.webp",
   },
   {
     id: 5610004 as ID,
@@ -84,7 +84,7 @@ export const clubsData: Club[] = [
     city: "ROMILLY-SUR-SEINE",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/romilly-hb.jpg",
+    logoUrl: "/images/clubs/aube/romilly-hb.webp",
   },
   {
     id: 5610006 as ID,
@@ -93,7 +93,7 @@ export const clubsData: Club[] = [
     city: "BRIENNE-LE-CHÂTEAU",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/brienne-handball.jpg",
+    logoUrl: "/images/clubs/aube/brienne-handball.webp",
   },
   {
     id: 5610010 as ID,
@@ -102,7 +102,7 @@ export const clubsData: Club[] = [
     city: "SAINTE-MAURE",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/ass-ste-maure-troyes.jpg",
+    logoUrl: "/images/clubs/aube/ass-ste-maure-troyes.webp",
   },
   {
     id: 5610014 as ID,
@@ -111,16 +111,16 @@ export const clubsData: Club[] = [
     city: "ROSIÈRES-PRÈS-TROYES",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/rosieres-st-julien-hb.jpg",
+    logoUrl: "/images/clubs/aube/rosieres-st-julien-hb.webp",
   },
   {
     id: 5610015 as ID,
     name: "ESC PAYS D'ORIENT",
-    slug: "esc-pays-d-orient",
-    city: "TROYES",
+    slug: "esc-pays-dorient",
+    city: "VERRIERES",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/esc-pays-d-orient.jpg",
+    logoUrl: "/images/clubs/aube/esc-pays-dorient.webp",
   },
   {
     id: 5610017 as ID,
@@ -129,7 +129,7 @@ export const clubsData: Club[] = [
     city: "TROYES",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/asptt-troyes.jpg",
+    logoUrl: "/images/clubs/aube/asptt-troyes.webp",
   },
   {
     id: 5610018 as ID,
@@ -138,7 +138,7 @@ export const clubsData: Club[] = [
     city: "SAINTE-MAURE",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/us-ste-maure.jpg",
+    logoUrl: "/images/clubs/aube/us-ste-maure.webp",
   },
   {
     id: 5610023 as ID,
@@ -147,7 +147,7 @@ export const clubsData: Club[] = [
     city: "VENDEUVRE-SUR-BARSE",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/hbc-vendeuvre.jpg",
+    logoUrl: "/images/clubs/aube/hbc-vendeuvre.webp",
   },
   {
     id: 5610027 as ID,
@@ -156,7 +156,7 @@ export const clubsData: Club[] = [
     city: "AIX-EN-OTHE",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/cs-vallee-de-la-vanne-handball.jpg",
+    logoUrl: "/images/clubs/aube/cs-vallee-de-la-vanne-handball.webp",
   },
   {
     id: 5610029 as ID,
@@ -165,7 +165,7 @@ export const clubsData: Club[] = [
     city: "LA CHAPELLE-SAINT-LUC",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/hbc-savino-chapelain.jpg",
+    logoUrl: "/images/clubs/aube/hbc-savino-chapelain.webp",
   },
   {
     id: 5610031 as ID,
@@ -174,16 +174,16 @@ export const clubsData: Club[] = [
     city: "BAR-SUR-AUBE",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/pl-bar-sur-aube-handball.jpg",
+    logoUrl: "/images/clubs/aube/pl-bar-sur-aube-handball.webp",
   },
   {
     id: 5610032 as ID,
     name: "ARCIS HANDBALL FEMININ",
     slug: "arcis-handball-feminin",
-    city: "ARCIS-SUR-AUBE",
+    city: "POUAN LES VALLEES",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/arcis-handball-feminin.jpg",
+    logoUrl: "/images/clubs/aube/arcis-handball-feminin.webp",
   },
   {
     id: 5610035 as ID,
@@ -192,7 +192,7 @@ export const clubsData: Club[] = [
     city: "NOGENT-SUR-SEINE",
     depNum: "10" as ID,
     depName: "aube",
-    logoUrl: "/images/clubs/aube/nogent-hb.jpg",
+    logoUrl: "/images/clubs/aube/nogent-hb.webp",
   },
 
   // Marne (51)
@@ -203,7 +203,7 @@ export const clubsData: Club[] = [
     city: "VITRY-LE-FRANÇOIS",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/as-vitry.jpg",
+    logoUrl: "/images/clubs/marne/as-vitry.webp",
   },
   {
     id: 5651003 as ID,
@@ -212,7 +212,7 @@ export const clubsData: Club[] = [
     city: "CHÂLONS-EN-CHAMPAGNE",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/asptt-handball-chalons-en-champagne.jpg",
+    logoUrl: "/images/clubs/marne/asptt-handball-chalons-en-champagne.webp",
   },
   {
     id: 5651004 as ID,
@@ -221,7 +221,7 @@ export const clubsData: Club[] = [
     city: "MOURMELON",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/cad-mourmelon.jpg",
+    logoUrl: "/images/clubs/marne/cad-mourmelon.webp",
   },
   {
     id: 5651005 as ID,
@@ -230,7 +230,7 @@ export const clubsData: Club[] = [
     city: "EPERNAY",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/rc-epernay-hb.jpg",
+    logoUrl: "/images/clubs/marne/rc-epernay-hb.webp",
   },
   {
     id: 5651011 as ID,
@@ -239,16 +239,16 @@ export const clubsData: Club[] = [
     city: "ST BRICE-COURCELLES",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/as-st-brice.jpg",
+    logoUrl: "/images/clubs/marne/as-st-brice.webp",
   },
   {
     id: 5651012 as ID,
     name: "ASSOCIATION SPORTIVE LAIQUE D'AY",
-    slug: "association-sportive-laique-d-ay",
+    slug: "association-sportive-laique-day",
     city: "AY",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/association-sportive-laique-d-ay.jpg",
+    logoUrl: "/images/clubs/marne/association-sportive-laique-day.webp",
   },
   {
     id: 5651014 as ID,
@@ -257,7 +257,7 @@ export const clubsData: Club[] = [
     city: "TAISSY",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/taissy-club-handball.jpg",
+    logoUrl: "/images/clubs/marne/taissy-club-handball.webp",
   },
   {
     id: 5651015 as ID,
@@ -266,7 +266,7 @@ export const clubsData: Club[] = [
     city: "CONNANTRE",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/esc-connantre.jpg",
+    logoUrl: "/images/clubs/marne/esc-connantre.webp",
   },
   {
     id: 5651019 as ID,
@@ -275,7 +275,7 @@ export const clubsData: Club[] = [
     city: "REIMS",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/reims-champagne-handball.jpg",
+    logoUrl: "/images/clubs/marne/reims-champagne-handball.webp",
   },
   {
     id: 5651025 as ID,
@@ -284,25 +284,25 @@ export const clubsData: Club[] = [
     city: "AVIZE",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/asc-avize-hb.jpg",
+    logoUrl: "/images/clubs/marne/asc-avize-hb.webp",
   },
   {
     id: 5651026 as ID,
     name: "RACING CLUB DU CANTON D'ANGLURE",
-    slug: "racing-club-du-canton-d-anglure",
+    slug: "racing-club-du-canton-danglure",
     city: "ANGLURE",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/racing-club-du-canton-d-anglure.jpg",
+    logoUrl: "/images/clubs/marne/racing-club-du-canton-danglure.webp",
   },
   {
-    id: 5651028 as ID,
+    id: 5651028 as ID, // Existe plus ?
     name: "ALHB VERTUS",
     slug: "alhb-vertus",
     city: "BLANCS-COTEAUX",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/alhb-vertus.jpg",
+    logoUrl: "/images/clubs/marne/alhb-vertus.webp",
   },
   {
     id: 5651030 as ID,
@@ -311,7 +311,7 @@ export const clubsData: Club[] = [
     city: "TINQUEUX",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/tinqueux-gueux-hc.jpg",
+    logoUrl: "/images/clubs/marne/tinqueux-gueux-hc.webp",
   },
   {
     id: 5651032 as ID,
@@ -320,7 +320,7 @@ export const clubsData: Club[] = [
     city: "BAZANCOURT",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/fjep-bazancourt.jpg",
+    logoUrl: "/images/clubs/marne/fjep-bazancourt.webp",
   },
   {
     id: 5651034 as ID,
@@ -329,7 +329,7 @@ export const clubsData: Club[] = [
     city: "REIMS",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/reims-europe-club-handball.jpg",
+    logoUrl: "/images/clubs/marne/reims-europe-club-handball.webp",
   },
   {
     id: 5651035 as ID,
@@ -338,7 +338,7 @@ export const clubsData: Club[] = [
     city: "FISMES",
     depNum: "51" as ID,
     depName: "marne",
-    logoUrl: "/images/clubs/marne/union-sportive-fismes-ardre-vesle.jpg",
+    logoUrl: "/images/clubs/marne/union-sportive-fismes-ardre-vesle.webp",
   },
 
   // Haute-Marne (52)
@@ -349,7 +349,7 @@ export const clubsData: Club[] = [
     city: "CHAUMONT",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/chaumont-handball.jpg",
+    logoUrl: "/images/clubs/haute-marne/chaumont-handball.webp",
   },
   {
     id: 5652003 as ID,
@@ -358,7 +358,7 @@ export const clubsData: Club[] = [
     city: "FRONCLES",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/as-froncles.jpg",
+    logoUrl: "/images/clubs/haute-marne/as-froncles.webp",
   },
   {
     id: 5652005 as ID,
@@ -367,7 +367,7 @@ export const clubsData: Club[] = [
     city: "CHEVILLON",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/fjep-slic-chevillon.jpg",
+    logoUrl: "/images/clubs/haute-marne/fjep-slic-chevillon.webp",
   },
   {
     id: 5652007 as ID,
@@ -376,7 +376,7 @@ export const clubsData: Club[] = [
     city: "LANGRES",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/handball-langres.jpg",
+    logoUrl: "/images/clubs/haute-marne/handball-langres.webp",
   },
   {
     id: 5652008 as ID,
@@ -385,7 +385,7 @@ export const clubsData: Club[] = [
     city: "MONTIER-EN-DER",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/hb-montier-en-der.jpg",
+    logoUrl: "/images/clubs/haute-marne/hb-montier-en-der.webp",
   },
   {
     id: 5652009 as ID,
@@ -394,7 +394,7 @@ export const clubsData: Club[] = [
     city: "CHALINDREY",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/cs-chalindrey.jpg",
+    logoUrl: "/images/clubs/haute-marne/cs-chalindrey.webp",
   },
   {
     id: 5652015 as ID,
@@ -403,7 +403,7 @@ export const clubsData: Club[] = [
     city: "JOINVILLE",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/co-joinville-handball.jpg",
+    logoUrl: "/images/clubs/haute-marne/co-joinville-handball.webp",
   },
   {
     id: 5652032 as ID,
@@ -412,7 +412,7 @@ export const clubsData: Club[] = [
     city: "VAL-DE-MEUSE",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/handball-club-val-de-meuse.jpg",
+    logoUrl: "/images/clubs/haute-marne/handball-club-val-de-meuse.webp",
   },
   {
     id: 5652040 as ID,
@@ -421,7 +421,7 @@ export const clubsData: Club[] = [
     city: "NOGENT",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/handball-club-nogent.jpg",
+    logoUrl: "/images/clubs/haute-marne/handball-club-nogent.webp",
   },
   {
     id: 5652041 as ID,
@@ -430,7 +430,7 @@ export const clubsData: Club[] = [
     city: "SAINT-DIZIER",
     depNum: "52" as ID,
     depName: "haute-marne",
-    logoUrl: "/images/clubs/haute-marne/saint-dizier-handball.jpg",
+    logoUrl: "/images/clubs/haute-marne/saint-dizier-handball.webp",
   },
 
   // Meurthe-et-Moselle (54)
@@ -442,7 +442,7 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/bassin-mussipontain-handball.jpg",
+      "/images/clubs/meurthe-et-moselle/bassin-mussipontain-handball.webp",
   },
   {
     id: 5654002 as ID,
@@ -451,7 +451,7 @@ export const clubsData: Club[] = [
     city: "LUNÉVILLE",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/luneville-sporting-club.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/luneville-sporting-club.webp",
   },
   {
     id: 5654005 as ID,
@@ -460,7 +460,7 @@ export const clubsData: Club[] = [
     city: "HOMÉCOURT",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/homecourt-handball.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/homecourt-handball.webp",
   },
   {
     id: 5654006 as ID,
@@ -470,7 +470,7 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/amicale-laique-de-neuves-maisons.jpg",
+      "/images/clubs/meurthe-et-moselle/amicale-laique-de-neuves-maisons.webp",
   },
   {
     id: 5654007 as ID,
@@ -479,7 +479,7 @@ export const clubsData: Club[] = [
     city: "NANCY",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/nancy-handball.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/nancy-handball.webp",
   },
   {
     id: 5654009 as ID,
@@ -488,7 +488,7 @@ export const clubsData: Club[] = [
     city: "DOMBASLE-SUR-MEURTHE",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/dombasle-sports-handball.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/dombasle-sports-handball.webp",
   },
   {
     id: 5654014 as ID,
@@ -498,7 +498,7 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/longuyonnaise-entente-sportive.jpg",
+      "/images/clubs/meurthe-et-moselle/longuyonnaise-entente-sportive.webp",
   },
   {
     id: 5654015 as ID,
@@ -508,7 +508,7 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/pagny-sur-moselle-as-handball.jpg",
+      "/images/clubs/meurthe-et-moselle/pagny-sur-moselle-as-handball.webp",
   },
   {
     id: 5654019 as ID,
@@ -517,7 +517,7 @@ export const clubsData: Club[] = [
     city: "VILLERUPT",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/villerupt-handball-club.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/villerupt-handball-club.webp",
   },
   {
     id: 5654021 as ID,
@@ -526,7 +526,7 @@ export const clubsData: Club[] = [
     city: "GORCY",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/gorcy-club-athletique-hb.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/gorcy-club-athletique-hb.webp",
   },
   {
     id: 5654024 as ID,
@@ -535,7 +535,7 @@ export const clubsData: Club[] = [
     city: "COINCOURT",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/coincourt-foyer-rural.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/coincourt-foyer-rural.webp",
   },
   {
     id: 5654025 as ID,
@@ -544,7 +544,7 @@ export const clubsData: Club[] = [
     city: "SAINT-NICOLAS-DE-PORT",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/st-nicolas-de-port-hbc.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/st-nicolas-de-port-hbc.webp",
   },
   {
     id: 5654027 as ID,
@@ -554,7 +554,7 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/etoile-sportive-de-custines-handball.jpg",
+      "/images/clubs/meurthe-et-moselle/etoile-sportive-de-custines-handball.webp",
   },
   {
     id: 5654031 as ID,
@@ -563,7 +563,7 @@ export const clubsData: Club[] = [
     city: "TOUL",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/toul-handball-club.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/toul-handball-club.webp",
   },
   {
     id: 5654033 as ID,
@@ -572,7 +572,7 @@ export const clubsData: Club[] = [
     city: "ROSIÈRES-AUX-SALINES",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/rosieres-hbc.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/rosieres-hbc.webp",
   },
   {
     id: 5654036 as ID,
@@ -582,16 +582,16 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/mexy-handball-sporting-club.jpg",
+      "/images/clubs/meurthe-et-moselle/mexy-handball-sporting-club.webp",
   },
   {
     id: 5654038 as ID,
     name: "SMEPS HANDBALL 54",
     slug: "smeps-handball-54",
-    city: "PONT-À-MOUSSON",
+    city: "ESSEY LES NANCY",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/smeps-handball-54.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/smeps-handball-54.webp",
   },
   {
     id: 5654040 as ID,
@@ -600,7 +600,7 @@ export const clubsData: Club[] = [
     city: "CONFLANS-EN-JARNISY",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/conflans-handball-club.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/conflans-handball-club.webp",
   },
   {
     id: 5654042 as ID,
@@ -609,7 +609,7 @@ export const clubsData: Club[] = [
     city: "JARVILLE-LA-MALGRANGE",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/jarville-jeunes-handball.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/jarville-jeunes-handball.webp",
   },
   {
     id: 5654052 as ID,
@@ -619,7 +619,7 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/bayon-association-sportive-et-culturelle.jpg",
+      "/images/clubs/meurthe-et-moselle/bayon-association-sportive-et-culturelle.webp",
   },
   {
     id: 5654054 as ID,
@@ -628,17 +628,17 @@ export const clubsData: Club[] = [
     city: "MAXÉVILLE",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/as-maxeville.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/as-maxeville.webp",
   },
   {
     id: 5654059 as ID,
     name: "BLAINVILLE DAMELEVIERES AMICALE CHEMINOTS",
     slug: "blainville-damelevieres-amicale-cheminots",
-    city: "DAMELEVIÈRES",
+    city: "BLAINVILLE SUR L EAU",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/blainville-damelevieres-amicale-cheminots.jpg",
+      "/images/clubs/meurthe-et-moselle/blainville-damelevieres-amicale-cheminots.webp",
   },
   {
     id: 5654065 as ID,
@@ -647,7 +647,7 @@ export const clubsData: Club[] = [
     city: "LIVERDUN",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/liverdun-hbc-89.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/liverdun-hbc-89.webp",
   },
   {
     id: 5654066 as ID,
@@ -656,7 +656,7 @@ export const clubsData: Club[] = [
     city: "VARANGEVILLE",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/varangeville-hcv.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/varangeville-hcv.webp",
   },
   {
     id: 5654071 as ID,
@@ -666,7 +666,7 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/flavigny-fleville-richardmenil-hbc.jpg",
+      "/images/clubs/meurthe-et-moselle/flavigny-fleville-richardmenil-hbc.webp",
   },
   {
     id: 5654074 as ID,
@@ -675,7 +675,7 @@ export const clubsData: Club[] = [
     city: "VILLERS-LÈS-NANCY",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/villers-handball.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/villers-handball.webp",
   },
   {
     id: 5654076 as ID,
@@ -684,7 +684,7 @@ export const clubsData: Club[] = [
     city: "NANCY",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/hbc-nancy-sluc.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/hbc-nancy-sluc.webp",
   },
   {
     id: 5654080 as ID,
@@ -693,7 +693,7 @@ export const clubsData: Club[] = [
     city: "HERSERANGE",
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
-    logoUrl: "/images/clubs/meurthe-et-moselle/p2h-handball.jpg",
+    logoUrl: "/images/clubs/meurthe-et-moselle/p2h-handball.webp",
   },
   {
     id: 5654085 as ID,
@@ -703,7 +703,7 @@ export const clubsData: Club[] = [
     depNum: "54" as ID,
     depName: "meurthe-et-moselle",
     logoUrl:
-      "/images/clubs/meurthe-et-moselle/coeur-du-pays-haut-handball.jpg",
+      "/images/clubs/meurthe-et-moselle/coeur-du-pays-haut-handball.webp",
   },
 
   // Meuse (55)
@@ -714,7 +714,7 @@ export const clubsData: Club[] = [
     city: "BAR-LE-DUC",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/asptt-bar-le-duc-handball.jpg",
+    logoUrl: "/images/clubs/meuse/asptt-bar-le-duc-handball.webp",
   },
   {
     id: 5655003 as ID,
@@ -723,7 +723,7 @@ export const clubsData: Club[] = [
     city: "EUVILLE",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/cs-euville.jpg",
+    logoUrl: "/images/clubs/meuse/cs-euville.webp",
   },
   {
     id: 5655006 as ID,
@@ -732,16 +732,16 @@ export const clubsData: Club[] = [
     city: "VAUBÉCOURT",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/vaubecourt-maison-des-jeunes.jpg",
+    logoUrl: "/images/clubs/meuse/vaubecourt-maison-des-jeunes.webp",
   },
   {
     id: 5655008 as ID,
     name: "UNION SPORTIVE ARGONNE MEUSE",
     slug: "union-sportive-argonne-meuse",
-    city: "ARGONNE",
+    city: "CLERMONT EN ARGONNE",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/union-sportive-argonne-meuse.jpg",
+    logoUrl: "/images/clubs/meuse/union-sportive-argonne-meuse.webp",
   },
   {
     id: 5655010 as ID,
@@ -750,7 +750,7 @@ export const clubsData: Club[] = [
     city: "COMMERCY",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/handball-club-commercy.jpg",
+    logoUrl: "/images/clubs/meuse/handball-club-commercy.webp",
   },
   {
     id: 5655011 as ID,
@@ -759,7 +759,7 @@ export const clubsData: Club[] = [
     city: "ETAIN",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/etain-rayon-artistique-sportif-stainois.jpg",
+    logoUrl: "/images/clubs/meuse/etain-rayon-artistique-sportif-stainois.webp",
   },
   {
     id: 5655014 as ID,
@@ -768,7 +768,7 @@ export const clubsData: Club[] = [
     city: "ST MIHIEL",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/st-mihiel-hbc.jpg",
+    logoUrl: "/images/clubs/meuse/st-mihiel-hbc.webp",
   },
   {
     id: 5655020 as ID,
@@ -777,7 +777,7 @@ export const clubsData: Club[] = [
     city: "REVIGNY-SUR-ORNAIN",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/revigny-ornain-club-des-jeunes.jpg",
+    logoUrl: "/images/clubs/meuse/revigny-ornain-club-des-jeunes.webp",
   },
   {
     id: 5655025 as ID,
@@ -786,7 +786,7 @@ export const clubsData: Club[] = [
     city: "VOID-VACON",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/las-void-vacon-handball.jpg",
+    logoUrl: "/images/clubs/meuse/las-void-vacon-handball.webp",
   },
   {
     id: 5655031 as ID,
@@ -795,7 +795,7 @@ export const clubsData: Club[] = [
     city: "VIGNEULLES LES HATTONCHATEL",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/vigneulles-handball-as.jpg",
+    logoUrl: "/images/clubs/meuse/vigneulles-handball-as.webp",
   },
   {
     id: 5655040 as ID,
@@ -804,7 +804,7 @@ export const clubsData: Club[] = [
     city: "MONTMEDY",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/montmedy-hbc.jpg",
+    logoUrl: "/images/clubs/meuse/montmedy-hbc.webp",
   },
   {
     id: 5655045 as ID,
@@ -813,7 +813,7 @@ export const clubsData: Club[] = [
     city: "VERDUN",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/verdun-agglomeration-handball.jpg",
+    logoUrl: "/images/clubs/meuse/verdun-agglomeration-handball.webp",
   },
   {
     id: 5655047 as ID,
@@ -822,16 +822,16 @@ export const clubsData: Club[] = [
     city: "DAMVILLERS",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/damvillers-hbc.jpg",
+    logoUrl: "/images/clubs/meuse/damvillers-hbc.webp",
   },
   {
     id: 5655048 as ID,
     name: "7 SAULX ET PERTHOIS HANDBALL",
     slug: "7-saulx-et-perthois-handball",
-    city: "SAULX-EN-BARROIS",
+    city: "ANCERVILLE",
     depNum: "55" as ID,
     depName: "meuse",
-    logoUrl: "/images/clubs/meuse/7-saulx-et-perthois-handball.jpg",
+    logoUrl: "/images/clubs/meuse/7-saulx-et-perthois-handball.webp",
   },
 
   // Moselle (57)
@@ -842,7 +842,7 @@ export const clubsData: Club[] = [
     city: "FORBACH",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/forbach-moselle-est-handball.jpg",
+    logoUrl: "/images/clubs/moselle/forbach-moselle-est-handball.webp",
   },
   {
     id: 5657005 as ID,
@@ -851,7 +851,7 @@ export const clubsData: Club[] = [
     city: "YUTZ",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/yutz-handball.jpg",
+    logoUrl: "/images/clubs/moselle/yutz-handball.webp",
   },
   {
     id: 5657006 as ID,
@@ -860,7 +860,7 @@ export const clubsData: Club[] = [
     city: "VAL DE FENSCH",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/fensch-vallee-handball.jpg",
+    logoUrl: "/images/clubs/moselle/fensch-vallee-handball.webp",
   },
   {
     id: 5657008 as ID,
@@ -869,7 +869,7 @@ export const clubsData: Club[] = [
     city: "HAGONDANGE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/es-hagondange-handball.jpg",
+    logoUrl: "/images/clubs/moselle/es-hagondange-handball.webp",
   },
   {
     id: 5657013 as ID,
@@ -878,16 +878,16 @@ export const clubsData: Club[] = [
     city: "BOUZONVILLE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/bouzonville-handball.jpg",
+    logoUrl: "/images/clubs/moselle/bouzonville-handball.webp",
   },
   {
-    id: 5657014 as ID,
+    id: 5657014 as ID, // Fusion avec EHR
     name: "HETTANGE GRANDE",
     slug: "hettange-grande",
     city: "HETTANGE-GRANDE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/hettange-grande.jpg",
+    logoUrl: "/images/clubs/moselle/hettange-grande.webp",
   },
   {
     id: 5657016 as ID,
@@ -896,7 +896,7 @@ export const clubsData: Club[] = [
     city: "GUÉNANGE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/guenange.jpg",
+    logoUrl: "/images/clubs/moselle/guenange.webp",
   },
   {
     id: 5657023 as ID,
@@ -905,7 +905,7 @@ export const clubsData: Club[] = [
     city: "SARREBOURG",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/sarrebourg-moselle-sud-handball.jpg",
+    logoUrl: "/images/clubs/moselle/sarrebourg-moselle-sud-handball.webp",
   },
   {
     id: 5657025 as ID,
@@ -914,7 +914,7 @@ export const clubsData: Club[] = [
     city: "BOULAY MOSELLE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/cesc-handball-boulay.jpg",
+    logoUrl: "/images/clubs/moselle/cesc-handball-boulay.webp",
   },
   {
     id: 5657026 as ID,
@@ -923,7 +923,7 @@ export const clubsData: Club[] = [
     city: "METZ",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/metz-magny-hb.jpg",
+    logoUrl: "/images/clubs/moselle/metz-magny-hb.webp",
   },
   {
     id: 5657027 as ID,
@@ -932,7 +932,7 @@ export const clubsData: Club[] = [
     city: "SARRALBE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/sarralbe.jpg",
+    logoUrl: "/images/clubs/moselle/sarralbe.webp",
   },
   {
     id: 5657029 as ID,
@@ -941,7 +941,7 @@ export const clubsData: Club[] = [
     city: "AMNEVILLE LES THERMES",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/amneville.jpg",
+    logoUrl: "/images/clubs/moselle/amneville.webp",
   },
   {
     id: 5657031 as ID,
@@ -950,7 +950,7 @@ export const clubsData: Club[] = [
     city: "FOLSCHVILLER",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/folschviller.jpg",
+    logoUrl: "/images/clubs/moselle/folschviller.webp",
   },
   {
     id: 5657032 as ID,
@@ -959,7 +959,7 @@ export const clubsData: Club[] = [
     city: "COURCELLES-CHAUSSY",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/courcelles-chaussy.jpg",
+    logoUrl: "/images/clubs/moselle/courcelles-chaussy.webp",
   },
   {
     id: 5657033 as ID,
@@ -968,7 +968,7 @@ export const clubsData: Club[] = [
     city: "ROMBAS",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/rombas.jpg",
+    logoUrl: "/images/clubs/moselle/rombas.webp",
   },
   {
     id: 5657034 as ID,
@@ -977,7 +977,7 @@ export const clubsData: Club[] = [
     city: "FONTOY",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/fontoy-us-hb.jpg",
+    logoUrl: "/images/clubs/moselle/fontoy-us-hb.webp",
   },
   {
     id: 5657035 as ID,
@@ -986,16 +986,16 @@ export const clubsData: Club[] = [
     city: "KANFEN",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/kanfen.jpg",
+    logoUrl: "/images/clubs/moselle/kanfen.webp",
   },
   {
-    id: 5657036 as ID,
+    id: 5657036 as ID, // Anciennement Rodemack
     name: "ENTENTE HANDBALL RIVES CATTENOM ET ENVIRON",
     slug: "entente-handball-rives-cattenom-et-environ",
     city: "HETTANGE GRANDE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/entente-handball-rives-cattenom-et-environ.jpg",
+    logoUrl: "/images/clubs/moselle/entente-handball-rives-cattenom-et-environ.webp",
   },
   {
     id: 5657037 as ID,
@@ -1004,7 +1004,7 @@ export const clubsData: Club[] = [
     city: "THIONVILLE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/thionville-moselle-handball.jpg",
+    logoUrl: "/images/clubs/moselle/thionville-moselle-handball.webp",
   },
   {
     id: 5657041 as ID,
@@ -1013,7 +1013,7 @@ export const clubsData: Club[] = [
     city: "PORCELETTE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/porcelette.jpg",
+    logoUrl: "/images/clubs/moselle/porcelette.webp",
   },
   {
     id: 5657042 as ID,
@@ -1022,7 +1022,7 @@ export const clubsData: Club[] = [
     city: "MARLY",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/marly.jpg",
+    logoUrl: "/images/clubs/moselle/marly.webp",
   },
   {
     id: 5657043 as ID,
@@ -1031,7 +1031,7 @@ export const clubsData: Club[] = [
     city: "FALCK",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/falck.jpg",
+    logoUrl: "/images/clubs/moselle/falck.webp",
   },
   {
     id: 5657052 as ID,
@@ -1040,7 +1040,7 @@ export const clubsData: Club[] = [
     city: "CHÂTEAU-SALINS",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/chateau-salins.jpg",
+    logoUrl: "/images/clubs/moselle/chateau-salins.webp",
   },
   {
     id: 5657056 as ID,
@@ -1049,7 +1049,7 @@ export const clubsData: Club[] = [
     city: "BURE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/hbc-bure.jpg",
+    logoUrl: "/images/clubs/moselle/hbc-bure.webp",
   },
   {
     id: 5657079 as ID,
@@ -1058,7 +1058,7 @@ export const clubsData: Club[] = [
     city: "HAYANGE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/hayange.jpg",
+    logoUrl: "/images/clubs/moselle/hayange.webp",
   },
   {
     id: 5657080 as ID,
@@ -1067,7 +1067,7 @@ export const clubsData: Club[] = [
     city: "WOIPPY",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/woippy-handball.jpg",
+    logoUrl: "/images/clubs/moselle/woippy-handball.webp",
   },
   {
     id: 5657085 as ID,
@@ -1076,16 +1076,16 @@ export const clubsData: Club[] = [
     city: "METZ",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/metz-handball.jpg",
+    logoUrl: "/images/clubs/moselle/metz-handball.webp",
   },
   {
     id: 5657086 as ID,
     name: "BLR ARC MOSELLAN",
     slug: "blr-arc-mosellan",
-    city: "ARC MOSELLAN",
+    city: "BOUSSE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/blr-arc-mosellan.jpg",
+    logoUrl: "/images/clubs/moselle/blr-arc-mosellan.webp",
   },
   {
     id: 5657089 as ID,
@@ -1094,7 +1094,7 @@ export const clubsData: Club[] = [
     city: "AMANVILLERS",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/amanvillers-hbc.jpg",
+    logoUrl: "/images/clubs/moselle/amanvillers-hbc.webp",
   },
   {
     id: 5657090 as ID,
@@ -1103,7 +1103,7 @@ export const clubsData: Club[] = [
     city: "MONTIGNY-LÈS-METZ",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/hbc-montois-la-montagne.jpg",
+    logoUrl: "/images/clubs/moselle/hbc-montois-la-montagne.webp",
   },
   {
     id: 5657094 as ID,
@@ -1112,7 +1112,7 @@ export const clubsData: Club[] = [
     city: "GANDRANGE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/gandrange.jpg",
+    logoUrl: "/images/clubs/moselle/gandrange.webp",
   },
   {
     id: 5657095 as ID,
@@ -1121,7 +1121,7 @@ export const clubsData: Club[] = [
     city: "MONTIGNY-LÈS-METZ",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/montigny-les-metz.jpg",
+    logoUrl: "/images/clubs/moselle/montigny-les-metz.webp",
   },
   {
     id: 5657096 as ID,
@@ -1130,16 +1130,16 @@ export const clubsData: Club[] = [
     city: "STIRING-WENDEL",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/stiring.jpg",
+    logoUrl: "/images/clubs/moselle/stiring.webp",
   },
   {
     id: 5657098 as ID,
     name: "HANDBALL CLUB CARLING L’HOPITAL",
-    slug: "handball-club-carling-l-hopital",
+    slug: "handball-club-carling-lhopital",
     city: "CARLING",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/handball-club-carling-l-hopital.jpg",
+    logoUrl: "/images/clubs/moselle/handball-club-carling-lhopital.webp",
   },
   {
     id: 5657099 as ID,
@@ -1148,7 +1148,7 @@ export const clubsData: Club[] = [
     city: "VIGY",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/handball-club-de-vigy.jpg",
+    logoUrl: "/images/clubs/moselle/handball-club-de-vigy.webp",
   },
   {
     id: 5657101 as ID,
@@ -1157,7 +1157,7 @@ export const clubsData: Club[] = [
     city: "HOMBOURG-HAUT",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/hombourg-handball-club.jpg",
+    logoUrl: "/images/clubs/moselle/hombourg-handball-club.webp",
   },
   {
     id: 5657102 as ID,
@@ -1166,7 +1166,7 @@ export const clubsData: Club[] = [
     city: "KOENIGSMACKER",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/deux-vallees-koenigsmacker.jpg",
+    logoUrl: "/images/clubs/moselle/deux-vallees-koenigsmacker.webp",
   },
   {
     id: 5657103 as ID,
@@ -1175,7 +1175,7 @@ export const clubsData: Club[] = [
     city: "VAL SAINT PIERRE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/val-st-pierre.jpg",
+    logoUrl: "/images/clubs/moselle/val-st-pierre.webp",
   },
   {
     id: 5657108 as ID,
@@ -1184,7 +1184,7 @@ export const clubsData: Club[] = [
     city: "SIERCK-LES-BAINS",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/sports-et-loisirs-du-pays-sierckois.jpg",
+    logoUrl: "/images/clubs/moselle/sports-et-loisirs-du-pays-sierckois.webp",
   },
   {
     id: 5657110 as ID,
@@ -1193,7 +1193,7 @@ export const clubsData: Club[] = [
     city: "SARREGUEMINES",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/sarreguemines-hb.jpg",
+    logoUrl: "/images/clubs/moselle/sarreguemines-hb.webp",
   },
   {
     id: 5657113 as ID,
@@ -1202,7 +1202,7 @@ export const clubsData: Club[] = [
     city: "MOULINS LES METZ",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/moulins-les-metz-handball.jpg",
+    logoUrl: "/images/clubs/moselle/moulins-les-metz-handball.webp",
   },
   {
     id: 5657115 as ID,
@@ -1211,7 +1211,7 @@ export const clubsData: Club[] = [
     city: "PLAPPEVILLE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/handball-club-de-plappeville.jpg",
+    logoUrl: "/images/clubs/moselle/handball-club-de-plappeville.webp",
   },
   {
     id: 5657116 as ID,
@@ -1220,7 +1220,7 @@ export const clubsData: Club[] = [
     city: "BEHREN-LÈS-FORBACH",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/handball-club-de-behren.jpg",
+    logoUrl: "/images/clubs/moselle/handball-club-de-behren.webp",
   },
   {
     id: 5657117 as ID,
@@ -1229,7 +1229,7 @@ export const clubsData: Club[] = [
     city: "KÉDANGE-SUR-CANNER",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/handball-club-de-kedange-sur-canner.jpg",
+    logoUrl: "/images/clubs/moselle/handball-club-de-kedange-sur-canner.webp",
   },
   {
     id: 5657118 as ID,
@@ -1238,7 +1238,7 @@ export const clubsData: Club[] = [
     city: "TALANGE",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/talange-handball.jpg",
+    logoUrl: "/images/clubs/moselle/talange-handball.webp",
   },
   {
     id: 5657119 as ID,
@@ -1247,7 +1247,7 @@ export const clubsData: Club[] = [
     city: "METZ",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/3mt.jpg",
+    logoUrl: "/images/clubs/moselle/3mt.webp",
   },
   {
     id: 5657120 as ID,
@@ -1256,7 +1256,7 @@ export const clubsData: Club[] = [
     city: "CUVRY",
     depNum: "57" as ID,
     depName: "moselle",
-    logoUrl: "/images/clubs/moselle/cuvry-handball-loisir.jpg",
+    logoUrl: "/images/clubs/moselle/cuvry-handball-loisir.webp",
   },
 
   // Bas-Rhin (67)
@@ -1267,7 +1267,7 @@ export const clubsData: Club[] = [
     city: "HOCHFELDEN",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/hochfelden-dettwiller.jpg",
+    logoUrl: "/images/clubs/bas-rhin/hochfelden-dettwiller.webp",
   },
   {
     id: 5667003 as ID,
@@ -1277,7 +1277,7 @@ export const clubsData: Club[] = [
     depNum: "67" as ID,
     depName: "bas-rhin",
     logoUrl:
-      "/images/clubs/bas-rhin/e-strasbourg-schiltigheim-alsace-handball.jpg",
+      "/images/clubs/bas-rhin/e-strasbourg-schiltigheim-alsace-handball.webp",
   },
   {
     id: 5667004 as ID,
@@ -1286,7 +1286,7 @@ export const clubsData: Club[] = [
     city: "SÉLESTAT",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/selestat-alsace-handball.jpg",
+    logoUrl: "/images/clubs/bas-rhin/selestat-alsace-handball.webp",
   },
   {
     id: 5667006 as ID,
@@ -1295,7 +1295,7 @@ export const clubsData: Club[] = [
     city: "STRASBOURG",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/strasbourg-asptt.jpg",
+    logoUrl: "/images/clubs/bas-rhin/strasbourg-asptt.webp",
   },
   {
     id: 5667008 as ID,
@@ -1304,7 +1304,7 @@ export const clubsData: Club[] = [
     city: "STRASBOURG",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/strasbourg-uc.jpg",
+    logoUrl: "/images/clubs/bas-rhin/strasbourg-uc.webp",
   },
   {
     id: 5667011 as ID,
@@ -1313,7 +1313,7 @@ export const clubsData: Club[] = [
     city: "BARR",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/barr.jpg",
+    logoUrl: "/images/clubs/bas-rhin/barr.webp",
   },
   {
     id: 5667013 as ID,
@@ -1322,7 +1322,7 @@ export const clubsData: Club[] = [
     city: "BENFELD",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/benfeld.jpg",
+    logoUrl: "/images/clubs/bas-rhin/benfeld.webp",
   },
   {
     id: 5667014 as ID,
@@ -1331,7 +1331,7 @@ export const clubsData: Club[] = [
     city: "BETSCHDORF",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/betschdorf.jpg",
+    logoUrl: "/images/clubs/bas-rhin/betschdorf.webp",
   },
   {
     id: 5667015 as ID,
@@ -1340,7 +1340,7 @@ export const clubsData: Club[] = [
     city: "BISCHWILLER",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/bischwiller.jpg",
+    logoUrl: "/images/clubs/bas-rhin/bischwiller.webp",
   },
   {
     id: 5667021 as ID,
@@ -1349,7 +1349,7 @@ export const clubsData: Club[] = [
     city: "DURSTEL",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/avenir-durstel.jpg",
+    logoUrl: "/images/clubs/bas-rhin/avenir-durstel.webp",
   },
   {
     id: 5667022 as ID,
@@ -1358,7 +1358,7 @@ export const clubsData: Club[] = [
     city: "ECKBOLSHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/eckbolsheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/eckbolsheim.webp",
   },
   {
     id: 5667023 as ID,
@@ -1367,7 +1367,7 @@ export const clubsData: Club[] = [
     city: "ERSTEIN",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/erstein.jpg",
+    logoUrl: "/images/clubs/bas-rhin/erstein.webp",
   },
   {
     id: 5667026 as ID,
@@ -1376,7 +1376,7 @@ export const clubsData: Club[] = [
     city: "HAGUENAU",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/haguenau.jpg",
+    logoUrl: "/images/clubs/bas-rhin/haguenau.webp",
   },
   {
     id: 5667027 as ID,
@@ -1385,7 +1385,7 @@ export const clubsData: Club[] = [
     city: "HILSENHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/hilsenheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/hilsenheim.webp",
   },
   {
     id: 5667028 as ID,
@@ -1394,7 +1394,7 @@ export const clubsData: Club[] = [
     city: "HOENHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/hoenheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/hoenheim.webp",
   },
   {
     id: 5667029 as ID,
@@ -1403,7 +1403,7 @@ export const clubsData: Club[] = [
     city: "HOERDT",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/hoerdt.jpg",
+    logoUrl: "/images/clubs/bas-rhin/hoerdt.webp",
   },
   {
     id: 5667030 as ID,
@@ -1412,7 +1412,7 @@ export const clubsData: Club[] = [
     city: "ILLKIRCH-GRAFFENSTADEN",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/illkirch-graffenstaden.jpg",
+    logoUrl: "/images/clubs/bas-rhin/illkirch-graffenstaden.webp",
   },
   {
     id: 5667034 as ID,
@@ -1421,7 +1421,7 @@ export const clubsData: Club[] = [
     city: "LAUTERBOURG",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/lauterbourg.jpg",
+    logoUrl: "/images/clubs/bas-rhin/lauterbourg.webp",
   },
   {
     id: 5667035 as ID,
@@ -1430,7 +1430,7 @@ export const clubsData: Club[] = [
     city: "MARCKOLSHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/marckolsheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/marckolsheim.webp",
   },
   {
     id: 5667036 as ID,
@@ -1439,7 +1439,7 @@ export const clubsData: Club[] = [
     city: "MARLENHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/marlenheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/marlenheim.webp",
   },
   {
     id: 5667038 as ID,
@@ -1448,7 +1448,7 @@ export const clubsData: Club[] = [
     city: "MOLSHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/molsheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/molsheim.webp",
   },
   {
     id: 5667041 as ID,
@@ -1457,7 +1457,7 @@ export const clubsData: Club[] = [
     city: "OBERNAI",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/obernai.jpg",
+    logoUrl: "/images/clubs/bas-rhin/obernai.webp",
   },
   {
     id: 5667044 as ID,
@@ -1466,7 +1466,7 @@ export const clubsData: Club[] = [
     city: "PLOBSHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/plobsheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/plobsheim.webp",
   },
   {
     id: 5667045 as ID,
@@ -1475,7 +1475,7 @@ export const clubsData: Club[] = [
     city: "REICHSTETT",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/reichstett.jpg",
+    logoUrl: "/images/clubs/bas-rhin/reichstett.webp",
   },
   {
     id: 5667048 as ID,
@@ -1484,25 +1484,25 @@ export const clubsData: Club[] = [
     city: "SELTZ",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/seltz.jpg",
+    logoUrl: "/images/clubs/bas-rhin/seltz.webp",
   },
   {
     id: 5667052 as ID,
     name: "VALLEE DE VILLE",
     slug: "vallee-de-ville",
-    city: "VILLÉ",
+    city: "FOUCHY",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/vallee-de-ville.jpg",
+    logoUrl: "/images/clubs/bas-rhin/vallee-de-ville.webp",
   },
   {
     id: 5667053 as ID,
     name: "VAL DE MODER",
     slug: "val-de-moder",
-    city: "VAL DE MODER",
+    city: "PFAFFENHOFFEN",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/val-de-moder.jpg",
+    logoUrl: "/images/clubs/bas-rhin/val-de-moder.webp",
   },
   {
     id: 5667057 as ID,
@@ -1511,7 +1511,7 @@ export const clubsData: Club[] = [
     city: "WINGEN-SUR-MODER",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/wingen-sur-moder.jpg",
+    logoUrl: "/images/clubs/bas-rhin/wingen-sur-moder.webp",
   },
   {
     id: 5667058 as ID,
@@ -1520,7 +1520,7 @@ export const clubsData: Club[] = [
     city: "WISSEMBOURG",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/wissembourg.jpg",
+    logoUrl: "/images/clubs/bas-rhin/wissembourg.webp",
   },
   {
     id: 5667081 as ID,
@@ -1529,7 +1529,7 @@ export const clubsData: Club[] = [
     city: "WEYERSHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/weyersheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/weyersheim.webp",
   },
   {
     id: 5667083 as ID,
@@ -1538,7 +1538,7 @@ export const clubsData: Club[] = [
     city: "MUTZIG",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/mutzig.jpg",
+    logoUrl: "/images/clubs/bas-rhin/mutzig.webp",
   },
   {
     id: 5667085 as ID,
@@ -1547,16 +1547,16 @@ export const clubsData: Club[] = [
     city: "SAINTE-CROIX-AUX-MINES",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/val-d-argent.jpg",
+    logoUrl: "/images/clubs/bas-rhin/val-d-argent.webp",
   },
   {
-    id: 5667087 as ID,
+    id: 5667087 as ID, // Disparu ?
     name: "HBC RHENAN",
     slug: "hbc-rhenan",
     city: "RHINAU",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/hbc-rhenan.jpg",
+    logoUrl: "/images/clubs/bas-rhin/hbc-rhenan.webp",
   },
   {
     id: 5667090 as ID,
@@ -1565,7 +1565,7 @@ export const clubsData: Club[] = [
     city: "RHINAU",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/rhinau.jpg",
+    logoUrl: "/images/clubs/bas-rhin/rhinau.webp",
   },
   {
     id: 5667094 as ID,
@@ -1574,7 +1574,7 @@ export const clubsData: Club[] = [
     city: "LINGOLSHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/lingolsheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/lingolsheim.webp",
   },
   {
     id: 5667095 as ID,
@@ -1583,7 +1583,7 @@ export const clubsData: Club[] = [
     city: "SOULTZ-SOUS-FORÊTS",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/soultz-kutzenhausen.jpg",
+    logoUrl: "/images/clubs/bas-rhin/soultz-kutzenhausen.webp",
   },
   {
     id: 5667097 as ID,
@@ -1592,7 +1592,7 @@ export const clubsData: Club[] = [
     city: "INGWILLER",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/ingwiller-bouxwiller.jpg",
+    logoUrl: "/images/clubs/bas-rhin/ingwiller-bouxwiller.webp",
   },
   {
     id: 5667098 as ID,
@@ -1601,7 +1601,7 @@ export const clubsData: Club[] = [
     city: "STRASBOURG",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/amicale-des-corpos-67.jpg",
+    logoUrl: "/images/clubs/bas-rhin/amicale-des-corpos-67.webp",
   },
   {
     id: 5667101 as ID,
@@ -1610,7 +1610,7 @@ export const clubsData: Club[] = [
     city: "DAMBACH-LA-VILLE",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/dambach-la-ville.jpg",
+    logoUrl: "/images/clubs/bas-rhin/dambach-la-ville.webp",
   },
   {
     id: 5667111 as ID,
@@ -1619,7 +1619,7 @@ export const clubsData: Club[] = [
     city: "PAYS DE BITCHE",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/vosges-du-nord.jpg",
+    logoUrl: "/images/clubs/bas-rhin/vosges-du-nord.webp",
   },
   {
     id: 5667115 as ID,
@@ -1628,25 +1628,25 @@ export const clubsData: Club[] = [
     city: "BISCHOFFSHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/bischoffsheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/bischoffsheim.webp",
   },
   {
     id: 5667116 as ID,
     name: "STRASBOURG ACHENHEIM TRUCHTERSHEIM",
-    slug: "strasbourg-achenheim-truchtersheim",
-    city: "ACHENHEIM",
+    slug: "achenheim-truchtersheim²",
+    city: "TRUCHTERSHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/strasbourg-achenheim-truchtersheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/achenheim-truchtersheim.webp",
   },
   {
     id: 5667117 as ID,
-    name: "MARMOUTIER WASSELONNE SAVERNE HB",
+    name: "MARMOUTIER WASSELONNE SAVERNE HB", // Anciennement Alpha Handball
     slug: "marmoutier-wasselonne-saverne-hb",
-    city: "SAVERNE",
+    city: "MARMOUTIER",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/marmoutier-wasselonne-saverne-hb.jpg",
+    logoUrl: "/images/clubs/bas-rhin/marmoutier-wasselonne-saverne-hb.webp",
   },
   {
     id: 5667118 as ID,
@@ -1655,7 +1655,7 @@ export const clubsData: Club[] = [
     city: "STRASBOURG",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/strasbourg-sud.jpg",
+    logoUrl: "/images/clubs/bas-rhin/strasbourg-sud.webp",
   },
   {
     id: 5667119 as ID,
@@ -1664,7 +1664,7 @@ export const clubsData: Club[] = [
     city: "GERSTHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/gerstheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/gerstheim.webp",
   },
   {
     id: 5667122 as ID,
@@ -1673,7 +1673,7 @@ export const clubsData: Club[] = [
     city: "ENTZHEIM",
     depNum: "67" as ID,
     depName: "bas-rhin",
-    logoUrl: "/images/clubs/bas-rhin/entzheim.jpg",
+    logoUrl: "/images/clubs/bas-rhin/entzheim.webp",
   },
 
   // Haut-Rhin (68)
@@ -1684,7 +1684,7 @@ export const clubsData: Club[] = [
     city: "ALTKIRCH",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/us-altkirch.jpg",
+    logoUrl: "/images/clubs/haut-rhin/us-altkirch.webp",
   },
   {
     id: 5668003 as ID,
@@ -1693,7 +1693,7 @@ export const clubsData: Club[] = [
     city: "MULHOUSE",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/lynx-mulhouse-handball.jpg",
+    logoUrl: "/images/clubs/haut-rhin/lynx-mulhouse-handball.webp",
   },
   {
     id: 5668004 as ID,
@@ -1702,7 +1702,7 @@ export const clubsData: Club[] = [
     city: "WITTELSHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/asca-wittelsheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/asca-wittelsheim.webp",
   },
   {
     id: 5668004 as ID,
@@ -1711,7 +1711,7 @@ export const clubsData: Club[] = [
     city: "WITTELSHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/wittelsheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/wittelsheim.webp",
   },
   {
     id: 5668018 as ID,
@@ -1720,7 +1720,7 @@ export const clubsData: Club[] = [
     city: "HORBOURG-WIHR",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbc-horbourg-wihr.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbc-horbourg-wihr.webp",
   },
   {
     id: 5668019 as ID,
@@ -1729,7 +1729,7 @@ export const clubsData: Club[] = [
     city: "ILLZACH",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/as-illzach-modenheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/as-illzach-modenheim.webp",
   },
   {
     id: 5668021 as ID,
@@ -1738,7 +1738,7 @@ export const clubsData: Club[] = [
     city: "KINGERSHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbc-kingersheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbc-kingersheim.webp",
   },
   {
     id: 5668022 as ID,
@@ -1747,7 +1747,7 @@ export const clubsData: Club[] = [
     city: "LABAROCHE",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/cs-labaroche.jpg",
+    logoUrl: "/images/clubs/haut-rhin/cs-labaroche.webp",
   },
   {
     id: 5668023 as ID,
@@ -1756,7 +1756,7 @@ export const clubsData: Club[] = [
     city: "NEUF-BRISACH",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/csl-neuf-brisach.jpg",
+    logoUrl: "/images/clubs/haut-rhin/csl-neuf-brisach.webp",
   },
   {
     id: 5668024 as ID,
@@ -1765,7 +1765,7 @@ export const clubsData: Club[] = [
     city: "MASEVAUX",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hb-masevaux.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hb-masevaux.webp",
   },
   {
     id: 5668031 as ID,
@@ -1774,7 +1774,7 @@ export const clubsData: Club[] = [
     city: "DANNEMARIE",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/ucje-dannemarie.jpg",
+    logoUrl: "/images/clubs/haut-rhin/ucje-dannemarie.webp",
   },
   {
     id: 5668033 as ID,
@@ -1783,7 +1783,7 @@ export const clubsData: Club[] = [
     city: "MUNSTER",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hcv-munster.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hcv-munster.webp",
   },
   {
     id: 5668034 as ID,
@@ -1792,7 +1792,7 @@ export const clubsData: Club[] = [
     city: "PFASTATT",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbc-pfastatt.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbc-pfastatt.webp",
   },
   {
     id: 5668035 as ID,
@@ -1801,7 +1801,7 @@ export const clubsData: Club[] = [
     city: "PULVERSHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/us-pulversheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/us-pulversheim.webp",
   },
   {
     id: 5668038 as ID,
@@ -1810,7 +1810,7 @@ export const clubsData: Club[] = [
     city: "ROUFFACH",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/cca-rouffach.jpg",
+    logoUrl: "/images/clubs/haut-rhin/cca-rouffach.webp",
   },
   {
     id: 5668040 as ID,
@@ -1819,7 +1819,7 @@ export const clubsData: Club[] = [
     city: "SAINT-LOUIS",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/cs-st-louis.jpg",
+    logoUrl: "/images/clubs/haut-rhin/cs-st-louis.webp",
   },
   {
     id: 5668041 as ID,
@@ -1828,7 +1828,7 @@ export const clubsData: Club[] = [
     city: "SAUSHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/sausheim-hbc.jpg",
+    logoUrl: "/images/clubs/haut-rhin/sausheim-hbc.webp",
   },
   {
     id: 5668047 as ID,
@@ -1837,7 +1837,7 @@ export const clubsData: Club[] = [
     city: "THANN",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbc-thann-steinbach.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbc-thann-steinbach.webp",
   },
   {
     id: 5668049 as ID,
@@ -1846,7 +1846,7 @@ export const clubsData: Club[] = [
     city: "WITTENHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/us-wittenheim-ensisheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/us-wittenheim-ensisheim.webp",
   },
   {
     id: 5668052 as ID,
@@ -1855,7 +1855,7 @@ export const clubsData: Club[] = [
     city: "FESSENHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbc-fessenheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbc-fessenheim.webp",
   },
   {
     id: 5668057 as ID,
@@ -1864,7 +1864,7 @@ export const clubsData: Club[] = [
     city: "MULHOUSE",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/entente-mulhouse.jpg",
+    logoUrl: "/images/clubs/haut-rhin/entente-mulhouse.webp",
   },
   {
     id: 5668058 as ID,
@@ -1873,7 +1873,7 @@ export const clubsData: Club[] = [
     city: "COLMAR",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/colmar-hc.jpg",
+    logoUrl: "/images/clubs/haut-rhin/colmar-hc.webp",
   },
   {
     id: 5668059 as ID,
@@ -1882,7 +1882,7 @@ export const clubsData: Club[] = [
     city: "WINTZENHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbc-wintzenheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbc-wintzenheim.webp",
   },
   {
     id: 5668061 as ID,
@@ -1891,7 +1891,7 @@ export const clubsData: Club[] = [
     city: "MULHOUSE",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/asco-mulhouse-handball.jpg",
+    logoUrl: "/images/clubs/haut-rhin/asco-mulhouse-handball.webp",
   },
   {
     id: 5668064 as ID,
@@ -1900,7 +1900,7 @@ export const clubsData: Club[] = [
     city: "SIERENTZ",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/sierentz-hbc.jpg",
+    logoUrl: "/images/clubs/haut-rhin/sierentz-hbc.webp",
   },
   {
     id: 5668068 as ID,
@@ -1909,7 +1909,7 @@ export const clubsData: Club[] = [
     city: "BRUNSTATT",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/brunstatt-didenheim-hb.jpg",
+    logoUrl: "/images/clubs/haut-rhin/brunstatt-didenheim-hb.webp",
   },
   {
     id: 5668071 as ID,
@@ -1918,7 +1918,7 @@ export const clubsData: Club[] = [
     city: "SOULTZMATT",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbvn-soultzmatt.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbvn-soultzmatt.webp",
   },
   {
     id: 5668077 as ID,
@@ -1927,7 +1927,7 @@ export const clubsData: Club[] = [
     city: "SOULTZ-HAUT-RHIN",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/soultz-hb.jpg",
+    logoUrl: "/images/clubs/haut-rhin/soultz-hb.webp",
   },
   {
     id: 5668102 as ID,
@@ -1936,7 +1936,7 @@ export const clubsData: Club[] = [
     city: "RIXHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/asptt-mulhouse-rixheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/asptt-mulhouse-rixheim.webp",
   },
   {
     id: 5668105 as ID,
@@ -1945,7 +1945,7 @@ export const clubsData: Club[] = [
     city: "HABSHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/habsheim-st-martin.jpg",
+    logoUrl: "/images/clubs/haut-rhin/habsheim-st-martin.webp",
   },
   {
     id: 5668107 as ID,
@@ -1954,7 +1954,7 @@ export const clubsData: Club[] = [
     city: "CERNAY",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/cernay-wattwiller-handball.jpg",
+    logoUrl: "/images/clubs/haut-rhin/cernay-wattwiller-handball.webp",
   },
   {
     id: 5668108 as ID,
@@ -1963,7 +1963,7 @@ export const clubsData: Club[] = [
     city: "RIBEAUVILLÉ",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbc-ribeauville.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbc-ribeauville.webp",
   },
   {
     id: 5668109 as ID,
@@ -1972,7 +1972,7 @@ export const clubsData: Club[] = [
     city: "GUEBWILLER",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/sasl-guebwiller.jpg",
+    logoUrl: "/images/clubs/haut-rhin/sasl-guebwiller.webp",
   },
   {
     id: 5668113 as ID,
@@ -1981,7 +1981,7 @@ export const clubsData: Club[] = [
     city: "UNGERSHEIM",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hbc-ungersheim.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hbc-ungersheim.webp",
   },
   {
     id: 5668114 as ID,
@@ -1990,7 +1990,7 @@ export const clubsData: Club[] = [
     city: "VILLAGE-NEUF",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/hc-village-neuf.jpg",
+    logoUrl: "/images/clubs/haut-rhin/hc-village-neuf.webp",
   },
   {
     id: 5668118 as ID,
@@ -1999,7 +1999,7 @@ export const clubsData: Club[] = [
     city: "BURNHAUPT",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/burnhaupt-hb.jpg",
+    logoUrl: "/images/clubs/haut-rhin/burnhaupt-hb.webp",
   },
   {
     id: 5668119 as ID,
@@ -2008,7 +2008,7 @@ export const clubsData: Club[] = [
     city: "COLMAR",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/colmar-centre-alsace.jpg",
+    logoUrl: "/images/clubs/haut-rhin/colmar-centre-alsace.webp",
   },
   {
     id: 5668120 as ID,
@@ -2017,7 +2017,7 @@ export const clubsData: Club[] = [
     city: "SAINTE-CROIX-EN-PLAINE",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/sainte-croix-en-plaine-hb.jpg",
+    logoUrl: "/images/clubs/haut-rhin/sainte-croix-en-plaine-hb.webp",
   },
   {
     id: 5668122 as ID,
@@ -2026,7 +2026,7 @@ export const clubsData: Club[] = [
     city: "VIEUX-THANN",
     depNum: "68" as ID,
     depName: "haut-rhin",
-    logoUrl: "/images/clubs/haut-rhin/handball-vieux-thann.jpg",
+    logoUrl: "/images/clubs/haut-rhin/handball-vieux-thann.webp",
   },
 
   // Vosges (88)
@@ -2037,7 +2037,7 @@ export const clubsData: Club[] = [
     city: "NEUFCHÂTEAU",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/neufchateau-hbc.jpg",
+    logoUrl: "/images/clubs/vosges/neufchateau-hbc.webp",
   },
   {
     id: 5688003 as ID,
@@ -2047,7 +2047,7 @@ export const clubsData: Club[] = [
     depNum: "88" as ID,
     depName: "vosges",
     logoUrl:
-      "/images/clubs/vosges/rambervillers-sports-et-loisirs-rambuvetais.jpg",
+      "/images/clubs/vosges/rambervillers-sports-et-loisirs-rambuvetais.webp",
   },
   {
     id: 5688004 as ID,
@@ -2056,7 +2056,7 @@ export const clubsData: Club[] = [
     city: "SAINT-DIÉ-DES-VOSGES",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/st-die-vosges-handball.jpg",
+    logoUrl: "/images/clubs/vosges/st-die-vosges-handball.webp",
   },
   {
     id: 5688005 as ID,
@@ -2065,7 +2065,7 @@ export const clubsData: Club[] = [
     city: "EPINAL",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/epinal-hb.jpg",
+    logoUrl: "/images/clubs/vosges/epinal-hb.webp",
   },
   {
     id: 5688009 as ID,
@@ -2074,7 +2074,7 @@ export const clubsData: Club[] = [
     city: "LE THILLOT",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/vallee-de-la-haute-moselle-hbc.jpg",
+    logoUrl: "/images/clubs/vosges/vallee-de-la-haute-moselle-hbc.webp",
   },
   {
     id: 5688011 as ID,
@@ -2083,7 +2083,7 @@ export const clubsData: Club[] = [
     city: "MIRECOURT",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/mirecourt-avec-dompaire-handball.jpg",
+    logoUrl: "/images/clubs/vosges/mirecourt-avec-dompaire-handball.webp",
   },
   {
     id: 5688017 as ID,
@@ -2092,7 +2092,7 @@ export const clubsData: Club[] = [
     city: "CONTREXÉVILLE",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/contrexeville-hbc.jpg",
+    logoUrl: "/images/clubs/vosges/contrexeville-hbc.webp",
   },
   {
     id: 5688019 as ID,
@@ -2101,7 +2101,7 @@ export const clubsData: Club[] = [
     city: "SAINTE-MARGUERITE",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/ste-marguerite-handball-club.jpg",
+    logoUrl: "/images/clubs/vosges/ste-marguerite-handball-club.webp",
   },
   {
     id: 5688022 as ID,
@@ -2110,7 +2110,7 @@ export const clubsData: Club[] = [
     city: "GÉRARDMER",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/gerardmer-as-handball.jpg",
+    logoUrl: "/images/clubs/vosges/gerardmer-as-handball.webp",
   },
   {
     id: 5688024 as ID,
@@ -2119,7 +2119,7 @@ export const clubsData: Club[] = [
     city: "REMIREMONT",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/handball-club-remiremont.jpg",
+    logoUrl: "/images/clubs/vosges/handball-club-remiremont.webp",
   },
   {
     id: 5688027 as ID,
@@ -2128,7 +2128,7 @@ export const clubsData: Club[] = [
     city: "HADOL",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/hadol-handball-club.jpg",
+    logoUrl: "/images/clubs/vosges/hadol-handball-club.webp",
   },
   {
     id: 5688028 as ID,
@@ -2137,7 +2137,7 @@ export const clubsData: Club[] = [
     city: "LE THOLY",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/vallee-de-cleurie-et-du-tholy.jpg",
+    logoUrl: "/images/clubs/vosges/vallee-de-cleurie-et-du-tholy.webp",
   },
   {
     id: 5688033 as ID,
@@ -2146,7 +2146,7 @@ export const clubsData: Club[] = [
     city: "GOLBEY",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/golbey-handball-bete-des-vosges.jpg",
+    logoUrl: "/images/clubs/vosges/golbey-handball-bete-des-vosges.webp",
   },
   {
     id: 5688035 as ID,
@@ -2155,7 +2155,7 @@ export const clubsData: Club[] = [
     city: "GÉRARDMER",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/as-gerardmer-handfauteuil-handensemble.jpg",
+    logoUrl: "/images/clubs/vosges/as-gerardmer-handfauteuil-handensemble.webp",
   },
   {
     id: 5688036 as ID,
@@ -2164,6 +2164,6 @@ export const clubsData: Club[] = [
     city: "CARPI",
     depNum: "88" as ID,
     depName: "vosges",
-    logoUrl: "/images/clubs/vosges/carpi-handball-club.jpg",
+    logoUrl: "/images/clubs/vosges/carpi-handball-club.webp",
   },
 ];

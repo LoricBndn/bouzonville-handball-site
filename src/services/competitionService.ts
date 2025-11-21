@@ -4,7 +4,7 @@ import { Competition, Match, RawMatch, TeamMatch } from "@/types/competition";
 import { Team } from "@/types/team";
 import {
   getClubById,
-  getEntenteBypilotingClubId,
+  getEntenteBypilotingClubIdAndCategory,
 } from "@/services/opponentService";
 import { getAllTeamsWithDetails, getTeamDetails } from "@/services/teamService";
 
@@ -171,7 +171,7 @@ export async function analyzeMatchesForTeam(
     let opponentType: OpponentType = "Club";
     let opponentLogoUrl = "";
 
-    const entente = await getEntenteBypilotingClubId(opponentId);
+    const entente = await getEntenteBypilotingClubIdAndCategory(opponentId, targetTeam.category);
 
     if (entente) {
       opponentType = "Entente";
@@ -185,20 +185,14 @@ export async function analyzeMatchesForTeam(
 
     let result: ResultType = "Non joué";
 
-    if (match.status === "Joué") {
-      const opponentForfeit = isHome ? match.forfeitAway : match.forfeitHome;
-      const myForfeit = isHome ? match.forfeitHome : match.forfeitAway;
+    if (match.status === "JOUE") {
       const opponentPenalty = isHome ? match.penaltyAway : match.penaltyHome;
       const myPenalty = isHome ? match.penaltyHome : match.penaltyAway;
 
-      if (myForfeit) {
-        result = "Défaite par Forfait";
-      } else if (opponentForfeit) {
-        result = "Victoire";
-      } else if (myPenalty) {
+      if (myPenalty) {
         result = "Défaite par Pénalité";
       } else if (opponentPenalty) {
-        result = "Victoire";
+        result = "Victoire par Pénalité";
       }
       else if (match.scoreHome !== undefined && match.scoreAway !== undefined) {
         const myScore = isHome ? match.scoreHome : match.scoreAway;
@@ -211,6 +205,17 @@ export async function analyzeMatchesForTeam(
         } else {
           result = "Nul";
         }
+      }
+    }
+
+    if (match.status === "NON_JOUE") {
+      const opponentForfeit = isHome ? match.forfeitAway : match.forfeitHome;
+      const myForfeit = isHome ? match.forfeitHome : match.forfeitAway;
+
+      if (myForfeit) {
+        result = "Défaite par Forfait";
+      } else if (opponentForfeit) {
+        result = "Victoire par Forfait";
       }
     }
 
@@ -248,6 +253,9 @@ export async function analyzeMatches(
   matches: RawMatch[],
   clubIds: ID[]
 ): Promise<Match[]> {
+  // On récupère toutes les compétitions pour pouvoir déterminer le genre du match
+  const competitions = await getAllCompetitions();
+
   const promises = matches.map(async (match) => {
     const isHomeInternal = clubIds.includes(match.homeTeamId);
     const isAwayInternal = clubIds.includes(match.awayTeamId);
@@ -264,7 +272,17 @@ export async function analyzeMatches(
     let opponentType: OpponentType = "Club";
     let opponentLogoUrl = "";
 
-    const entente = await getEntenteBypilotingClubId(opponentId);
+    // Récupération du genre via la compétition liée au match
+    const competition = competitions?.find((c) => c.id === match.competitionId);
+    let entente = null;
+
+    if (competition) {
+      // On utilise le genre de la compétition pour chercher l'entente adéquate
+      entente = await getEntenteBypilotingClubIdAndCategory(
+        opponentId,
+        competition.category
+      );
+    }
 
     if (entente) {
       opponentType = "Entente";
@@ -278,21 +296,18 @@ export async function analyzeMatches(
 
     let result: ResultType = "Non joué";
 
-    if (match.status === "Joué") {
-      const opponentForfeit = isHome ? match.forfeitAway : match.forfeitHome;
-      const myForfeit = isHome ? match.forfeitHome : match.forfeitAway;
+    if (match.status === "JOUE") {
       const opponentPenalty = isHome ? match.penaltyAway : match.penaltyHome;
       const myPenalty = isHome ? match.penaltyHome : match.penaltyAway;
 
-      if (myForfeit) {
-        result = "Défaite par Forfait";
-      } else if (opponentForfeit) {
-        result = "Victoire";
-      } else if (myPenalty) {
+      if (myPenalty) {
         result = "Défaite par Pénalité";
       } else if (opponentPenalty) {
-        result = "Victoire";
-      } else if (match.scoreHome !== undefined && match.scoreAway !== undefined) {
+        result = "Victoire par Pénalité";
+      } else if (
+        match.scoreHome !== undefined &&
+        match.scoreAway !== undefined
+      ) {
         const myScore = isHome ? match.scoreHome : match.scoreAway;
         const opponentScore = isHome ? match.scoreAway : match.scoreHome;
 
@@ -303,6 +318,17 @@ export async function analyzeMatches(
         } else {
           result = "Nul";
         }
+      }
+    }
+
+    if (match.status === "NON_JOUE") {
+      const opponentForfeit = isHome ? match.forfeitAway : match.forfeitHome;
+      const myForfeit = isHome ? match.forfeitHome : match.forfeitAway;
+
+      if (myForfeit) {
+        result = "Défaite par Forfait";
+      } else if (opponentForfeit) {
+        result = "Victoire par Forfait";
       }
     }
 

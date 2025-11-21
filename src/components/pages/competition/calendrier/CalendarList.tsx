@@ -14,19 +14,22 @@ import {
   RotateCcw,
   AlertCircle,
 } from "lucide-react";
-import { TeamMatch } from "@/types/competition";
+import { Competition, TeamMatch } from "@/types/competition";
 import { Team } from "@/types/team";
+import { getResultColor } from "@/lib/calendarUtils";
 
 interface CalendarListProps {
   initialMatches: TeamMatch[];
   teamsList: Team[];
+  competitionsList: Competition[]
 }
 
-const CLUB_LOGO = "/images/logo/logo-transparent-bleu.png";
+const BOUZONVILLE_LOGO = "/images/logo/logo-transparent-bleu.png";
+const ENTENTE_LOGO = "/images/ententes/ent-bouzonville-boulay.jpg";
 const GENERIC_LOGO = "/images/ententes/logo_generic_club.png";
 
 export default function CalendarList({
-  initialMatches, teamsList
+  initialMatches, teamsList, competitionsList
 }: Readonly<CalendarListProps>) {
   const [currentWeek, setCurrentWeek] = useState(0);
   const [selectedTeam, setSelectedTeam] = useState<string>("Toutes");
@@ -39,6 +42,11 @@ export default function CalendarList({
   }, [teamsList])
 
   // --- Fonctions utilitaires de Date ---
+
+  const parseSupabaseDate = (dateStr: string) => {
+    const [day, month, year] = dateStr.split('/').map(Number);
+    return new Date(year, month - 1, day);
+  };
 
   const getISOWeek = (date: Date) => {
     const d = new Date(
@@ -78,7 +86,7 @@ export default function CalendarList({
     const filterMatch = (match: TeamMatch) => {
       const isTeamMatch =
         selectedTeam === "Toutes" ||
-        match.teamDetails.name === selectedTeam;
+        match.teamDetails?.name === selectedTeam;
       return isTeamMatch;
     };
 
@@ -90,7 +98,7 @@ export default function CalendarList({
             match.week?.toString().includes(currentWeekNumber.toString())
           );
         }
-        const matchDate = new Date(match.date);
+        const matchDate = parseSupabaseDate(match.date);
         return matchDate >= weekStart && matchDate <= weekEnd;
       })
       .sort((a, b) => {
@@ -113,7 +121,7 @@ export default function CalendarList({
 
   const formatDate = (dateString?: string) => {
     if (!dateString) return "Date à définir";
-    const date = new Date(dateString);
+    const date = parseSupabaseDate(dateString);
     return date.toLocaleDateString("fr-FR", {
       weekday: "long",
       day: "numeric",
@@ -136,14 +144,23 @@ export default function CalendarList({
 
   // --- Rendu d'une carte de match ---
   const renderMatchCard = (match: TeamMatch, isUndated = false) => {
+    const isU11 = match.teamDetails?.name.includes("11") || match.teamDetails?.category?.includes("11");
+    const internalTeamLogo = isU11 ? BOUZONVILLE_LOGO : ENTENTE_LOGO;
+
     const homeLogo = match.isHome
-      ? CLUB_LOGO
+      ? internalTeamLogo
       : match.opponentLogoUrl || GENERIC_LOGO;
+      
     const awayLogo = match.isHome
       ? match.opponentLogoUrl || GENERIC_LOGO
-      : CLUB_LOGO;
+      : internalTeamLogo;
 
-    const isPlayed = match.status === "Joué";
+    const isPlayed = match.status === "JOUE" || (match.status === "NON_JOUE" && match.result !== "Non joué");
+
+    const competition = competitionsList.find(
+      (c) => c.id === match.competitionId
+    );
+    const competitionName = competition?.officialName;
 
     return (
       <div
@@ -195,13 +212,23 @@ export default function CalendarList({
             </div>
           </div>
 
-          {/* Bloc Central : Les Équipes et le Score */}
+          {/* Bloc Central : Compétition, Équipes et Score */}
           <div className="flex-1 flex flex-col justify-center">
+
+            {/* Nom de la Compétition (Au-dessus du VS) */}
+            {competitionName && (
+              <div className="text-center mb-3">
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-100 pb-1">
+                  {competitionName}
+                </span>
+              </div>
+            )}
+
             <div className="flex items-center justify-between w-full gap-2 md:gap-4">
               
               {/* Équipe Domicile */}
-              <div className="flex-1 flex items-center justify-end gap-3 text-right">
-                <div className="relative w-8 h-8 md:w-12 md:h-12 flex-shrink-0 bg-white overflow-hidden p-0.5">
+              <div className="flex-1 flex items-center justify-end gap-3 text-center">
+                <div className="relative w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 flex-shrink-0 overflow-hidden p-0.5">
                   <Image
                     src={homeLogo}
                     alt={match.homeTeam}
@@ -232,7 +259,7 @@ export default function CalendarList({
                      <span className="text-gray-400 font-bold text-sm md:text-base bg-gray-100 px-3 py-1 rounded-full">
                       VS
                     </span>
-                    {match.status === "Reporté" && (
+                    {match.status === "REPORTE" && (
                         <span className="text-xs text-red-600 font-medium mt-1">Reporté</span>
                     )}
                   </div>
@@ -240,7 +267,7 @@ export default function CalendarList({
               </div>
 
               {/* Équipe Extérieur */}
-              <div className="flex-1 flex items-center justify-start gap-3 text-left">
+              <div className="flex-1 flex items-center justify-start gap-3 text-center">
                 <span
                   className={`text-sm md:text-lg font-bold uppercase leading-tight ${
                     match.isHome ? "text-gray-800" : "text-primary"
@@ -248,7 +275,7 @@ export default function CalendarList({
                 >
                   {match.isHome ?  match.awayTeam : match.teamDetails.name}
                 </span>
-                <div className="relative w-8 h-8 md:w-12 md:h-12 flex-shrink-0 bg-white overflow-hidden p-0.5">
+                <div className="relative w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 flex-shrink-0 overflow-hidden p-0.5">
                   <Image
                     src={awayLogo}
                     alt={match.awayTeam}
@@ -263,13 +290,7 @@ export default function CalendarList({
             {/* Résultat (Victoire/Défaite) sous le score */}
             {isPlayed && (
                 <div className="text-center mt-2">
-                    <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider ${
-                         match.result === "Victoire"
-                         ? "bg-green-100 text-green-700"
-                         : match.result === "Nul"
-                         ? "bg-gray-100 text-gray-600"
-                         : "bg-red-100 text-red-700"
-                    }`}>
+                    <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider ${getResultColor(match.result)}`}>
                         {match.result}
                     </span>
                 </div>
@@ -403,7 +424,7 @@ export default function CalendarList({
             <div className="text-2xl font-bold text-primary">
               {
                 matches.filter(
-                  (m) => m.status === "Joué" && m.result === "Victoire"
+                  (m) => (m.status === "JOUE" || m.status === "NON_JOUE") && m.result === "Victoire"
                 ).length
               }
             </div>
@@ -413,7 +434,7 @@ export default function CalendarList({
           <div className="bg-orange-50 p-6 rounded-lg text-center">
             <Users className="w-8 h-8 text-orange-500 mx-auto mb-2" />
             <div className="text-2xl font-bold text-orange-500">
-              {matches.filter((m) => m.isHome && m.status !== "Joué").length}
+              {matches.filter((m) => m.isHome && (m.status !== "JOUE" || "NON_JOUE")).length}
             </div>
             <div className="text-sm text-gray-600">
               Matchs à domicile à venir
@@ -423,7 +444,7 @@ export default function CalendarList({
           <div className="bg-green-50 p-6 rounded-lg text-center">
             <Calendar className="w-8 h-8 text-green-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-green-600">
-              {matches.filter((m) => m.status !== "Joué").length}
+              {matches.filter((m) => (m.status !== "JOUE" || "NON_JOUE")).length}
             </div>
             <div className="text-sm text-gray-600">Total matchs à venir</div>
           </div>

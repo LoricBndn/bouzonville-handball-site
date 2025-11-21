@@ -2,7 +2,7 @@
 
 import { supabase } from "@/lib/supabaseClient";
 import { Club, Entente } from "@/types/opponent";
-import { ID } from '@/types/base-types'; 
+import { CategoryType, ID } from '@/types/base-types'; 
 
 /**
  * Récupère tous les clubs depuis la base de données.
@@ -120,9 +120,27 @@ export async function getEntenteBypilotingClubId(pilotingClubId: ID): Promise<En
     .single();
 
   if (error) {
-    if (error.code !== 'PGRST116') {
-      console.error(`Erreur lors de la récupération de l'entente pour le club pilote ID ${pilotingClubId}:`, error);
-    }
+    return null;
+  }
+
+  return data as Entente;
+}
+
+/**
+ * Récupère l'entente associée à un club pilote spécifique.
+ * @param pilotingClubId L'identifiant du club désigné comme club pilote de l'entente.
+ * @param category Le genre de l'entente (U18, U15).
+ * @returns L'entente ou null si aucune entente n'est trouvée pour ce club pilote.
+ */
+export async function getEntenteBypilotingClubIdAndCategory(pilotingClubId: ID, category: CategoryType): Promise<Entente | null> {
+  const { data, error } = await supabase
+    .from("ententes")
+    .select("*")
+    .eq("pilotingClubId", pilotingClubId)
+    .eq("category", category)
+    .single();
+
+  if (error) {
     return null;
   }
 

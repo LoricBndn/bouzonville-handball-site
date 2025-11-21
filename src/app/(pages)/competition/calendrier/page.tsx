@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAllMatchesAnalyzedWithTeams } from '@/services/competitionService';
+import { getAllCompetitions, getAllMatchesAnalyzedWithTeams } from '@/services/competitionService';
 import CalendarList from '@/components/pages/competition/calendrier/CalendarList';
 import { Metadata } from 'next';
 import { getAllTeams } from '@/services/teamService';
@@ -12,10 +12,11 @@ export const metadata: Metadata = {
 export default async function CalendrierPage() {
   const matches = await getAllMatchesAnalyzedWithTeams();
   const teams = await getAllTeams();
+  const competitions = await getAllCompetitions();
 
   return (
     <main>
-      <CalendarList initialMatches={matches || []} teamsList={teams || []} />
+      <CalendarList initialMatches={matches || []} teamsList={teams || []} competitionsList={competitions || []} />
     </main>
   );
 }

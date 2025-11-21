@@ -20,13 +20,15 @@ export type DayOfWeek =
  */
 export type ResultType =
   | "Victoire"
+  | "Victoire par Forfait"
+  | "Victoire par Pénalité"
   | "Défaite"
   | "Nul"
   | "Défaite par Forfait"
   | "Défaite par Pénalité"
   | "Non joué";
 
-export type StatusType = "Joué" | "À venir" | "Reporté" | "Annulé";
+export type StatusType = "JOUE" | "A_VENIR" | "REPORTE" | "ANNULE" | "NON_JOUE";
 
 export type LevelType = "National" | "Régional" | "Départemental" | "Amical";
 
