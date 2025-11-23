@@ -10,9 +10,14 @@ import {
   Clock,
   Users,
   Filter,
-  Trophy,
   RotateCcw,
   AlertCircle,
+  Trophy,
+  Shield,
+  XCircle,
+  CheckCircle,
+  Home,
+  CalendarClock,
 } from "lucide-react";
 import { Competition, TeamMatch } from "@/types/competition";
 import { Team } from "@/types/team";
@@ -21,7 +26,7 @@ import { getResultColor } from "@/lib/calendarUtils";
 interface CalendarListProps {
   initialMatches: TeamMatch[];
   teamsList: Team[];
-  competitionsList: Competition[]
+  competitionsList: Competition[];
 }
 
 const BOUZONVILLE_LOGO = "/images/logo/logo-transparent-bleu.png";
@@ -29,7 +34,9 @@ const ENTENTE_LOGO = "/images/ententes/ent-bouzonville-boulay.jpg";
 const GENERIC_LOGO = "/images/ententes/logo_generic_club.png";
 
 export default function CalendarList({
-  initialMatches, teamsList, competitionsList
+  initialMatches,
+  teamsList,
+  competitionsList,
 }: Readonly<CalendarListProps>) {
   const [currentWeek, setCurrentWeek] = useState(0);
   const [selectedTeam, setSelectedTeam] = useState<string>("Toutes");
@@ -39,12 +46,12 @@ export default function CalendarList({
   const teams = useMemo(() => {
     const names = teamsList.map((t) => t.name);
     return ["Toutes", ...names];
-  }, [teamsList])
+  }, [teamsList]);
 
   // --- Fonctions utilitaires de Date ---
 
   const parseSupabaseDate = (dateStr: string) => {
-    const [day, month, year] = dateStr.split('/').map(Number);
+    const [day, month, year] = dateStr.split("/").map(Number);
     return new Date(year, month - 1, day);
   };
 
@@ -82,11 +89,13 @@ export default function CalendarList({
     const weekEnd = getWeekEnd(weekStart);
     const currentWeekNumber = getISOWeek(weekStart);
 
-    // Fonction de filtrage commune
+    const thursdayOfWeek = new Date(weekStart);
+    thursdayOfWeek.setDate(weekStart.getDate() + 3);
+    const currentIsoYear = thursdayOfWeek.getFullYear();
+
     const filterMatch = (match: TeamMatch) => {
       const isTeamMatch =
-        selectedTeam === "Toutes" ||
-        match.teamDetails?.name === selectedTeam;
+        selectedTeam === "Toutes" || match.teamDetails?.name === selectedTeam;
       return isTeamMatch;
     };
 
@@ -94,9 +103,17 @@ export default function CalendarList({
       .filter((match) => {
         if (!filterMatch(match)) return false;
         if (!match.date) {
-          return (
-            match.week?.toString().includes(currentWeekNumber.toString())
-          );
+          if (!match.week) return false;
+
+          const weekString = match.week.toString();
+          const parts = weekString.split("-");
+
+          if (parts.length === 2) {
+            const [mYear, mWeek] = parts.map(Number);
+            return mYear === currentIsoYear && mWeek === currentWeekNumber;
+          } else {
+            return weekString.includes(currentWeekNumber.toString());
+          }
         }
         const matchDate = parseSupabaseDate(match.date);
         return matchDate >= weekStart && matchDate <= weekEnd;
@@ -144,18 +161,22 @@ export default function CalendarList({
 
   // --- Rendu d'une carte de match ---
   const renderMatchCard = (match: TeamMatch, isUndated = false) => {
-    const isU11 = match.teamDetails?.name.includes("11") || match.teamDetails?.category?.includes("11");
+    const isU11 =
+      match.teamDetails?.name.includes("11") ||
+      match.teamDetails?.category?.includes("11");
     const internalTeamLogo = isU11 ? BOUZONVILLE_LOGO : ENTENTE_LOGO;
 
     const homeLogo = match.isHome
       ? internalTeamLogo
       : match.opponentLogoUrl || GENERIC_LOGO;
-      
+
     const awayLogo = match.isHome
       ? match.opponentLogoUrl || GENERIC_LOGO
       : internalTeamLogo;
 
-    const isPlayed = match.status === "JOUE" || (match.status === "NON_JOUE" && match.result !== "Non joué");
+    const isPlayed =
+      match.status === "JOUE" ||
+      (match.status === "NON_JOUE" && match.result !== "Non joué");
 
     const competition = competitionsList.find(
       (c) => c.id === match.competitionId
@@ -172,12 +193,13 @@ export default function CalendarList({
         }`}
       >
         <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-          
           {/* Bloc Gauche : Infos Date & Lieu */}
           <div className="lg:w-1/4 flex flex-col gap-2 border-b lg:border-b-0 lg:border-r border-gray-100 pb-4 lg:pb-0 lg:pr-4">
             <div className="flex items-center space-x-2 text-gray-700">
               <Calendar
-                className={`w-4 h-4 ${isUndated ? "text-orange-500" : "text-primary"}`}
+                className={`w-4 h-4 ${
+                  isUndated ? "text-orange-500" : "text-primary"
+                }`}
               />
               <span
                 className={`font-medium capitalize ${
@@ -189,8 +211,8 @@ export default function CalendarList({
             </div>
 
             <div className="flex items-center space-x-2 text-gray-500 text-sm">
-                <Clock className="w-4 h-4" />
-                <span>{match.time?.slice(0, 5) || "Heure à définir"}</span>
+              <Clock className="w-4 h-4" />
+              <span>{match.time?.slice(0, 5) || "Heure à définir"}</span>
             </div>
 
             <div className="flex items-center space-x-2 text-sm text-gray-500 mt-1">
@@ -202,19 +224,20 @@ export default function CalendarList({
             </div>
 
             <div className="mt-1">
-               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                   match.isHome 
-                   ? "bg-green-100 text-green-800" 
-                   : "bg-orange-100 text-orange-800"
-               }`}>
-                   {match.isHome ? "Domicile" : "Extérieur"}
-               </span>
+              <span
+                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  match.isHome
+                    ? "bg-green-100 text-green-800"
+                    : "bg-orange-100 text-orange-800"
+                }`}
+              >
+                {match.isHome ? "Domicile" : "Extérieur"}
+              </span>
             </div>
           </div>
 
           {/* Bloc Central : Compétition, Équipes et Score */}
           <div className="flex-1 flex flex-col justify-center">
-
             {/* Nom de la Compétition (Au-dessus du VS) */}
             {competitionName && (
               <div className="text-center mb-3">
@@ -225,7 +248,6 @@ export default function CalendarList({
             )}
 
             <div className="flex items-center justify-between w-full gap-2 md:gap-4">
-              
               {/* Équipe Domicile */}
               <div className="flex-1 flex items-center justify-end gap-3 text-center">
                 <div className="relative w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 flex-shrink-0 overflow-hidden p-0.5">
@@ -241,9 +263,10 @@ export default function CalendarList({
                     match.isHome ? "text-primary" : "text-gray-800"
                   }`}
                 >
-                  {match.isHome ? match.teamDetails?.name || match.homeTeam : match.homeTeam}
+                  {match.isHome
+                    ? match.teamDetails?.name || match.homeTeam
+                    : match.homeTeam}
                 </span>
-
               </div>
 
               {/* Score Central ou VS */}
@@ -256,11 +279,13 @@ export default function CalendarList({
                   </div>
                 ) : (
                   <div className="flex flex-col items-center">
-                     <span className="text-gray-400 font-bold text-sm md:text-base bg-gray-100 px-3 py-1 rounded-full">
+                    <span className="text-gray-400 font-bold text-sm md:text-base bg-gray-100 px-3 py-1 rounded-full">
                       VS
                     </span>
                     {match.status === "REPORTE" && (
-                        <span className="text-xs text-red-600 font-medium mt-1">Reporté</span>
+                      <span className="text-xs text-red-600 font-medium mt-1">
+                        Reporté
+                      </span>
                     )}
                   </div>
                 )}
@@ -273,7 +298,7 @@ export default function CalendarList({
                     match.isHome ? "text-gray-800" : "text-primary"
                   }`}
                 >
-                  {match.isHome ?  match.awayTeam : match.teamDetails.name}
+                  {match.isHome ? match.awayTeam : match.teamDetails.name}
                 </span>
                 <div className="relative w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 flex-shrink-0 overflow-hidden p-0.5">
                   <Image
@@ -284,19 +309,21 @@ export default function CalendarList({
                   />
                 </div>
               </div>
-
             </div>
-            
+
             {/* Résultat (Victoire/Défaite) sous le score */}
             {isPlayed && (
-                <div className="text-center mt-2">
-                    <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider ${getResultColor(match.result)}`}>
-                        {match.result}
-                    </span>
-                </div>
+              <div className="text-center mt-2">
+                <span
+                  className={`inline-block px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider ${getResultColor(
+                    match.result
+                  )}`}
+                >
+                  {match.result}
+                </span>
+              </div>
             )}
           </div>
-
         </div>
       </div>
     );
@@ -419,34 +446,55 @@ export default function CalendarList({
 
         {/* Statistiques Rapides */}
         <div className="mt-12 grid md:grid-cols-3 gap-6">
-          <div className="bg-blue-50 p-6 rounded-lg text-center">
-            <Trophy className="w-8 h-8 text-primary mx-auto mb-2" />
-            <div className="text-2xl font-bold text-primary">
+          {/* 1. Victoires - Vert Émeraude (Succès) */}
+          <div className="bg-emerald-50 p-6 rounded-lg text-center border border-emerald-100">
+            <Trophy className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
+            <div className="text-2xl font-bold text-emerald-600">
               {
                 matches.filter(
-                  (m) => (m.status === "JOUE" || m.status === "NON_JOUE") && m.result === "Victoire"
+                  (m) =>
+                    (m.status === "JOUE" || m.status === "NON_JOUE") &&
+                    m.result?.startsWith("Victoire")
                 ).length
               }
             </div>
-            <div className="text-sm text-gray-600">Victoires totales</div>
-          </div>
-
-          <div className="bg-orange-50 p-6 rounded-lg text-center">
-            <Users className="w-8 h-8 text-orange-500 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-orange-500">
-              {matches.filter((m) => m.isHome && (m.status !== "JOUE" || "NON_JOUE")).length}
-            </div>
-            <div className="text-sm text-gray-600">
-              Matchs à domicile à venir
+            <div className="text-sm text-emerald-800 font-medium">
+              Victoires totales
             </div>
           </div>
 
-          <div className="bg-green-50 p-6 rounded-lg text-center">
-            <Calendar className="w-8 h-8 text-green-600 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-green-600">
-              {matches.filter((m) => (m.status !== "JOUE" || "NON_JOUE")).length}
+          {/* 2. Nuls - Ambre/Jaune (Neutre) */}
+          <div className="bg-amber-50 p-6 rounded-lg text-center border border-amber-100">
+            <Shield className="w-8 h-8 text-amber-600 mx-auto mb-2" />
+            <div className="text-2xl font-bold text-amber-600">
+              {
+                matches.filter(
+                  (m) =>
+                    (m.status === "JOUE" || m.status === "NON_JOUE") &&
+                    m.result === "Nul"
+                ).length
+              }
             </div>
-            <div className="text-sm text-gray-600">Total matchs à venir</div>
+            <div className="text-sm text-amber-800 font-medium">
+              Matchs nuls
+            </div>
+          </div>
+
+          {/* 3. Défaites - Rouge (Danger/Alerte) */}
+          <div className="bg-red-50 p-6 rounded-lg text-center border border-red-100">
+            <XCircle className="w-8 h-8 text-red-600 mx-auto mb-2" />
+            <div className="text-2xl font-bold text-red-600">
+              {
+                matches.filter(
+                  (m) =>
+                    (m.status === "JOUE" || m.status === "NON_JOUE") &&
+                    m.result?.startsWith("Défaite")
+                ).length
+              }
+            </div>
+            <div className="text-sm text-red-800 font-medium">
+              Défaites totales
+            </div>
           </div>
         </div>
       </div>
