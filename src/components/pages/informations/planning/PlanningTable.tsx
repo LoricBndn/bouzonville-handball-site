@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import PlanningCell from "@/components/pages/informations/planning/PlanningCell";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { CategoryTrainingSessionWithDetails } from "@/services/venueService";
+import { CategoryTrainingSessionWithDetails } from "@/types/venue";
 import { DayOfWeek } from "@/types/base-types";
 
 const daysOfWeek: DayOfWeek[] = [

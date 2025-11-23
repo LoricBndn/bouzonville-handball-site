@@ -3,7 +3,7 @@
 // Importez les types nécessaires
 import React from "react";
 import { Users, MapPin, Clock } from "lucide-react";
-import { CategoryTrainingSessionWithDetails } from "@/services/venueService"; 
+import { CategoryTrainingSessionWithDetails } from "@/types/venue";
 
 interface PlanningCellProps {
   trainings: CategoryTrainingSessionWithDetails[]; 

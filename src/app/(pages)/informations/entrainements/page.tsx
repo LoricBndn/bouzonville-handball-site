@@ -1,6 +1,6 @@
 import PlanningSection from "@/components/pages/informations/planning/PlanningSection";
-
-import { getAllTrainingSchedule, CategoryTrainingSessionWithDetails } from "@/services/venueService"; 
+import { CategoryTrainingSessionWithDetails } from "@/types/venue";
+import { getAllTrainingSchedule } from "@/services/venueService"; 
 
 export default async function PlanningPage() {
   const trainingSchedule: CategoryTrainingSessionWithDetails[] = (await getAllTrainingSchedule()) || [];

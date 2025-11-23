@@ -1,7 +1,7 @@
 import React from "react";
 import PlanningTable from "@/components/pages/informations/planning/PlanningTable";
 import PlanningInfos from "@/components/pages/informations/planning/PlanningInfos";
-import { CategoryTrainingSessionWithDetails } from "@/services/venueService"; 
+import { CategoryTrainingSessionWithDetails } from "@/types/venue";
 
 interface PlanningSectionProps {
     schedule: CategoryTrainingSessionWithDetails[];
