@@ -53,8 +53,8 @@ export async function getAllTrainingSchedule(): Promise<CategoryTrainingSessionW
         )
       )
     `)
-    .order('day', { ascending: true }) 
-    .order('time', { ascending: true });
+    .order('day', { referencedTable: "trainingSessions", ascending: true }) 
+    .order('time', { referencedTable: "trainingSessions", ascending: true });
 
   if (error) {
     console.error("Erreur lors de la récupération de l'intégralité du planning:", error);
@@ -97,8 +97,8 @@ export async function getTrainingSessionsByGroup(category: CategoryType, gender:
         `)
         .eq('category', category)
         .eq('gender', gender)
-        .order('day')
-        .order('time');
+        .order('day', { referencedTable: 'trainingSessions' })
+        .order('time', { referencedTable: 'trainingSessions' });
 
     if (error) {
         console.error(`Erreur lors de la récupération des sessions pour ${category} ${gender}:`, error);
@@ -139,8 +139,8 @@ export async function getTrainingSessionsByCategory(category: CategoryType): Pro
           )
         `)
         .eq('category', category)
-        .order('day')
-        .order('time');
+        .order('day', { referencedTable: 'trainingSessions' })
+        .order('time', { referencedTable: 'trainingSessions' });
 
     if (error) {
         console.error(`Erreur lors de la récupération des sessions pour la catégorie ${category}:`, error);
@@ -181,8 +181,8 @@ export async function getTrainingSessionsByGender(gender: GenderType): Promise<C
           )
         `)
         .eq('gender', gender)
-        .order('day')
-        .order('time');
+        .order('day', { referencedTable: 'trainingSessions' })
+        .order('time', { referencedTable: 'trainingSessions' });
 
     if (error) {
         console.error(`Erreur lors de la récupération des sessions pour le genre ${gender}:`, error);
@@ -223,7 +223,7 @@ export async function getTrainingSessionsByDay(day: DayOfWeek): Promise<Category
           )
         `)
         .eq('trainingSessions.day', day) 
-        .order('time');
+        .order('time', { referencedTable: 'trainingSessions' });
 
     if (error) {
         console.error(`Erreur lors de la récupération des sessions pour le jour ${day}:`, error);

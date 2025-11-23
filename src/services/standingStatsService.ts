@@ -65,7 +65,7 @@ export async function getStandingsByTeam(teamId: ID): Promise<CompetitionStandin
       competitions (officialName, season)
     `)
     .eq('teamId', teamId)
-    .order('season');
+    .order('season', { referencedTable: 'competitions', ascending: false });
 
   if (error) {
     console.error(`Erreur lors de la récupération des classements pour l'équipe ${teamId}:`, error);
@@ -102,7 +102,7 @@ export async function getStatsByTeam(teamId: ID): Promise<CompetitionStatsWithDe
       competitions (officialName, season)
     `)
     .eq('teamId', teamId)
-    .order('season');
+    .order('season', { referencedTable: 'competitions', ascending: false });
 
   if (error) {
     console.error(`Erreur lors de la récupération des stats pour l'équipe ${teamId}:`, error);

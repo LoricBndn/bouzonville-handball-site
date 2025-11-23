@@ -74,7 +74,6 @@ export async function getPlayerById(playerId: ID): Promise<PlayerWithAllStats | 
  * @returns {Promise<Player[] | null>} La liste des joueurs de cette équipe.
  */
 export async function getPlayersByTeam(teamId: ID): Promise<Player[] | null> {
-    // Jointure inversée: sélectionne la table de liaison, puis jointure sur 'players'
     const { data, error } = await supabase
         .from('teamPlayers')
         .select(`
@@ -91,7 +90,7 @@ export async function getPlayersByTeam(teamId: ID): Promise<Player[] | null> {
             )
         `)
         .eq('teamId', teamId)
-        .order('lastName');
+        .order('lastName', { referencedTable: 'players' });
 
     if (error) {
         console.error(`Erreur lors de la récupération des joueurs pour l'équipe ${teamId}:`, error);

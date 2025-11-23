@@ -226,7 +226,7 @@ export async function getTeamsByCompetition(
         `
     )
     .eq("competitionId", competitionId)
-    .order("name");
+    .order("name", { referencedTable: "teams" });
 
   if (error) {
     console.error(
@@ -267,7 +267,7 @@ export async function getTeamsByPlayer(playerId: ID): Promise<Team[] | null> {
         `
     )
     .eq("playerId", playerId)
-    .order("name");
+    .order("name", { referencedTable: "teams" });
 
   if (error) {
     console.error(
