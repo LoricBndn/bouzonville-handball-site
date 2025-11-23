@@ -1,28 +1,6 @@
-// venueService.ts
-
-import { supabase } from "@/lib/supabaseClient"; // Assurez-vous d'importer votre client Supabase configuré
-import { ID, DayOfWeek, CategoryType, GenderType } from "@/types/base-types"; 
-import { Venue, TrainingSession } from "@/types/venue"; // Assurez-vous d'avoir exporté ces types
-
-// --- Types de Jointure (Rappels de la structure) ---
-
-/**
- * Type étendu pour une session d'entraînement incluant les détails du lieu.
- */
-export type TrainingSessionWithVenue = TrainingSession & {
-  venues: Venue | null;
-};
-
-/**
- * Type étendu pour une liaison Catégorie-Séance, incluant les détails de la séance et du lieu.
- */
-export type CategoryTrainingSessionWithDetails = {
-  category: CategoryType;
-  gender: GenderType;
-  trainingSessionId: ID;
-  
-  trainingSessions: TrainingSessionWithVenue | null;
-};
+import { supabase } from "@/lib/supabaseClient";
+import { DayOfWeek, CategoryType, GenderType } from "@/types/base-types"; 
+import { Venue, CategoryTrainingSessionWithDetails } from "@/types/venue";
 
 // --- Fonctions de Service ---
 
@@ -75,9 +53,8 @@ export async function getAllTrainingSchedule(): Promise<CategoryTrainingSessionW
         )
       )
     `)
-    // Tri basé sur les colonnes de la table jointe 'trainingSessions'
-    .order('day', { foreignTable: 'trainingSessions', ascending: true }) 
-    .order('time', { foreignTable: 'trainingSessions', ascending: true });
+    .order('day', { ascending: true }) 
+    .order('time', { ascending: true });
 
   if (error) {
     console.error("Erreur lors de la récupération de l'intégralité du planning:", error);
@@ -120,8 +97,8 @@ export async function getTrainingSessionsByGroup(category: CategoryType, gender:
         `)
         .eq('category', category)
         .eq('gender', gender)
-        .order('day', { foreignTable: 'trainingSessions' })
-        .order('time', { foreignTable: 'trainingSessions' });
+        .order('day')
+        .order('time');
 
     if (error) {
         console.error(`Erreur lors de la récupération des sessions pour ${category} ${gender}:`, error);
@@ -161,9 +138,9 @@ export async function getTrainingSessionsByCategory(category: CategoryType): Pro
             )
           )
         `)
-        .eq('category', category) // Filtre sur la colonne 'category' de la table de liaison
-        .order('day', { foreignTable: 'trainingSessions' })
-        .order('time', { foreignTable: 'trainingSessions' });
+        .eq('category', category)
+        .order('day')
+        .order('time');
 
     if (error) {
         console.error(`Erreur lors de la récupération des sessions pour la catégorie ${category}:`, error);
@@ -203,9 +180,9 @@ export async function getTrainingSessionsByGender(gender: GenderType): Promise<C
             )
           )
         `)
-        .eq('gender', gender) // Filtre sur la colonne 'gender' de la table de liaison
-        .order('day', { foreignTable: 'trainingSessions' })
-        .order('time', { foreignTable: 'trainingSessions' });
+        .eq('gender', gender)
+        .order('day')
+        .order('time');
 
     if (error) {
         console.error(`Erreur lors de la récupération des sessions pour le genre ${gender}:`, error);
@@ -245,9 +222,8 @@ export async function getTrainingSessionsByDay(day: DayOfWeek): Promise<Category
             )
           )
         `)
-        // Utilisation de la syntaxe de filtre sur la table jointe pour 'day'
         .eq('trainingSessions.day', day) 
-        .order('time', { foreignTable: 'trainingSessions' });
+        .order('time');
 
     if (error) {
         console.error(`Erreur lors de la récupération des sessions pour le jour ${day}:`, error);

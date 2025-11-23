@@ -10,7 +10,7 @@ export default function PaiementOption({
   icon,
   title,
   description,
-}: PaiementOptionProps) {
+}: Readonly<PaiementOptionProps>) {
   return (
     <div className="text-center">
       <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mx-auto mb-2">

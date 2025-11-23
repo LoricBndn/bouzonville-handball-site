@@ -1,5 +1,3 @@
-// clubPersonService.ts
-
 import { supabase } from "@/lib/supabaseClient";
 import { ID, MemberRole, CoachRole } from "@/types/base-types";
 

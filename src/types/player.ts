@@ -37,3 +37,23 @@ export interface PlayerStats {
   disqualifications: number;
   expulsions: number;
 }
+
+/**
+ * Type étendu pour les statistiques d'un joueur, incluant les détails de la compétition.
+ */
+export type PlayerStatsWithCompetition = PlayerStats & {
+  competitions: {
+    id: ID;
+    officialName: string;
+    phaseName: string;
+    season: string;
+    level: string;
+  } | null;
+};
+
+/**
+ * Type étendu pour un joueur, incluant toutes ses statistiques sur toutes les compétitions.
+ */
+export type PlayerWithAllStats = Player & {
+  playerStats: PlayerStatsWithCompetition[];
+};

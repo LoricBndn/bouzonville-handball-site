@@ -1,8 +1,6 @@
-// clubTypesService.ts
-
-import { supabase } from "@/lib/supabaseClient"; // Assurez-vous d'importer votre client Supabase configuré
-import { ID, PartnerType, ProductCategory, ProductAgeGroup, LicenseCategory } from "@/types/base-types"; 
-import { Partner, LicenseFee, Product } from "@/types/club-types"; // Assurez-vous d'avoir exporté ces types
+import { supabase } from "@/lib/supabaseClient";
+import { PartnerType, ProductCategory, ProductAgeGroup } from "@/types/base-types"; 
+import { Partner, LicenseFee, Product } from "@/types/club-types";
 
 // --- Fonctions de Service pour les Partenaires (Partner) ---
 
@@ -15,8 +13,8 @@ export async function getAllPartners(): Promise<Partner[] | null> {
   const { data, error } = await supabase
     .from('partners')
     .select('*')
-    .order('type') // Trie par type d'abord
-    .order('name'); // Puis par nom
+    .order('type')
+    .order('name');
 
   if (error) {
     console.error("Erreur lors de la récupération des partenaires:", error);
@@ -58,7 +56,7 @@ export async function getAllLicenseFees(): Promise<LicenseFee[] | null> {
   const { data, error } = await supabase
     .from('licenseFees')
     .select('*')
-    .order('minAge'); // Trie pour l'affichage (des plus jeunes aux plus âgés)
+    .order('minAge');
 
   if (error) {
     console.error("Erreur lors de la récupération des tarifs de licence:", error);

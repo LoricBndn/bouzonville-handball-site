@@ -8,16 +8,12 @@ import {
   ChevronRight,
   MapPin,
   Clock,
-  Users,
   Filter,
   RotateCcw,
   AlertCircle,
   Trophy,
   Shield,
   XCircle,
-  CheckCircle,
-  Home,
-  CalendarClock,
 } from "lucide-react";
 import { Competition, TeamMatch } from "@/types/competition";
 import { Team } from "@/types/team";

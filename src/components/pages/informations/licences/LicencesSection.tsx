@@ -7,7 +7,7 @@ interface LicencesSectionProps {
   fees: LicenseFee[];
 }
 
-export default function LicencesSection({ fees }: LicencesSectionProps) {
+export default function LicencesSection({ fees }: Readonly<LicencesSectionProps>) {
   return (
     <div>
       <TarifsList fees={fees} />

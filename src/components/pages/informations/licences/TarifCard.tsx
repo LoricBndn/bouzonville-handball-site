@@ -6,7 +6,7 @@ interface TarifCardProps {
   tarif: LicenseFee; 
 }
 
-export default function TarifCard({ tarif }: TarifCardProps) {
+export default function TarifCard({ tarif }: Readonly<TarifCardProps>) {
   const currentYear = 2025;
   const maxBirthYear = currentYear - tarif.minAge;
   const minBirthYear = currentYear - tarif.maxAge;

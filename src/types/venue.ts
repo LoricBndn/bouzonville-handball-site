@@ -36,3 +36,22 @@ export interface CategoryGenderTrainingSession {
   gender: GenderType;
   trainingSessionId: ID;
 }
+
+/**
+ * Type étendu pour une session d'entraînement incluant les détails du lieu.
+ */
+export type TrainingSessionWithVenue = TrainingSession & {
+  venues: Venue;
+};
+
+/**
+ * Type étendu pour une liaison Catégorie-Séance, incluant les détails de la séance et du lieu.
+ */
+export type CategoryTrainingSessionWithDetails = {
+  category: CategoryType;
+  gender: GenderType;
+  trainingSessionId: ID;
+  
+  trainingSessions: TrainingSessionWithVenue;
+};
+

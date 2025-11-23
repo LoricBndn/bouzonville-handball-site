@@ -1,59 +1,6 @@
-// teamService.ts
-
-import { supabase } from "@/lib/supabaseClient"; // Assurez-vous d'importer votre client Supabase configuré
-import {
-  CategoryType,
-  GenderType,
-  LevelType,
-  ID,
-  CompetitionType,
-  CoachRole,
-} from "@/types/base-types";
-import { Team } from "@/types/team";
-
-// --- Types de Jointure ---
-
-/**
- * Type étendu pour une équipe, incluant les détails de son roster, de ses coachs et de ses compétitions.
- */
-export type TeamWithDetails = Team & {
-  // Jointure Team -> teamPlayers -> players
-  teamPlayers: {
-    playerId: ID;
-    players: {
-      id: ID;
-      firstName: string;
-      lastName: string;
-      position: string;
-      photoUrl: string;
-    } | null;
-  }[];
-
-  // Jointure Team -> staffCoaches -> clubPersons
-  staffCoaches: {
-    role: CoachRole;
-    clubPersonId: ID;
-    clubPersons: {
-      id: ID;
-      firstName: string;
-      lastName: string;
-      photoUrl: string;
-      contactEmail: string | null;
-    } | null;
-  }[];
-
-  // Jointure Team -> teamCompetitions -> competitions
-  teamCompetitions: {
-    competitionId: ID;
-    competitions: {
-      id: ID;
-      officialName: string;
-      type: CompetitionType;
-      level: LevelType;
-      season: string;
-    } | null;
-  }[];
-};
+import { supabase } from "@/lib/supabaseClient";
+import { CategoryType, GenderType, LevelType, ID } from "@/types/base-types";
+import { Team, TeamWithDetails } from "@/types/team";
 
 // --- Fonctions de Service ---
 
@@ -68,7 +15,8 @@ export async function getAllTeams(): Promise<Team[] | null> {
     .select("*")
     .order("category")
     .order("gender")
-    .order("level");
+    .order("level")
+    .order("name");
 
   if (error) {
     console.error(
@@ -86,10 +34,13 @@ export async function getAllTeams(): Promise<Team[] | null> {
  *
  * @returns {Promise<TeamWithDetails[] | null>} La liste de toutes les équipes enrichis.
  */
-export async function getAllTeamsWithDetails(): Promise<TeamWithDetails[] | null> {
+export async function getAllTeamsWithDetails(): Promise<
+  TeamWithDetails[] | null
+> {
   const { data, error } = await supabase
     .from("teams")
-    .select(`
+    .select(
+      `
       *,
       teamPlayers (
         playerId,
@@ -104,7 +55,8 @@ export async function getAllTeamsWithDetails(): Promise<TeamWithDetails[] | null
         "competitionId",
         competitions (id, "officialName", type, level, season)
       )
-    `)
+    `
+    )
     .order("level")
     .order("category");
 
@@ -274,7 +226,7 @@ export async function getTeamsByCompetition(
         `
     )
     .eq("competitionId", competitionId)
-    .order("name", { foreignTable: "teams" });
+    .order("name");
 
   if (error) {
     console.error(
@@ -284,7 +236,6 @@ export async function getTeamsByCompetition(
     return null;
   }
 
-  // Extrait les objets Team de la jointure
   const teams = data?.map((item) => item.teams) as unknown as
     | Team[]
     | undefined;
@@ -316,7 +267,7 @@ export async function getTeamsByPlayer(playerId: ID): Promise<Team[] | null> {
         `
     )
     .eq("playerId", playerId)
-    .order("name", { foreignTable: "teams" });
+    .order("name");
 
   if (error) {
     console.error(
@@ -326,7 +277,6 @@ export async function getTeamsByPlayer(playerId: ID): Promise<Team[] | null> {
     return null;
   }
 
-  // Extrait les objets Team de la jointure
   const teams = data?.map((item) => item.teams) as unknown as
     | Team[]
     | undefined;

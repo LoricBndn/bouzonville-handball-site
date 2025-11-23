@@ -1,31 +1,6 @@
-// playerService.ts
-
-import { supabase } from "@/lib/supabaseClient"; // Assurez-vous d'importer votre client Supabase configuré
-import { ID, GenderType, HandType, PositionType } from "@/types/base-types";
-import { Player, PlayerStats } from "@/types/player"; // Assurez-vous d'avoir exporté ces types
-
-// --- Types de Jointure ---
-
-/**
- * Type étendu pour les statistiques d'un joueur, incluant les détails de la compétition.
- */
-export type PlayerStatsWithCompetition = PlayerStats & {
-  // Jointure sur la table competitions
-  competitions: {
-    id: ID;
-    officialName: string;
-    phaseName: string;
-    season: string;
-    level: string;
-  } | null;
-};
-
-/**
- * Type étendu pour un joueur, incluant toutes ses statistiques sur toutes les compétitions.
- */
-export type PlayerWithAllStats = Player & {
-  playerStats: PlayerStatsWithCompetition[];
-};
+import { supabase } from "@/lib/supabaseClient";
+import { ID, GenderType, PositionType } from "@/types/base-types";
+import { Player, PlayerWithAllStats } from "@/types/player";
 
 // --- Fonctions de Service ---
 
@@ -88,7 +63,6 @@ export async function getPlayerById(playerId: ID): Promise<PlayerWithAllStats | 
     return null;
   }
 
-  // Le typage gère la structure de jointure pour PlayerWithAllStats.
   return data as unknown as PlayerWithAllStats;
 }
 
@@ -117,16 +91,13 @@ export async function getPlayersByTeam(teamId: ID): Promise<Player[] | null> {
             )
         `)
         .eq('teamId', teamId)
-        .order('lastName', { foreignTable: 'players' });
+        .order('lastName');
 
     if (error) {
         console.error(`Erreur lors de la récupération des joueurs pour l'équipe ${teamId}:`, error);
         return null;
     }
     
-    // Extrait les objets Player de la jointure (data.map(item => item.players))
-    // Note: Le typage Supabase retournera un tableau d'objets avec la structure { players: Player }.
-    // On doit extraire le tableau Players du résultat de la jointure.
     const players = data?.map(item => item.players) as unknown as Player[] | undefined;
     return players || null;
 }

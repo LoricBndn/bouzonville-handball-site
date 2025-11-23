@@ -48,3 +48,31 @@ export interface CompetitionStats {
   avgGoalsAgainst: number;
   winRate: number;
 }
+
+/**
+ * Type étendu pour les classements, incluant les détails de la compétition et de l'équipe.
+ */
+export type CompetitionStandingWithDetails = CompetitionStanding & {
+  teams: {
+    name: string;
+    slug: string;
+  } | null;
+  competitions: {
+    officialName: string;
+    season: string;
+  } | null;
+};
+
+/**
+ * Type étendu pour les statistiques, incluant les détails de la compétition et de l'équipe.
+ */
+export type CompetitionStatsWithDetails = CompetitionStats & {
+  teams: {
+    name: string;
+    slug: string;
+  } | null;
+  competitions: {
+    officialName: string;
+    season: string;
+  } | null;
+};

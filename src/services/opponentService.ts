@@ -1,5 +1,3 @@
-// src/services/opponentService.ts
-
 import { supabase } from "@/lib/supabaseClient";
 import { Club, Entente } from "@/types/opponent";
 import { CategoryType, ID } from '@/types/base-types'; 

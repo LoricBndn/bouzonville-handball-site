@@ -1,38 +1,6 @@
-// standingStatsService.ts
-
-import { supabase } from "@/lib/supabaseClient"; // Assurez-vous d'importer votre client Supabase configuré
+import { supabase } from "@/lib/supabaseClient";
 import { ID } from "@/types/base-types";
-import { CompetitionStanding, CompetitionStats } from "@/types/standing-stats"; // Assurez-vous d'avoir exporté ces types
-
-// --- Types de Jointure ---
-
-/**
- * Type étendu pour les classements, incluant les détails de la compétition et de l'équipe.
- */
-export type CompetitionStandingWithDetails = CompetitionStanding & {
-  teams: {
-    name: string;
-    slug: string;
-  } | null;
-  competitions: {
-    officialName: string;
-    season: string;
-  } | null;
-};
-
-/**
- * Type étendu pour les statistiques, incluant les détails de la compétition et de l'équipe.
- */
-export type CompetitionStatsWithDetails = CompetitionStats & {
-  teams: {
-    name: string;
-    slug: string;
-  } | null;
-  competitions: {
-    officialName: string;
-    season: string;
-  } | null;
-};
+import { CompetitionStandingWithDetails, CompetitionStatsWithDetails } from "@/types/standing-stats";
 
 // --- Fonctions de Service pour le Classement (CompetitionStanding) ---
 
@@ -97,7 +65,7 @@ export async function getStandingsByTeam(teamId: ID): Promise<CompetitionStandin
       competitions (officialName, season)
     `)
     .eq('teamId', teamId)
-    .order('season', { foreignTable: 'competitions', ascending: false });
+    .order('season');
 
   if (error) {
     console.error(`Erreur lors de la récupération des classements pour l'équipe ${teamId}:`, error);
@@ -134,7 +102,7 @@ export async function getStatsByTeam(teamId: ID): Promise<CompetitionStatsWithDe
       competitions (officialName, season)
     `)
     .eq('teamId', teamId)
-    .order('season', { foreignTable: 'competitions', ascending: false });
+    .order('season');
 
   if (error) {
     console.error(`Erreur lors de la récupération des stats pour l'équipe ${teamId}:`, error);
