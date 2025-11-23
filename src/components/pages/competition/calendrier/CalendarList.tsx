@@ -178,6 +178,8 @@ export default function CalendarList({
       (c) => c.id === match.competitionId
     );
     const competitionName = competition?.officialName;
+    const pouleName = match.pouleName;
+    const gameDay = match.gameDay;
 
     return (
       <div
@@ -234,14 +236,27 @@ export default function CalendarList({
 
           {/* Bloc Central : Compétition, Équipes et Score */}
           <div className="flex-1 flex flex-col justify-center">
-            {/* Nom de la Compétition (Au-dessus du VS) */}
-            {competitionName && (
-              <div className="text-center mb-3">
-                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-100 pb-1">
+            {/* HAUT : Infos Compétition + Poule + Journée */}
+            <div className="text-center mb-3 flex flex-col items-center">
+              {competitionName && (
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">
                   {competitionName}
                 </span>
+              )}
+
+              {/* Affichage conditionnel de la Poule et de la Journée */}
+
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-400 font-medium mt-0.5">
+                <span>{pouleName}</span>
+
+                <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+
+                <span>J{gameDay}</span>
               </div>
-            )}
+
+              {/* Petit trait décoratif sous le bloc contexte */}
+              <div className="w-8 border-b border-gray-100 mt-1"></div>
+            </div>
 
             <div className="flex items-center justify-between w-full gap-2 md:gap-4">
               {/* Équipe Domicile */}

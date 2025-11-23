@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Bouzonville Handball Club",
-  description: "Bouzonville Handball Club",
+  description: "Site officiel du Bouzonville Handball Club",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen antialiased">
         <Header />
         <NavBar />
         <main className="flex-grow">{children}</main>

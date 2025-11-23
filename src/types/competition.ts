@@ -37,6 +37,8 @@ export interface RawMatch {
   id: ID;
   week: string;
   competitionId: ID;
+  competitionName: string;
+  pouleName: string;
 
   homeTeam: string;
   awayTeam: string;

@@ -26,7 +26,7 @@ export async function getAllTeams(): Promise<Team[] | null> {
     return null;
   }
 
-  return data as TeamWithDetails[];
+  return data as Team[];
 }
 
 /**
