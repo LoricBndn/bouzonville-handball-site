@@ -404,7 +404,10 @@ export async function getAllMatchesAnalyzed(): Promise<Match[] | null> {
 export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[] | null> {
   const { data: rawMatches, error } = await supabase
     .from("matches")
-    .select("*");
+    .select("*")
+    .order("week")
+    .order("date")
+    .order("time");
 
   if (error) {
     console.error("Erreur lors de la récupération de tous les matchs:", error);
@@ -417,6 +420,14 @@ export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[] | nu
   
   if (!teams) return [];
 
+  const teamNameMap = new Map<string, Team>();
+  
+  teams.forEach(team => {
+    team.externalNames.forEach(name => {
+      teamNameMap.set(name, team);
+    });
+  });
+
   const internalClubIds: ID[] = [5657013, 5657025];
 
   const analyzedMatches = await analyzeMatches(
@@ -425,9 +436,10 @@ export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[] | nu
   );
 
   const matchesWithTeams = analyzedMatches.map((match) => {
-    const correspondingTeam = teams.find((t) =>
-      t.teamCompetitions.some((tc) => tc.competitionId === match.competitionId)
-    );
+    const homeName = match.homeTeam;
+    const awayName = match.awayTeam;
+
+    const correspondingTeam = teamNameMap.get(homeName) || teamNameMap.get(awayName);
 
     if (!correspondingTeam) return null;
 
