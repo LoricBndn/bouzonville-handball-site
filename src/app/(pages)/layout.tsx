@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Header />
         <NavBar />
         <main className="flex-grow">{children}</main>
+        <Analytics />
         <SpeedInsights />
         <Footer />
       </body>
