@@ -8,6 +8,7 @@ import InputField from "@/components/ui/InputField";
 import SelectField from "@/components/ui/SelectField";
 import TextAreaField from "@/components/ui/TextAreaField";
 import { sujets, responsables } from "@/data/contact";
+import PageHero from "@/components/layout/PageHero";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -21,10 +22,14 @@ export default function ContactSection() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value, type, checked } = e.target as HTMLInputElement;
     setFormData((prev) => ({
@@ -37,7 +42,9 @@ export default function ContactSection() {
     e.preventDefault();
 
     if (!formData.consentement) {
-      alert("Veuillez consentir au traitement de vos données avant d'envoyer le message.");
+      alert(
+        "Veuillez consentir au traitement de vos données avant d'envoyer le message."
+      );
       return;
     }
 
@@ -77,13 +84,11 @@ export default function ContactSection() {
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-primary mb-4">Nous Contacter</h1>
-          <div className="w-24 h-1 bg-secondary mx-auto rounded mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Une question ? Un projet ? N&apos;hésitez pas à nous contacter, nous vous répondrons dans les plus brefs délais.
-          </p>
-        </div>
+        <PageHero
+          title="Nous Contacter"
+          subtitle="Une question ? Un projet ? N'hésitez pas à nous contacter, nous vous répondrons dans les plus brefs délais."
+          breadcrumbItems={[{ label: "Contact" }]}
+        />
 
         {/* Formulaire centré */}
         <div className="flex justify-center mb-16">
@@ -179,8 +184,9 @@ export default function ContactSection() {
                   className="mt-1 accent-primary w-4 h-4"
                 />
                 <label htmlFor="consentement" className="leading-snug">
-                  Je consens par la présente à ce que ces données soient stockées et traitées dans le but d&apos;établir un contact. 
-                  Je sais que je peux révoquer mon consentement à tout moment *.
+                  Je consens par la présente à ce que ces données soient
+                  stockées et traitées dans le but d&apos;établir un contact. Je
+                  sais que je peux révoquer mon consentement à tout moment *.
                 </label>
               </div>
 
@@ -250,7 +256,9 @@ export default function ContactSection() {
                 <h3 className="text-lg font-bold text-gray-800 mb-1">
                   {responsable.nom}
                 </h3>
-                <p className="text-primary font-medium mb-4">{responsable.fonction}</p>
+                <p className="text-primary font-medium mb-4">
+                  {responsable.fonction}
+                </p>
 
                 <div className="space-y-2">
                   {responsable.email && (
@@ -259,7 +267,9 @@ export default function ContactSection() {
                       className="flex items-center justify-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
                     >
                       <Mail className="w-4 h-4" />
-                      <span className="truncate max-w-[160px]">{responsable.email}</span>
+                      <span className="truncate max-w-[160px]">
+                        {responsable.email}
+                      </span>
                     </a>
                   )}
                   {responsable.telephone && (

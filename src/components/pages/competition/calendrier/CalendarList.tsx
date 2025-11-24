@@ -409,27 +409,10 @@ export default function CalendarList({
           </div>
         </div>
 
-        {/* --- SECTION MATCHS NON PROGRAMMÉS (Toujours visible si existent) --- */}
-        {undatedMatches.length > 0 && (
-          <div className="mb-8">
-            <div className="flex items-center space-x-2 mb-4 text-orange-600">
-              <AlertCircle className="w-5 h-5" />
-              <h3 className="font-bold text-lg">
-                Matchs à programmer / Dates à confirmer
-              </h3>
-            </div>
-            <div className="space-y-4">
-              {undatedMatches.map((match) => renderMatchCard(match, true))}
-            </div>
-            <div className="my-6 border-b border-gray-200"></div>
-          </div>
-        )}
-
         {/* Liste des Matchs */}
         {weeklyMatches.length > 0 ? (
           <div className="space-y-4">
             {weeklyMatches.map((match) => {
-              // Un match est "undated" dans la liste semaine s'il a un num de semaine mais pas de date précise
               const isUndatedInWeek = !match.date;
               return renderMatchCard(match, isUndatedInWeek);
             })}
