@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabaseClient";
+import { handleDatabaseError } from "@/lib/errorHandling";
 import { PartnerType, ProductCategory, ProductAgeGroup } from "@/types/base-types"; 
 import { Partner, LicenseFee, Product } from "@/types/club-types";
 
@@ -7,9 +8,10 @@ import { Partner, LicenseFee, Product } from "@/types/club-types";
 /**
  * Récupère tous les partenaires du club, triés par type puis par nom.
  *
- * @returns {Promise<Partner[] | null>} La liste de tous les partenaires.
+ * @returns {Promise<Partner[]>} La liste de tous les partenaires (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllPartners(): Promise<Partner[] | null> {
+export async function getAllPartners(): Promise<Partner[]> {
   const { data, error } = await supabase
     .from('partners')
     .select('*')
@@ -17,20 +19,20 @@ export async function getAllPartners(): Promise<Partner[] | null> {
     .order('name');
 
   if (error) {
-    console.error("Erreur lors de la récupération des partenaires:", error);
-    return null;
+    handleDatabaseError(error, "fetch all partners");
   }
 
-  return data as Partner[];
+  return (data || []) as Partner[];
 }
 
 /**
  * Récupère les partenaires filtrés par leur type (Institutionnel, Fédéral, Sponsor).
  *
  * @param {PartnerType} type Le type de partenaire à filtrer.
- * @returns {Promise<Partner[] | null>} La liste des partenaires de ce type.
+ * @returns {Promise<Partner[]>} La liste des partenaires de ce type (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getPartnersByType(type: PartnerType): Promise<Partner[] | null> {
+export async function getPartnersByType(type: PartnerType): Promise<Partner[]> {
   const { data, error } = await supabase
     .from('partners')
     .select('*')
@@ -38,11 +40,10 @@ export async function getPartnersByType(type: PartnerType): Promise<Partner[] | 
     .order('name');
 
   if (error) {
-    console.error(`Erreur lors de la récupération des partenaires de type ${type}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch partners by type ${type}`);
   }
 
-  return data as Partner[];
+  return (data || []) as Partner[];
 }
 
 // --- Fonctions de Service pour les Tarifs de Licence (LicenseFee) ---
@@ -50,20 +51,20 @@ export async function getPartnersByType(type: PartnerType): Promise<Partner[] | 
 /**
  * Récupère tous les tarifs de licence disponibles, triés par âge minimum.
  *
- * @returns {Promise<LicenseFee[] | null>} La liste des tarifs de licence.
+ * @returns {Promise<LicenseFee[]>} La liste des tarifs de licence (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllLicenseFees(): Promise<LicenseFee[] | null> {
+export async function getAllLicenseFees(): Promise<LicenseFee[]> {
   const { data, error } = await supabase
     .from('licenseFees')
     .select('*')
     .order('minAge');
 
   if (error) {
-    console.error("Erreur lors de la récupération des tarifs de licence:", error);
-    return null;
+    handleDatabaseError(error, "fetch all license fees");
   }
 
-  return data as LicenseFee[];
+  return (data || []) as LicenseFee[];
 }
 
 // --- Fonctions de Service pour les Produits (Product) ---
@@ -71,9 +72,10 @@ export async function getAllLicenseFees(): Promise<LicenseFee[] | null> {
 /**
  * Récupère tous les produits de la boutique, triés par catégorie.
  *
- * @returns {Promise<Product[] | null>} La liste de tous les produits.
+ * @returns {Promise<Product[]>} La liste de tous les produits (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllProducts(): Promise<Product[] | null> {
+export async function getAllProducts(): Promise<Product[]> {
   const { data, error } = await supabase
     .from('products')
     .select('*')
@@ -81,20 +83,20 @@ export async function getAllProducts(): Promise<Product[] | null> {
     .order('name');
 
   if (error) {
-    console.error("Erreur lors de la récupération de tous les produits:", error);
-    return null;
+    handleDatabaseError(error, "fetch all products");
   }
 
-  return data as Product[];
+  return (data || []) as Product[];
 }
 
 /**
  * Récupère les produits filtrés par catégorie (Pack, Vêtement, Accessoire).
  *
  * @param {ProductCategory} category La catégorie du produit.
- * @returns {Promise<Product[] | null>} La liste des produits de cette catégorie.
+ * @returns {Promise<Product[]>} La liste des produits de cette catégorie (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getProductsByCategory(category: ProductCategory): Promise<Product[] | null> {
+export async function getProductsByCategory(category: ProductCategory): Promise<Product[]> {
   const { data, error } = await supabase
     .from('products')
     .select('*')
@@ -102,20 +104,20 @@ export async function getProductsByCategory(category: ProductCategory): Promise<
     .order('name');
 
   if (error) {
-    console.error(`Erreur lors de la récupération des produits de catégorie ${category}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch products by category ${category}`);
   }
 
-  return data as Product[];
+  return (data || []) as Product[];
 }
 
 /**
  * Récupère les produits filtrés par groupe d'âge (Adulte, Junior, Tous).
  *
  * @param {ProductAgeGroup} ageGroup Le groupe d'âge du produit.
- * @returns {Promise<Product[] | null>} La liste des produits pour ce groupe d'âge.
+ * @returns {Promise<Product[]>} La liste des produits pour ce groupe d'âge (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getProductsByAgeGroup(ageGroup: ProductAgeGroup): Promise<Product[] | null> {
+export async function getProductsByAgeGroup(ageGroup: ProductAgeGroup): Promise<Product[]> {
   const { data, error } = await supabase
     .from('products')
     .select('*')
@@ -123,9 +125,8 @@ export async function getProductsByAgeGroup(ageGroup: ProductAgeGroup): Promise<
     .order('name');
 
   if (error) {
-    console.error(`Erreur lors de la récupération des produits pour le groupe d'âge ${ageGroup}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch products by age group ${ageGroup}`);
   }
 
-  return data as Product[];
+  return (data || []) as Product[];
 }

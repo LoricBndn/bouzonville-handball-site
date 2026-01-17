@@ -37,3 +37,31 @@ export interface StaffCoach {
   teamId: ID;
   role: CoachRole;
 }
+
+/**
+ * Représente un membre du personnel du club avec tous ses rôles associés.
+ */
+export type ClubPersonWithRoles = {
+  id: ID;
+  firstName: string;
+  lastName: string;
+  gender: "M" | "F";
+  contactEmail: string | null;
+  contactPhone: string | null;
+  photoUrl: string | null;
+  
+  staffMembers: {
+    role: MemberRole;
+    isContactPublic: boolean;
+    publicTitle: string | null;
+  }[];
+
+  staffCoaches: {
+    role: CoachRole;
+    teamId: ID;
+    teams: {
+      name: string;
+      slug: string;
+    } | null;
+  }[];
+};

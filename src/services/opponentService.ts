@@ -1,134 +1,131 @@
 import { supabase } from "@/lib/supabaseClient";
+import { handleDatabaseError } from "@/lib/errorHandling";
 import { Club, Entente } from "@/types/opponent";
 import { CategoryType, ID } from '@/types/base-types'; 
 
 /**
  * Récupère tous les clubs depuis la base de données.
- * @returns Le tableau des clubs ou null en cas d'erreur.
+ * @returns {Promise<Club[]>} Le tableau des clubs (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getClubs(): Promise<Club[] | null> {
+export async function getClubs(): Promise<Club[]> {
   const { data, error } = await supabase
     .from("clubs")
     .select("*")
     .order("id", { ascending: true });
 
   if (error) {
-    console.error("Erreur lors de la récupération des clubs:", error);
-    return null;
+    handleDatabaseError(error, "fetch all clubs");
   }
 
-  return data as Club[]; 
+  return (data || []) as Club[]; 
 }
 
 /**
  * Récupère un club spécifique par son ID.
  * @param clubId L'identifiant du club.
- * @returns Le club ou null s'il n'est pas trouvé ou en cas d'erreur.
+ * @returns {Promise<Club | null>} Le club ou null s'il n'est pas trouvé.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getClubById(clubId: ID): Promise<Club | null> {
   const { data, error } = await supabase
     .from("clubs")
     .select("*")
     .eq("id", clubId)
-    .single();
+    .maybeSingle();
 
   if (error) {
-    if (error.code !== 'PGRST116') {
-       console.error(`Erreur lors de la récupération du club ID ${clubId}:`, error);
-    }
-    return null;
+    handleDatabaseError(error, `fetch club ID ${clubId}`);
   }
 
-  return data as Club;
+  return data as Club | null;
 }
 
 /**
  * Récupère un club spécifique par son slug.
  * @param slug Le slug (nom court unique) du club.
- * @returns Le club ou null s'il n'est pas trouvé ou en cas d'erreur.
+ * @returns {Promise<Club | null>} Le club ou null s'il n'est pas trouvé.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getClubBySlug(slug: string): Promise<Club | null> {
   const { data, error } = await supabase
     .from("clubs")
     .select("*")
     .eq("slug", slug)
-    .single();
+    .maybeSingle();
 
   if (error) {
-    if (error.code !== 'PGRST116') {
-      console.error(`Erreur lors de la récupération du club slug ${slug}:`, error);
-    }
-    return null;
+    handleDatabaseError(error, `fetch club slug ${slug}`);
   }
 
-  return data as Club;
+  return data as Club | null;
 }
 
 // --- Fonctions pour les Ententes ---
 
 /**
  * Récupère toutes les ententes depuis la base de données.
- * @returns Le tableau des ententes ou null en cas d'erreur.
+ * @returns {Promise<Entente[]>} Le tableau des ententes (vide si aucune).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getEntentes(): Promise<Entente[] | null> {
+export async function getEntentes(): Promise<Entente[]> {
   const { data, error } = await supabase
     .from("ententes")
     .select("*");
 
   if (error) {
-    console.error("Erreur lors de la récupération des ententes : ", error);
-    return null;
+    handleDatabaseError(error, "fetch all ententes");
   }
 
-  return data as Entente[];
+  return (data || []) as Entente[];
 }
 
 /**
  * Récupère une entente spécifique par son ID.
  * @param ententeId L'identifiant de l'entente.
- * @returns L'entente ou null s'il n'est pas trouvé ou en cas d'erreur.
+ * @returns {Promise<Entente | null>} L'entente ou null si elle n'est pas trouvée.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getEntenteById(ententeId: ID): Promise<Entente | null> {
   const { data, error } = await supabase
     .from("ententes")
     .select("*")
     .eq("id", ententeId)
-    .single();
+    .maybeSingle();
 
   if (error) {
-    if (error.code !== 'PGRST116') {
-      console.error(`Erreur lors de la récupération de l'entente ID ${ententeId}:`, error);
-    }
-    return null;
+    handleDatabaseError(error, `fetch entente ID ${ententeId}`);
   }
 
-  return data as Entente;
+  return data as Entente | null;
 }
 
 /**
  * Récupère l'entente associée à un club pilote spécifique.
  * @param pilotingClubId L'identifiant du club désigné comme club pilote de l'entente.
- * @returns L'entente ou null si aucune entente n'est trouvée pour ce club pilote.
+ * @returns {Promise<Entente | null>} L'entente ou null si aucune entente n'est trouvée.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getEntenteBypilotingClubId(pilotingClubId: ID): Promise<Entente | null> {
   const { data, error } = await supabase
     .from("ententes")
     .select("*")
     .eq("pilotingClubId", pilotingClubId)
-    .single();
+    .maybeSingle();
 
   if (error) {
-    return null;
+    handleDatabaseError(error, `fetch entente for piloting club ${pilotingClubId}`);
   }
 
-  return data as Entente;
+  return data as Entente | null;
 }
 
 /**
- * Récupère l'entente associée à un club pilote spécifique.
+ * Récupère l'entente associée à un club pilote spécifique et une catégorie.
  * @param pilotingClubId L'identifiant du club désigné comme club pilote de l'entente.
  * @param category Le genre de l'entente (U18, U15).
- * @returns L'entente ou null si aucune entente n'est trouvée pour ce club pilote.
+ * @returns {Promise<Entente | null>} L'entente ou null si aucune entente n'est trouvée.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getEntenteBypilotingClubIdAndCategory(pilotingClubId: ID, category: CategoryType): Promise<Entente | null> {
   const { data, error } = await supabase
@@ -136,11 +133,11 @@ export async function getEntenteBypilotingClubIdAndCategory(pilotingClubId: ID, 
     .select("*")
     .eq("pilotingClubId", pilotingClubId)
     .eq("category", category)
-    .single();
+    .maybeSingle();
 
   if (error) {
-    return null;
+    handleDatabaseError(error, `fetch entente for piloting club ${pilotingClubId} and category ${category}`);
   }
 
-  return data as Entente;
+  return data as Entente | null;
 }

@@ -1,45 +1,16 @@
 import { supabase } from "@/lib/supabaseClient";
-import { ID, MemberRole, CoachRole } from "@/types/base-types";
-
-// --- Types de Jointure (Rappel) ---
-
-/**
- * Représente un membre du personnel du club avec tous ses rôles associés.
- */
-export type ClubPersonWithRoles = {
-  id: ID;
-  firstName: string;
-  lastName: string;
-  gender: "M" | "F";
-  contactEmail: string | null;
-  contactPhone: string | null;
-  photoUrl: string | null;
-  
-  staffMembers: {
-    role: MemberRole;
-    isContactPublic: boolean;
-    publicTitle: string | null;
-  }[];
-
-  staffCoaches: {
-    role: CoachRole;
-    teamId: ID;
-    teams: {
-      name: string;
-      slug: string;
-    } | null;
-  }[];
-};
-
-// --- Fonctions de Service ---
+import { handleDatabaseError } from "@/lib/errorHandling";
+import { ID } from "@/types/base-types";
+import { ClubPersonWithRoles } from "@/types/personnel";
 
 /**
  * Récupère tous les membres du personnel du club avec leurs rôles associés.
  * Utilisé pour l'administration.
  *
- * @returns {Promise<ClubPersonWithRoles[] | null>} La liste de tout le personnel et coachs.
+ * @returns {Promise<ClubPersonWithRoles[]>} La liste de tout le personnel et coachs (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllClubPersonsWithRoles(): Promise<ClubPersonWithRoles[] | null> {
+export async function getAllClubPersonsWithRoles(): Promise<ClubPersonWithRoles[]> {
   const { data, error } = await supabase
     .from("clubPersons")
     .select(`
@@ -68,18 +39,18 @@ export async function getAllClubPersonsWithRoles(): Promise<ClubPersonWithRoles[
     .order("firstName");
 
   if (error) {
-    console.error("Erreur lors de la récupération de tout le personnel:", error);
-    return null;
+    handleDatabaseError(error, "fetch all club persons with roles");
   }
 
-  return data as unknown as ClubPersonWithRoles[];
+  return (data || []) as unknown as ClubPersonWithRoles[];
 }
 
 /**
  * Récupère les détails d'une seule personne (ClubPerson) par son ID, incluant tous ses rôles.
  *
  * @param {ID} personId L'ID de la personne.
- * @returns {Promise<ClubPersonWithRoles | null>} Les données de la personne ou null en cas d'erreur.
+ * @returns {Promise<ClubPersonWithRoles | null>} Les données de la personne ou null si non trouvée.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getClubPersonById(personId: ID): Promise<ClubPersonWithRoles | null> {
   const { data, error } = await supabase
@@ -107,23 +78,23 @@ export async function getClubPersonById(personId: ID): Promise<ClubPersonWithRol
       )
     `)
     .eq('id', personId)
-    .single(); // Récupère un seul résultat
+    .maybeSingle();
 
   if (error) {
-    console.error(`Erreur lors de la récupération de la personne avec ID ${personId}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch club person with ID ${personId}`);
   }
   
-  return data as unknown as ClubPersonWithRoles;
+  return data as unknown as ClubPersonWithRoles | null;
 }
 
 /**
  * Récupère UNIQUEMENT les personnes ayant un rôle administratif (staffMembers),
  * qu'il soit public ou non.
  *
- * @returns {Promise<ClubPersonWithRoles[] | null>} La liste des membres du personnel/dirigeants.
+ * @returns {Promise<ClubPersonWithRoles[]>} La liste des membres du personnel/dirigeants (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getStaffMembers(): Promise<ClubPersonWithRoles[] | null> {
+export async function getStaffMembers(): Promise<ClubPersonWithRoles[]> {
   const { data, error } = await supabase
     .from("clubPersons")
     .select(`
@@ -152,22 +123,20 @@ export async function getStaffMembers(): Promise<ClubPersonWithRoles[] | null> {
     .order("firstName");
 
   if (error) {
-    console.error("Erreur lors de la récupération du personnel administratif (Staff Members):", error);
-    return null;
+    handleDatabaseError(error, "fetch staff members");
   }
   
-  return data as unknown as ClubPersonWithRoles[];
+  return (data || []) as unknown as ClubPersonWithRoles[];
 }
 
 /**
  * Récupère uniquement les membres du personnel qui ont un rôle administratif (staffMembers)
  * dont l'information de contact est marquée comme PUBLIC (isContactPublic = true).
  *
- * @returns {Promise<ClubPersonWithRoles[] | null>} La liste des membres du bureau public.
+ * @returns {Promise<ClubPersonWithRoles[]>} La liste des membres du bureau public (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getPublicStaff(): Promise<ClubPersonWithRoles[] | null> {
-  // Nous utilisons l'opérateur 'inner' (staffMembers!inner) pour ne retourner que 
-  // les ClubPersons qui correspondent au filtre dans la table de liaison.
+export async function getPublicStaff(): Promise<ClubPersonWithRoles[]> {
   const { data, error } = await supabase
     .from("clubPersons")
     .select(`
@@ -197,22 +166,19 @@ export async function getPublicStaff(): Promise<ClubPersonWithRoles[] | null> {
     .order("firstName");
 
   if (error) {
-    console.error("Erreur lors de la récupération du personnel public:", error);
-    return null;
+    handleDatabaseError(error, "fetch public staff members");
   }
   
-  // Utilisation de 'as unknown as ClubPersonWithRoles[]' pour le typage correct des jointures
-  return data as unknown as ClubPersonWithRoles[];
+  return (data || []) as unknown as ClubPersonWithRoles[];
 }
 
 /**
  * Récupère uniquement les membres du personnel qui ont un rôle d'encadrement technique (coachs).
  *
- * @returns {Promise<ClubPersonWithRoles[] | null>} La liste des coachs.
+ * @returns {Promise<ClubPersonWithRoles[]>} La liste des coachs (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getCoaches(): Promise<ClubPersonWithRoles[] | null> {
-  // Nous utilisons l'opérateur 'inner' (staffCoaches!inner) pour ne retourner que 
-  // les ClubPersons qui possèdent un rôle dans la table staffCoaches.
+export async function getCoaches(): Promise<ClubPersonWithRoles[]> {
   const { data, error } = await supabase
     .from("clubPersons")
     .select(`
@@ -241,20 +207,20 @@ export async function getCoaches(): Promise<ClubPersonWithRoles[] | null> {
     .order("firstName");
 
   if (error) {
-    console.error("Erreur lors de la récupération des coachs:", error);
-    return null;
+    handleDatabaseError(error, "fetch coaches");
   }
   
-  return data as unknown as ClubPersonWithRoles[];
+  return (data || []) as unknown as ClubPersonWithRoles[];
 }
 
 /**
  * Récupère les coachs affectés à une équipe spécifique (par teamId).
  *
  * @param {ID} teamId L'ID de l'équipe (par exemple, 1 pour SM1).
- * @returns {Promise<ClubPersonWithRoles[] | null>} La liste des personnes coachant cette équipe.
+ * @returns {Promise<ClubPersonWithRoles[]>} La liste des personnes coachant cette équipe (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getCoachesByTeam(teamId: ID): Promise<ClubPersonWithRoles[] | null> {
+export async function getCoachesByTeam(teamId: ID): Promise<ClubPersonWithRoles[]> {
   const { data, error } = await supabase
     .from("clubPersons")
     .select(`
@@ -279,15 +245,13 @@ export async function getCoachesByTeam(teamId: ID): Promise<ClubPersonWithRoles[
         )
       )
     `)
-    // Filtre pour inclure uniquement les lignes où staffCoaches.teamId correspond
     .eq('staffCoaches.teamId', teamId)
     .order("lastName", { ascending: true })
-    .order("role", { foreignTable: 'staffCoaches', ascending: false }); // Optionnel: Trier le coach principal en premier
+    .order("role", { foreignTable: 'staffCoaches', ascending: false });
 
   if (error) {
-    console.error(`Erreur lors de la récupération des coachs pour l'équipe ${teamId}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch coaches for team ${teamId}`);
   }
   
-  return data as unknown as ClubPersonWithRoles[];
+  return (data || []) as unknown as ClubPersonWithRoles[];
 }

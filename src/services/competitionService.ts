@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabaseClient";
+import { handleDatabaseError } from "@/lib/errorHandling";
 import { ID, OpponentType, ResultType } from "@/types/base-types";
 import { Competition, Match, RawMatch, TeamMatch } from "@/types/competition";
 import { Team } from "@/types/team";
@@ -14,9 +15,10 @@ import { getAllTeamsWithDetails, getTeamDetails } from "@/services/teamService";
  * Récupère toutes les compétitions enregistrées.
  * Triées par saison (décroissant) puis par niveau.
  *
- * @returns {Promise<Competition[] | null>} La liste de toutes les compétitions.
+ * @returns {Promise<Competition[]>} La liste de toutes les compétitions (tableau vide si aucune).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllCompetitions(): Promise<Competition[] | null> {
+export async function getAllCompetitions(): Promise<Competition[]> {
   const { data, error } = await supabase
     .from("competitions")
     .select("*")
@@ -24,21 +26,18 @@ export async function getAllCompetitions(): Promise<Competition[] | null> {
     .order("level");
 
   if (error) {
-    console.error(
-      "Erreur lors de la récupération de toutes les compétitions:",
-      error
-    );
-    return null;
+    handleDatabaseError(error, "fetch all competitions");
   }
 
-  return data as Competition[];
+  return (data || []) as Competition[];
 }
 
 /**
  * Récupère une compétition spécifique par son ID.
  *
  * @param {ID} competitionId L'ID de la compétition.
- * @returns {Promise<Competition | null>} Les données de la compétition ou null.
+ * @returns {Promise<Competition | null>} Les données de la compétition ou null si non trouvée.
+ * @throws {DatabaseError} Si la récupération échoue (erreur technique).
  */
 export async function getCompetitionById(
   competitionId: ID
@@ -47,17 +46,13 @@ export async function getCompetitionById(
     .from("competitions")
     .select("*")
     .eq("id", competitionId)
-    .single();
+    .maybeSingle();
 
   if (error) {
-    console.error(
-      `Erreur lors de la récupération de la compétition ${competitionId}:`,
-      error
-    );
-    return null;
+    handleDatabaseError(error, `fetch competition ${competitionId}`);
   }
 
-  return data as Competition;
+  return data as Competition | null;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -67,9 +62,10 @@ export async function getCompetitionById(
 /**
  * Récupère tous les matchs enregistrés, triés par date et heure.
  *
- * @returns {Promise<RawMatch[] | null>} La liste de tous les matchs.
+ * @returns {Promise<RawMatch[]>} La liste de tous les matchs (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllMatches(): Promise<RawMatch[] | null> {
+export async function getAllMatches(): Promise<RawMatch[]> {
   const { data, error } = await supabase
     .from("matches")
     .select("*")
@@ -77,22 +73,22 @@ export async function getAllMatches(): Promise<RawMatch[] | null> {
     .order("time", { ascending: true });
 
   if (error) {
-    console.error("Erreur lors de la récupération de tous les matchs:", error);
-    return null;
+    handleDatabaseError(error, "fetch all matches");
   }
 
-  return data as RawMatch[];
+  return (data || []) as RawMatch[];
 }
 
 /**
  * Récupère tous les matchs d'une compétition spécifique.
  *
  * @param {ID} competitionId L'ID de la compétition.
- * @returns {Promise<RawMatch[] | null>} La liste des matchs pour cette compétition.
+ * @returns {Promise<RawMatch[]>} La liste des matchs pour cette compétition (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getMatchesByCompetitionId(
   competitionId: ID
-): Promise<RawMatch[] | null> {
+): Promise<RawMatch[]> {
   const { data, error } = await supabase
     .from("matches")
     .select("*")
@@ -101,25 +97,22 @@ export async function getMatchesByCompetitionId(
     .order("date", { ascending: true });
 
   if (error) {
-    console.error(
-      `Erreur lors de la récupération des matchs pour la compétition ${competitionId}:`,
-      error
-    );
-    return null;
+    handleDatabaseError(error, `fetch matches for competition ${competitionId}`);
   }
 
-  return data as RawMatch[];
+  return (data || []) as RawMatch[];
 }
 
 /**
  * Récupère tous les matchs bruts pour une liste d'IDs de compétition.
  *
  * @param {ID[]} competitionIds Liste des IDs de compétition.
- * @returns {Promise<RawMatch[] | null>} La liste brute des matchs correspondants.
+ * @returns {Promise<RawMatch[]>} La liste brute des matchs correspondants (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getMatchesByCompetitionIds(
   competitionIds: ID[]
-): Promise<RawMatch[] | null> {
+): Promise<RawMatch[]> {
   const { data, error } = await supabase
     .from("matches")
     .select("*")
@@ -127,14 +120,10 @@ export async function getMatchesByCompetitionIds(
     .order("date", { ascending: true });
 
   if (error) {
-    console.error(
-      "Erreur lors de la récupération des matchs par liste de compétitions:",
-      error
-    );
-    return null;
+    handleDatabaseError(error, "fetch matches by competition IDs list");
   }
 
-  return data as RawMatch[];
+  return (data || []) as RawMatch[];
 }
 
 /**
@@ -144,6 +133,7 @@ export async function getMatchesByCompetitionIds(
  * @param {RawMatch[]} matches La liste brute des matchs à analyser.
  * @param {Team} targetTeam L'équipe interne ciblée.
  * @returns {Promise<TeamMatch[]>} La liste des matchs filtrés et enrichis.
+ * @throws {DatabaseError} Si la récupération des informations sur l'adversaire (Club/Entente) échoue.
  */
 export async function analyzeMatchesForTeam(
   matches: RawMatch[],
@@ -171,7 +161,10 @@ export async function analyzeMatchesForTeam(
     let opponentType: OpponentType = "Club";
     let opponentLogoUrl = "";
 
-    const entente = await getEntenteBypilotingClubIdAndCategory(opponentId, targetTeam.category);
+    const entente = await getEntenteBypilotingClubIdAndCategory(
+      opponentId,
+      targetTeam.category
+    );
 
     if (entente) {
       opponentType = "Entente";
@@ -193,8 +186,10 @@ export async function analyzeMatchesForTeam(
         result = "Défaite par Pénalité";
       } else if (opponentPenalty) {
         result = "Victoire par Pénalité";
-      }
-      else if (match.scoreHome !== undefined && match.scoreAway !== undefined) {
+      } else if (
+        match.scoreHome !== undefined &&
+        match.scoreAway !== undefined
+      ) {
         const myScore = isHome ? match.scoreHome : match.scoreAway;
         const opponentScore = isHome ? match.scoreAway : match.scoreHome;
 
@@ -248,12 +243,12 @@ export async function analyzeMatchesForTeam(
  * @param {RawMatch[]} matches La liste brute des matchs à analyser.
  * @param {ID[]} clubIds Les IDs des clubs considérés comme "internes".
  * @returns {Promise<Match[]>} La liste des matchs filtrés et enrichis.
+ * @throws {DatabaseError} Si la récupération des compétitions ou des données annexes échoue.
  */
 export async function analyzeMatches(
   matches: RawMatch[],
   clubIds: ID[]
 ): Promise<Match[]> {
-  // On récupère toutes les compétitions pour pouvoir déterminer le genre du match
   const competitions = await getAllCompetitions();
 
   const promises = matches.map(async (match) => {
@@ -272,12 +267,12 @@ export async function analyzeMatches(
     let opponentType: OpponentType = "Club";
     let opponentLogoUrl = "";
 
-    // Récupération du genre via la compétition liée au match
-    const competition = competitions?.find((c) => c.id === match.competitionId);
+    const competition = competitions?.find(
+      (c) => c.id === match.competitionId
+    );
     let entente = null;
 
     if (competition) {
-      // On utilise le genre de la compétition pour chercher l'entente adéquate
       entente = await getEntenteBypilotingClubIdAndCategory(
         opponentId,
         competition.category
@@ -354,16 +349,16 @@ export async function analyzeMatches(
  * Récupère tous les matchs enregistrés, enrichis et triés par semaine et par date.
  * Utilise les IDs fixes du club pour l'analyse (Bouzonville + Boulay).
  *
- * @returns {Promise<Match[] | null>} La liste de tous les matchs enrichis.
+ * @returns {Promise<Match[]>} La liste de tous les matchs enrichis (tableau vide si aucun match).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllMatchesAnalyzed(): Promise<Match[] | null> {
+export async function getAllMatchesAnalyzed(): Promise<Match[]> {
   const { data: rawMatches, error } = await supabase
     .from("matches")
     .select("*");
 
   if (error) {
-    console.error("Erreur lors de la récupération de tous les matchs:", error);
-    return null;
+    handleDatabaseError(error, "fetch all matches for analysis");
   }
 
   if (!rawMatches) return [];
@@ -399,9 +394,10 @@ export async function getAllMatchesAnalyzed(): Promise<Match[] | null> {
  * Récupère tous les matchs enregistrés, enrichis avec l'équipe qui correspond et triés par semaine et par date.
  * Utilise les IDs fixes du club pour l'analyse (Bouzonville + Boulay).
  *
- * @returns {Promise<TeamMatch[] | null>} La liste de tous les matchs enrichis avec les détails de l'équipe.
+ * @returns {Promise<TeamMatch[]>} La liste de tous les matchs enrichis avec les détails de l'équipe (tableau vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[] | null> {
+export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[]> {
   const { data: rawMatches, error } = await supabase
     .from("matches")
     .select("*")
@@ -410,20 +406,19 @@ export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[] | nu
     .order("time");
 
   if (error) {
-    console.error("Erreur lors de la récupération de tous les matchs:", error);
-    return null;
+    handleDatabaseError(error, "fetch all matches for team analysis");
   }
 
   if (!rawMatches) return [];
 
   const teams = await getAllTeamsWithDetails();
-  
-  if (!teams) return [];
+
+  if (!teams || teams.length === 0) return [];
 
   const teamNameMap = new Map<string, Team>();
-  
-  teams.forEach(team => {
-    team.externalNames.forEach(name => {
+
+  teams.forEach((team) => {
+    team.externalNames.forEach((name) => {
       teamNameMap.set(name, team);
     });
   });
@@ -435,21 +430,24 @@ export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[] | nu
     internalClubIds
   );
 
-  const matchesWithTeams = analyzedMatches.map((match) => {
-    const homeName = match.homeTeam;
-    const awayName = match.awayTeam;
+  const matchesWithTeams = analyzedMatches
+    .map((match) => {
+      const homeName = match.homeTeam;
+      const awayName = match.awayTeam;
 
-    const correspondingTeam = teamNameMap.get(homeName) || teamNameMap.get(awayName);
+      const correspondingTeam =
+        teamNameMap.get(homeName) || teamNameMap.get(awayName);
 
-    if (!correspondingTeam) return null;
+      if (!correspondingTeam) return null;
 
-    const teamMatch: TeamMatch = {
+      const teamMatch: TeamMatch = {
         ...match,
-        teamDetails: correspondingTeam
-    };
+        teamDetails: correspondingTeam,
+      };
 
-    return teamMatch;
-  }).filter((m): m is TeamMatch => m !== null);
+      return teamMatch;
+    })
+    .filter((m): m is TeamMatch => m !== null);
 
   matchesWithTeams.sort((a, b) => {
     const weekA = a.week || "";
@@ -476,7 +474,8 @@ export async function getAllMatchesAnalyzedWithTeams(): Promise<TeamMatch[] | nu
  * Récupère et analyse tous les matchs d'une équipe spécifique par son ID.
  *
  * @param {ID} teamId L'ID de l'équipe.
- * @returns {Promise<TeamMatch[] | null>} La liste des matchs analysés de l'équipe, triés par date.
+ * @returns {Promise<TeamMatch[] | null>} La liste des matchs (peut être vide). Renvoie null si l'équipe n'existe pas.
+ * @throws {DatabaseError} Si la récupération (équipe ou matchs) échoue techniquement.
  */
 export async function getMatchesAnalyzedByTeamId(
   teamId: ID
@@ -484,7 +483,6 @@ export async function getMatchesAnalyzedByTeamId(
   const team = await getTeamDetails(teamId);
 
   if (!team) {
-    console.error(`Équipe ${teamId} non trouvée pour l'analyse des matchs.`);
     return null;
   }
 

@@ -1,15 +1,15 @@
 import { supabase } from "@/lib/supabaseClient";
+import { handleDatabaseError } from "@/lib/errorHandling";
 import { ID, GenderType, PositionType } from "@/types/base-types";
 import { Player, PlayerWithAllStats } from "@/types/player";
-
-// --- Fonctions de Service ---
 
 /**
  * Récupère tous les joueurs enregistrés.
  *
- * @returns {Promise<Player[] | null>} La liste de tous les joueurs.
+ * @returns {Promise<Player[]>} La liste de tous les joueurs (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllPlayers(): Promise<Player[] | null> {
+export async function getAllPlayers(): Promise<Player[]> {
   const { data, error } = await supabase
     .from('players')
     .select('*')
@@ -17,18 +17,18 @@ export async function getAllPlayers(): Promise<Player[] | null> {
     .order('firstName');
 
   if (error) {
-    console.error("Erreur lors de la récupération de tous les joueurs:", error);
-    return null;
+    handleDatabaseError(error, "fetch all players");
   }
 
-  return data as Player[];
+  return (data || []) as Player[];
 }
 
 /**
  * Récupère un joueur spécifique par son ID, incluant toutes ses statistiques.
  *
  * @param {ID} playerId L'ID du joueur.
- * @returns {Promise<PlayerWithAllStats | null>} Les données du joueur ou null.
+ * @returns {Promise<PlayerWithAllStats | null>} Les données du joueur ou null si non trouvé.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getPlayerById(playerId: ID): Promise<PlayerWithAllStats | null> {
   const { data, error } = await supabase
@@ -56,14 +56,13 @@ export async function getPlayerById(playerId: ID): Promise<PlayerWithAllStats | 
       )
     `)
     .eq('id', playerId)
-    .single();
+    .maybeSingle();
 
   if (error) {
-    console.error(`Erreur lors de la récupération du joueur ${playerId}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch player with ID ${playerId}`);
   }
 
-  return data as unknown as PlayerWithAllStats;
+  return data as unknown as PlayerWithAllStats | null;
 }
 
 /**
@@ -71,9 +70,10 @@ export async function getPlayerById(playerId: ID): Promise<PlayerWithAllStats | 
  * Utilise la table de liaison "teamPlayers".
  *
  * @param {ID} teamId L'ID de l'équipe.
- * @returns {Promise<Player[] | null>} La liste des joueurs de cette équipe.
+ * @returns {Promise<Player[]>} La liste des joueurs de cette équipe (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getPlayersByTeam(teamId: ID): Promise<Player[] | null> {
+export async function getPlayersByTeam(teamId: ID): Promise<Player[]> {
     const { data, error } = await supabase
         .from('teamPlayers')
         .select(`
@@ -93,21 +93,22 @@ export async function getPlayersByTeam(teamId: ID): Promise<Player[] | null> {
         .order('lastName', { referencedTable: 'players' });
 
     if (error) {
-        console.error(`Erreur lors de la récupération des joueurs pour l'équipe ${teamId}:`, error);
-        return null;
+        handleDatabaseError(error, `fetch players for team ${teamId}`);
     }
     
-    const players = data?.map(item => item.players) as unknown as Player[] | undefined;
-    return players || null;
+    if (!data) return [];
+
+    return data.map(item => item.players) as unknown as Player[];
 }
 
 /**
  * Récupère les joueurs filtrés par leur position de jeu.
  *
  * @param {PositionType} position Le poste de jeu (ex: 'Gardien', 'Demi-Centre').
- * @returns {Promise<Player[] | null>} La liste des joueurs à ce poste.
+ * @returns {Promise<Player[]>} La liste des joueurs à ce poste (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getPlayersByPosition(position: PositionType): Promise<Player[] | null> {
+export async function getPlayersByPosition(position: PositionType): Promise<Player[]> {
   const { data, error } = await supabase
     .from('players')
     .select('*')
@@ -115,20 +116,20 @@ export async function getPlayersByPosition(position: PositionType): Promise<Play
     .order('lastName');
 
   if (error) {
-    console.error(`Erreur lors de la récupération des joueurs pour la position ${position}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch players by position ${position}`);
   }
 
-  return data as Player[];
+  return (data || []) as Player[];
 }
 
 /**
  * Récupère les joueurs filtrés par leur genre.
  *
  * @param {GenderType} gender Le genre (ex: 'Masculin', 'Feminin').
- * @returns {Promise<Player[] | null>} La liste des joueurs de ce genre.
+ * @returns {Promise<Player[]>} La liste des joueurs de ce genre (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getPlayersByGender(gender: GenderType): Promise<Player[] | null> {
+export async function getPlayersByGender(gender: GenderType): Promise<Player[]> {
   const { data, error } = await supabase
     .from('players')
     .select('*')
@@ -136,9 +137,8 @@ export async function getPlayersByGender(gender: GenderType): Promise<Player[] |
     .order('lastName');
 
   if (error) {
-    console.error(`Erreur lors de la récupération des joueurs par genre ${gender}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch players by gender ${gender}`);
   }
 
-  return data as Player[];
+  return (data || []) as Player[];
 }

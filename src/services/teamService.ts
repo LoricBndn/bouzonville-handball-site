@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabaseClient";
+import { handleDatabaseError } from "@/lib/errorHandling";
 import { CategoryType, GenderType, LevelType, ID } from "@/types/base-types";
 import { Team, TeamWithDetails } from "@/types/team";
 
@@ -7,9 +8,10 @@ import { Team, TeamWithDetails } from "@/types/team";
 /**
  * Récupère toutes les équipes enregistrées, triées par niveau puis par catégorie.
  *
- * @returns {Promise<Team[] | null>} La liste de toutes les équipes.
+ * @returns {Promise<Team[]>} La liste de toutes les équipes.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllTeams(): Promise<Team[] | null> {
+export async function getAllTeams(): Promise<Team[]> {
   const { data, error } = await supabase
     .from("teams")
     .select("*")
@@ -19,11 +21,7 @@ export async function getAllTeams(): Promise<Team[] | null> {
     .order("name");
 
   if (error) {
-    console.error(
-      "Erreur lors de la récupération de toutes les équipes:",
-      error
-    );
-    return null;
+    handleDatabaseError(error, "fetch all teams");
   }
 
   return data as Team[];
@@ -32,11 +30,10 @@ export async function getAllTeams(): Promise<Team[] | null> {
 /**
  * Récupère toutes les équipes enregistrées, triées par niveau puis par catégorie.
  *
- * @returns {Promise<TeamWithDetails[] | null>} La liste de toutes les équipes enrichis.
+ * @returns {Promise<TeamWithDetails[]>} La liste de toutes les équipes enrichis.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllTeamsWithDetails(): Promise<
-  TeamWithDetails[] | null
-> {
+export async function getAllTeamsWithDetails(): Promise<TeamWithDetails[]> {
   const { data, error } = await supabase
     .from("teams")
     .select(
@@ -61,11 +58,7 @@ export async function getAllTeamsWithDetails(): Promise<
     .order("category");
 
   if (error) {
-    console.error(
-      "Erreur lors de la récupération de toutes les équipes:",
-      error
-    );
-    return null;
+    handleDatabaseError(error, "fetch all teams with details");
   }
 
   return data as TeamWithDetails[];
@@ -76,6 +69,7 @@ export async function getAllTeamsWithDetails(): Promise<
  *
  * @param {ID} identifier ID ou slug de l'équipe.
  * @returns {Promise<TeamWithDetails | null>} Les données détaillées de l'équipe ou null.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getTeamDetails(
   identifier: ID
@@ -101,6 +95,7 @@ export async function getTeamDetails(
     typeof identifier === "number" ||
     (typeof identifier === "string" && /^\d+$/.test(identifier))
   ) {
+    query = query.eq("id", identifier); 
   } else {
     query = query.eq("slug", identifier);
   }
@@ -108,14 +103,14 @@ export async function getTeamDetails(
   const { data, error } = await query;
 
   if (error) {
-    console.error(
-      `Erreur lors de la récupération des détails de l'équipe ${identifier}:`,
-      error
-    );
+    handleDatabaseError(error, `fetch team details for ${identifier}`);
+  }
+
+  if (!data || data.length === 0) {
     return null;
   }
 
-  return data as unknown as TeamWithDetails;
+  return data[0] as TeamWithDetails;
 }
 
 /**
@@ -123,6 +118,7 @@ export async function getTeamDetails(
  *
  * @param {LevelType} level Le niveau de compétition.
  * @returns {Promise<Team[] | null>} La liste des équipes à ce niveau.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getTeamsByLevel(
   level: LevelType
@@ -135,11 +131,7 @@ export async function getTeamsByLevel(
     .order("gender");
 
   if (error) {
-    console.error(
-      `Erreur lors de la récupération des équipes de niveau ${level}:`,
-      error
-    );
-    return null;
+    handleDatabaseError(error, `fetch teams by level ${level}`);
   }
 
   return data as Team[];
@@ -150,6 +142,7 @@ export async function getTeamsByLevel(
  *
  * @param {CategoryType} category La catégorie d'âge.
  * @returns {Promise<Team[] | null>} La liste des équipes de cette catégorie.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getTeamsByCategory(
   category: CategoryType
@@ -162,11 +155,7 @@ export async function getTeamsByCategory(
     .order("level");
 
   if (error) {
-    console.error(
-      `Erreur lors de la récupération des équipes de catégorie ${category}:`,
-      error
-    );
-    return null;
+    handleDatabaseError(error, `fetch teams by category ${category}`);
   }
 
   return data as Team[];
@@ -177,6 +166,7 @@ export async function getTeamsByCategory(
  *
  * @param {GenderType} gender Le genre.
  * @returns {Promise<Team[] | null>} La liste des équipes de ce genre.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getTeamsByGender(
   gender: GenderType
@@ -189,11 +179,7 @@ export async function getTeamsByGender(
     .order("level");
 
   if (error) {
-    console.error(
-      `Erreur lors de la récupération des équipes de genre ${gender}:`,
-      error
-    );
-    return null;
+    handleDatabaseError(error, `fetch teams by gender ${gender}`);
   }
 
   return data as Team[];
@@ -204,6 +190,7 @@ export async function getTeamsByGender(
  *
  * @param {ID} competitionId L'ID de la compétition.
  * @returns {Promise<Team[] | null>} La liste des équipes participant à cette compétition.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getTeamsByCompetition(
   competitionId: ID
@@ -229,11 +216,7 @@ export async function getTeamsByCompetition(
     .order("name", { referencedTable: "teams" });
 
   if (error) {
-    console.error(
-      `Erreur lors de la récupération des équipes pour la compétition ${competitionId}:`,
-      error
-    );
-    return null;
+    handleDatabaseError(error, `fetch teams by competition ${competitionId}`);
   }
 
   const teams = data?.map((item) => item.teams) as unknown as
@@ -247,6 +230,7 @@ export async function getTeamsByCompetition(
  *
  * @param {ID} playerId L'ID du joueur.
  * @returns {Promise<Team[] | null>} La liste des équipes auxquelles ce joueur appartient.
+ * @throws {DatabaseError} Si la récupération échoue.
  */
 export async function getTeamsByPlayer(playerId: ID): Promise<Team[] | null> {
   const { data, error } = await supabase
@@ -270,11 +254,7 @@ export async function getTeamsByPlayer(playerId: ID): Promise<Team[] | null> {
     .order("name", { referencedTable: "teams" });
 
   if (error) {
-    console.error(
-      `Erreur lors de la récupération des équipes pour le joueur ${playerId}:`,
-      error
-    );
-    return null;
+    handleDatabaseError(error, `fetch teams by player ${playerId}`);
   }
 
   const teams = data?.map((item) => item.teams) as unknown as

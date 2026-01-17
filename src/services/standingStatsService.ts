@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabaseClient";
+import { handleDatabaseError } from "@/lib/errorHandling";
 import { ID } from "@/types/base-types";
 import { CompetitionStandingWithDetails, CompetitionStatsWithDetails } from "@/types/standing-stats";
 
@@ -9,9 +10,10 @@ import { CompetitionStandingWithDetails, CompetitionStatsWithDetails } from "@/t
  * Les résultats sont triés par 'position' (classement).
  *
  * @param {ID} competitionId L'ID de la compétition.
- * @returns {Promise<CompetitionStandingWithDetails[] | null>} Le classement de la compétition.
+ * @returns {Promise<CompetitionStandingWithDetails[]>} Le classement de la compétition (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getStandingByCompetition(competitionId: ID): Promise<CompetitionStandingWithDetails[] | null> {
+export async function getStandingByCompetition(competitionId: ID): Promise<CompetitionStandingWithDetails[]> {
   const { data, error } = await supabase
     .from('competitionStandings')
     .select(`
@@ -33,20 +35,20 @@ export async function getStandingByCompetition(competitionId: ID): Promise<Compe
     .order('position', { ascending: true });
 
   if (error) {
-    console.error(`Erreur lors de la récupération du classement pour la compétition ${competitionId}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch standing for competition ${competitionId}`);
   }
 
-  return data as unknown as CompetitionStandingWithDetails[];
+  return (data || []) as unknown as CompetitionStandingWithDetails[];
 }
 
 /**
  * Récupère le classement d'une équipe spécifique dans toutes les compétitions.
  *
  * @param {ID} teamId L'ID de l'équipe.
- * @returns {Promise<CompetitionStandingWithDetails[] | null>} Les positions de l'équipe dans chaque compétition.
+ * @returns {Promise<CompetitionStandingWithDetails[]>} Les positions de l'équipe dans chaque compétition (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getStandingsByTeam(teamId: ID): Promise<CompetitionStandingWithDetails[] | null> {
+export async function getStandingsByTeam(teamId: ID): Promise<CompetitionStandingWithDetails[]> {
   const { data, error } = await supabase
     .from('competitionStandings')
     .select(`
@@ -68,11 +70,10 @@ export async function getStandingsByTeam(teamId: ID): Promise<CompetitionStandin
     .order('season', { referencedTable: 'competitions', ascending: false });
 
   if (error) {
-    console.error(`Erreur lors de la récupération des classements pour l'équipe ${teamId}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch standings for team ${teamId}`);
   }
 
-  return data as unknown as CompetitionStandingWithDetails[];
+  return (data || []) as unknown as CompetitionStandingWithDetails[];
 }
 
 // --- Fonctions de Service pour les Statistiques (CompetitionStats) ---
@@ -81,9 +82,10 @@ export async function getStandingsByTeam(teamId: ID): Promise<CompetitionStandin
  * Récupère les statistiques détaillées (moyennes, ratios) d'une équipe spécifique dans toutes les compétitions.
  *
  * @param {ID} teamId L'ID de l'équipe.
- * @returns {Promise<CompetitionStatsWithDetails[] | null>} Les statistiques détaillées de l'équipe.
+ * @returns {Promise<CompetitionStatsWithDetails[]>} Les statistiques détaillées de l'équipe (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getStatsByTeam(teamId: ID): Promise<CompetitionStatsWithDetails[] | null> {
+export async function getStatsByTeam(teamId: ID): Promise<CompetitionStatsWithDetails[]> {
   const { data, error } = await supabase
     .from('competitionStats')
     .select(`
@@ -105,11 +107,10 @@ export async function getStatsByTeam(teamId: ID): Promise<CompetitionStatsWithDe
     .order('season', { referencedTable: 'competitions', ascending: false });
 
   if (error) {
-    console.error(`Erreur lors de la récupération des stats pour l'équipe ${teamId}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch stats for team ${teamId}`);
   }
 
-  return data as unknown as CompetitionStatsWithDetails[];
+  return (data || []) as unknown as CompetitionStatsWithDetails[];
 }
 
 /**
@@ -117,9 +118,10 @@ export async function getStatsByTeam(teamId: ID): Promise<CompetitionStatsWithDe
  * Les résultats sont triés par 'winRate'.
  *
  * @param {ID} competitionId L'ID de la compétition.
- * @returns {Promise<CompetitionStatsWithDetails[] | null>} Les statistiques détaillées de toutes les équipes de cette compétition.
+ * @returns {Promise<CompetitionStatsWithDetails[]>} Les statistiques détaillées de toutes les équipes de cette compétition (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getStatsByCompetition(competitionId: ID): Promise<CompetitionStatsWithDetails[] | null> {
+export async function getStatsByCompetition(competitionId: ID): Promise<CompetitionStatsWithDetails[]> {
   const { data, error } = await supabase
     .from('competitionStats')
     .select(`
@@ -141,9 +143,8 @@ export async function getStatsByCompetition(competitionId: ID): Promise<Competit
     .order('winRate', { ascending: false });
 
   if (error) {
-    console.error(`Erreur lors de la récupération des stats pour la compétition ${competitionId}:`, error);
-    return null;
+    handleDatabaseError(error, `fetch stats for competition ${competitionId}`);
   }
 
-  return data as unknown as CompetitionStatsWithDetails[];
+  return (data || []) as unknown as CompetitionStatsWithDetails[];
 }

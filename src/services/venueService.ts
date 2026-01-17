@@ -1,37 +1,35 @@
 import { supabase } from "@/lib/supabaseClient";
+import { handleDatabaseError } from "@/lib/errorHandling";
 import { DayOfWeek, CategoryType, GenderType } from "@/types/base-types"; 
 import { Venue, CategoryTrainingSessionWithDetails } from "@/types/venue";
-
-// --- Fonctions de Service ---
 
 /**
  * Récupère tous les lieux physiques (gymnases, salles) enregistrés.
  *
- * @returns {Promise<Venue[] | null>} La liste de tous les lieux.
+ * @returns {Promise<Venue[]>} La liste de tous les lieux (vide si aucun).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllVenues(): Promise<Venue[] | null> {
+export async function getAllVenues(): Promise<Venue[]> {
   const { data, error } = await supabase
     .from('venues')
     .select('*')
     .order('name');
 
   if (error) {
-    console.error("Erreur lors de la récupération de tous les lieux (Venues):", error);
-    return null;
+    handleDatabaseError(error, "fetch all venues");
   }
 
-  return data as Venue[];
+  return (data || []) as Venue[];
 }
-
-// ---------------------------------------------------------------------------------------------------------------------
 
 /**
  * Récupère l'intégralité du planning d'entraînements, avec les détails de la séance et du lieu.
  * Les résultats sont groupés par jour et heure.
  *
- * @returns {Promise<CategoryTrainingSessionWithDetails[] | null>} La liste des sessions de toutes les équipes.
+ * @returns {Promise<CategoryTrainingSessionWithDetails[]>} La liste des sessions de toutes les équipes (vide si aucune).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getAllTrainingSchedule(): Promise<CategoryTrainingSessionWithDetails[] | null> {
+export async function getAllTrainingSchedule(): Promise<CategoryTrainingSessionWithDetails[]> {
   const { data, error } = await supabase
     .from('categoryGenderTrainingSessions')
     .select(`
@@ -57,23 +55,21 @@ export async function getAllTrainingSchedule(): Promise<CategoryTrainingSessionW
     .order('time', { referencedTable: "trainingSessions", ascending: true });
 
   if (error) {
-    console.error("Erreur lors de la récupération de l'intégralité du planning:", error);
-    return null;
+    handleDatabaseError(error, "fetch all training schedule");
   }
 
-  return data as unknown as CategoryTrainingSessionWithDetails[];
+  return (data || []) as unknown as CategoryTrainingSessionWithDetails[];
 }
-
-// ---------------------------------------------------------------------------------------------------------------------
 
 /**
  * Récupère les sessions d'entraînement affectées à une catégorie et un genre spécifiques.
  *
  * @param {CategoryType} category La catégorie d'âge (ex: 'Senior', 'U15').
  * @param {GenderType} gender Le genre (ex: 'Masculin', 'Feminin').
- * @returns {Promise<CategoryTrainingSessionWithDetails[] | null>} La liste des sessions pour ce groupe.
+ * @returns {Promise<CategoryTrainingSessionWithDetails[]>} La liste des sessions pour ce groupe (vide si aucune).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getTrainingSessionsByGroup(category: CategoryType, gender: GenderType): Promise<CategoryTrainingSessionWithDetails[] | null> {
+export async function getTrainingSessionsByGroup(category: CategoryType, gender: GenderType): Promise<CategoryTrainingSessionWithDetails[]> {
     const { data, error } = await supabase
         .from('categoryGenderTrainingSessions')
         .select(`
@@ -101,22 +97,20 @@ export async function getTrainingSessionsByGroup(category: CategoryType, gender:
         .order('time', { referencedTable: 'trainingSessions' });
 
     if (error) {
-        console.error(`Erreur lors de la récupération des sessions pour ${category} ${gender}:`, error);
-        return null;
+        handleDatabaseError(error, `fetch training sessions for ${category} ${gender}`);
     }
 
-    return data as unknown as CategoryTrainingSessionWithDetails[];
+    return (data || []) as unknown as CategoryTrainingSessionWithDetails[];
 }
-
-// ---------------------------------------------------------------------------------------------------------------------
 
 /**
  * Récupère les sessions d'entraînement affectées à une catégorie d'âge spécifique.
  *
  * @param {CategoryType} category La catégorie d'âge (ex: 'Senior', 'U15').
- * @returns {Promise<CategoryTrainingSessionWithDetails[] | null>} La liste des sessions pour cette catégorie.
+ * @returns {Promise<CategoryTrainingSessionWithDetails[]>} La liste des sessions pour cette catégorie (vide si aucune).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getTrainingSessionsByCategory(category: CategoryType): Promise<CategoryTrainingSessionWithDetails[] | null> {
+export async function getTrainingSessionsByCategory(category: CategoryType): Promise<CategoryTrainingSessionWithDetails[]> {
     const { data, error } = await supabase
         .from('categoryGenderTrainingSessions')
         .select(`
@@ -143,22 +137,20 @@ export async function getTrainingSessionsByCategory(category: CategoryType): Pro
         .order('time', { referencedTable: 'trainingSessions' });
 
     if (error) {
-        console.error(`Erreur lors de la récupération des sessions pour la catégorie ${category}:`, error);
-        return null;
+        handleDatabaseError(error, `fetch training sessions for category ${category}`);
     }
 
-    return data as unknown as CategoryTrainingSessionWithDetails[];
+    return (data || []) as unknown as CategoryTrainingSessionWithDetails[];
 }
-
-// ---------------------------------------------------------------------------------------------------------------------
 
 /**
  * Récupère les sessions d'entraînement affectées à un genre spécifique.
  *
  * @param {GenderType} gender Le genre (ex: 'Masculin', 'Feminin', 'Mixte').
- * @returns {Promise<CategoryTrainingSessionWithDetails[] | null>} La liste des sessions pour ce genre.
+ * @returns {Promise<CategoryTrainingSessionWithDetails[]>} La liste des sessions pour ce genre (vide si aucune).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getTrainingSessionsByGender(gender: GenderType): Promise<CategoryTrainingSessionWithDetails[] | null> {
+export async function getTrainingSessionsByGender(gender: GenderType): Promise<CategoryTrainingSessionWithDetails[]> {
     const { data, error } = await supabase
         .from('categoryGenderTrainingSessions')
         .select(`
@@ -185,22 +177,20 @@ export async function getTrainingSessionsByGender(gender: GenderType): Promise<C
         .order('time', { referencedTable: 'trainingSessions' });
 
     if (error) {
-        console.error(`Erreur lors de la récupération des sessions pour le genre ${gender}:`, error);
-        return null;
+        handleDatabaseError(error, `fetch training sessions for gender ${gender}`);
     }
 
-    return data as unknown as CategoryTrainingSessionWithDetails[];
+    return (data || []) as unknown as CategoryTrainingSessionWithDetails[];
 }
-
-// ---------------------------------------------------------------------------------------------------------------------
 
 /**
  * Récupère toutes les sessions d'entraînement qui ont lieu un jour de la semaine spécifique.
  *
  * @param {DayOfWeek} day Le jour de la semaine (ex: 'Lundi').
- * @returns {Promise<CategoryTrainingSessionWithDetails[] | null>} La liste des sessions pour ce jour, avec détails.
+ * @returns {Promise<CategoryTrainingSessionWithDetails[]>} La liste des sessions pour ce jour, avec détails (vide si aucune).
+ * @throws {DatabaseError} Si la récupération échoue.
  */
-export async function getTrainingSessionsByDay(day: DayOfWeek): Promise<CategoryTrainingSessionWithDetails[] | null> {
+export async function getTrainingSessionsByDay(day: DayOfWeek): Promise<CategoryTrainingSessionWithDetails[]> {
     const { data, error } = await supabase
         .from('categoryGenderTrainingSessions')
         .select(`
@@ -226,9 +216,8 @@ export async function getTrainingSessionsByDay(day: DayOfWeek): Promise<Category
         .order('time', { referencedTable: 'trainingSessions' });
 
     if (error) {
-        console.error(`Erreur lors de la récupération des sessions pour le jour ${day}:`, error);
-        return null;
+        handleDatabaseError(error, `fetch training sessions for day ${day}`);
     }
 
-    return data as unknown as CategoryTrainingSessionWithDetails[];
+    return (data || []) as unknown as CategoryTrainingSessionWithDetails[];
 }
