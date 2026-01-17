@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { z } from "zod";
+import { contactFormSchema } from "@/lib/validationSchemas";
 
 export async function POST(req: NextRequest) {
   try {
-    const { nom, prenom, email, telephone, sujet, message } = await req.json();
+    const body = await req.json();
+    const validatedData = contactFormSchema.parse(body);
+
+    const { nom, prenom, email, telephone, sujet, message } = validatedData;
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -48,8 +53,24 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { 
+          error: "Données invalides",
+          details: error.issues.map((err) => ({
+            field: err.path.join('.'),
+            message: err.message,
+          })),
+        },
+        { status: 400 }
+      );
+    }
+
+    console.error("Contact form error:", error);
+    return NextResponse.json(
+      { error: "Erreur serveur" },
+      { status: 500 }
+    );
   }
 }
